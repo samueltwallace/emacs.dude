@@ -1,0 +1,207 @@
+#+TITLE: Sam's Emacs
+#+AUTHOR: Samuel Wallace
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles.css" />
+#+PROPERTY: header-args:emacs-lisp :tangle more-settings.el :comments no :exports code
+
+* Intro
+
+  This config is mainly for writing a mixture of Org and $\LaTeX$ documents. Version controlling is done through Git.
+
+  Note that this creates a /separate/ file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. ~M-x init-mail-settings~) or in a standard init file (e.g. ~(init-mail-settings)~). This is meant to be used in combination with other settings in a standard ~init.el~, allowing for optional settings or delayed settings.
+  
+* Loading Other Settings
+  
+  We load the custom settings:
+
+  #+BEGIN_SRC emacs-lisp
+    (setq custom-file "~/.emacs.d/custom.el")
+    (load custom-file)
+  #+END_SRC
+
+* Pure Latex
+
+  We add a function for package load-time settings:
+  #+BEGIN_SRC emacs-lisp
+    (defun latex-init-settings ()
+      (add-hook 'LaTeX-mode-hook '(progn (turn-on-cdlatex-mode) (turn-on-reftex)))
+      (setq cdlatex-math-modify-alist
+	    '((98 "\\mathbb" nil t nil nil)))
+      (setq cdlatex-math-symbol-alist
+	    '((120 "\\chi" "\\otimes"))))
+  #+END_SRC
+
+  And then we delay loading the package:
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package auctex
+      :defer t
+      :config (latex-init-settings))
+  #+END_SRC
+  
+* Org Settings
+
+  Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
+  #+BEGIN_SRC emacs-lisp
+    (defun latex-in-org-settings ()
+      (progn
+	(require 'ox-bibtex)
+	(setq org-format-latex-options
+	      '(:foreground default
+			    :background: default
+			    :scale 2.0
+			    :html-foreground "Black"
+			    :html-background "Transparent"
+			    :html-scale 1.0
+			    :matchers ("begin" "$1" "$")))
+	))
+  #+END_SRC
+
+  A small helper function
+
+  #+BEGIN_SRC emacs-lisp
+    (defun org-indent-paragraph () (interactive)
+	   (org-backward-paragraph)
+	   (push-mark)
+	   (org-forward-paragraph)
+	   (org-indent-region
+	    (mark) (point)))
+  #+END_SRC
+
+  Let's add some keywords, keybindings, and such:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun org-init-settings ()
+      (add-hook 'Org-mode-hook '(progn (visual-line-mode) (org-cdlatex-mode)))
+      (latex-in-org-settings)
+      (setq org-agenda-start-on-weekday 0)
+      (global-set-key (kbd "C-<tab>") 'org-indent-paragraph)
+      (setq org-todo-keywords
+	    '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
+  #+END_SRC
+
+  And we'll add a package load-time function
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package org
+      :defer t
+      :config (org-init-settings))
+  #+END_SRC
+
+* File Manipulation Settings
+
+  Let's make the function for loading settings:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun file-manipulation-settings () (interactive)
+	   (progn
+	     (use-package projectile)
+	     (use-package magit)
+	     (use-package dired-x)
+	     (projectile-mode +1)
+	     (setq dired-listing-switches "-ahl")
+	     (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+	     (setq dired-guess-shell-alist-user
+		   '(("\\.pdf\\" "zathura")))))
+  #+END_SRC
+
+* Mu4e Settings
+
+  Okay, now some more involved configuration... \\
+
+  First, sending mail settings:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun init-mail-settings () (interactive)
+      (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+      (use-package mu4e)
+      (setq
+       message-send-mail-function 'smtpmail-send-it
+       smtpmail-default-smtp-server "smtp.gmail.com"
+       smtpmail-smtp-server "smtp.gmail.com"
+       user-mail-address "samueltwallace@gmail.com"
+       user-full-name "Sam Wallace"
+       smtpmail-local-domain "gmail.com")
+      (setq
+       mu4e-get-mail-command "offlineimap -q -o"
+       mu4e-update-interval 3000))
+  #+END_SRC
+
+* Editing Settings
+
+  First we'll add some extra editing commands of my own...
+
+  #+BEGIN_SRC emacs-lisp
+    (defun smart-kill-word () (interactive)
+      (backward-word)
+      (kill-word 1))
+  #+END_SRC
+  
+  Let's load the packages and bind some keys...
+
+  #+BEGIN_SRC emacs-lisp
+    (defun editing-settings () (interactive)
+	   (use-package counsel)
+	   (use-package crux)
+	   (ivy-mode +1)
+	   (global-set-key (kbd "C-x s") 'swiper)
+	   (global-set-key (kbd "C-k") 'crux-smart-kill-line)
+	   (global-set-key (kbd "M-d") 'smart-kill-word))
+  #+END_SRC
+
+* Hooks
+
+  Now we add some good default hooks:
+
+  #+BEGIN_SRC emacs-lisp
+    (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+  #+END_SRC 
+  
+* Nyxt Integration
+
+  Here we provide a couple of helper functions for interacting with [[https://nyxt.atlas.engineer][Nyxt]]. I'll explain in a little more detail here.
+
+  We pass Lisp code to the running Nyxt process via shell commands. This requires that ~REMOTE-EXECUTION-P~ must not be ~nil~ (in Nyxt). Once that is done, we can use the following functions to pass arbitrary Lisp code:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
+    (defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
+  #+END_SRC
+
+  Now we can only do so by elisp code, to prevent mistakes. Now we can use it!
+
+  #+BEGIN_SRC emacs-lisp
+    (defun set-in-nyxt (variable elisp) (eval-in-nyxt `(setq ,variable (list ,@elisp))))
+    (defun eval-region-in-nyxt (start end) (interactive "r") (eval-in-nyxt (read (buffer-substring start end))))
+  #+END_SRC
+
+  And if we happen to have the following in our init file for Nyxt (usually in ~$HOME/.config/nyxt/init.lisp~)...
+
+  #+BEGIN_SRC lisp
+    
+    (ql:quickload :cl-strings)
+    
+    (defun eval-in-emacs (&rest s-exps)
+      "Evaluate S-EXPS with emacsclient."
+      (let ((s-exps-string (cl-strings:replace-all
+			    (write-to-string
+			     `(progn ,@s-exps) :case :downcase)
+			    ;; Discard the package prefix.
+			    "nyxt::" "")))
+	(format *error-output* "Sending to Emacs:~%~a~%" s-exps-string)
+	(uiop:run-program
+	 (list "emacsclient" "--eval" s-exps-string))))
+  #+END_SRC
+
+  (Taken directly from [[https://nyxt.atlas.engineer/article/emacs-hacks.org][here]]) then we can use the following function in Emacs:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun get-nyxt-buffers () (eval-in-nyxt
+				'(eval-in-emacs
+				  `(setq nyxt-buffer-list
+					 (list ,@(mapcar #'title (buffer-list)))))))
+    (defun search-in-nyxt (search-term) (interactive "sSeach in Nyxt:") (eval-in-nyxt
+									 `(buffer-load (make-instance 'new-url-query
+												      :query ,search-term
+												      :engine (first (last (search-engines (current-buffer))))))))
+    
+  #+END_SRC

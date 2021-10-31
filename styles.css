@@ -1,0 +1,11 @@
+/* Adapted from https://github.com/alphapapa/solarized-everything-css/blob/master/css/gruvbox/gruvbox-all-sites.css */
+
+body {
+	text-align:justify ;
+	text-justify:inter-word;
+	font-family:Latin Modern;
+	margin: 5% 15% ;
+	font-size:15pt ;
+	overflow:auto;
+}
+
