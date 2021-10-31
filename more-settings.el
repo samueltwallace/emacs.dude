@@ -55,7 +55,7 @@
 	 (setq dired-guess-shell-alist-user
 	       '(("\\.pdf\\" "zathura")))))
 
-(defun init-mail-settings ()
+(defun init-mail-settings () (interactive)
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
   (use-package mu4e)
   (setq
@@ -81,5 +81,19 @@
        (global-set-key (kbd "C-k") 'crux-smart-kill-line)
        (global-set-key (kbd "M-d") 'smart-kill-word))
 
-(add-hook 'LaTeX-mode-hook 'pure-latex-settings)
 (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+
+(defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
+(defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
+
+(defun set-in-nyxt (variable elisp) (eval-in-nyxt `(setq ,variable (list ,@elisp))))
+(defun eval-region-in-nyxt (start end) (interactive "r") (eval-in-nyxt (read (buffer-substring start end))))
+
+(defun get-nyxt-buffers () (eval-in-nyxt
+			    '(eval-in-emacs
+			      `(setq nyxt-buffer-list
+				     (list ,@(mapcar #'title (buffer-list)))))))
+(defun search-in-nyxt (search-term) (interactive "sSeach in Nyxt:") (eval-in-nyxt
+								     `(buffer-load (make-instance 'new-url-query
+												  :query ,search-term
+												  :engine (first (last (search-engines (current-buffer))))))))
