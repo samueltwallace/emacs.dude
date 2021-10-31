@@ -18,23 +18,33 @@
     (load custom-file)
   #+END_SRC
 
-* Pure Latex
+* TODO Pure Latex
+
+  fix by adding extra hook function
 
   We add a function for package load-time settings:
   #+BEGIN_SRC emacs-lisp
     (defun latex-init-settings ()
-      (add-hook 'LaTeX-mode-hook '(progn (turn-on-cdlatex-mode) (turn-on-reftex)))
       (setq cdlatex-math-modify-alist
 	    '((98 "\\mathbb" nil t nil nil)))
       (setq cdlatex-math-symbol-alist
 	    '((120 "\\chi" "\\otimes"))))
   #+END_SRC
 
+  Let's set a mode hook function:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun latex-hook ()
+      (cdlatex-mode 1)
+      (reftex-mode 1))
+#+END_SRC
+  
   And then we delay loading the package:
 
   #+BEGIN_SRC emacs-lisp
-    (use-package auctex
+    (use-package latex
       :defer t
+      :ensure auctex
       :config (latex-init-settings))
   #+END_SRC
   
@@ -160,6 +170,7 @@
 
   #+BEGIN_SRC emacs-lisp
     (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+    (add-hook 'LaTeX-mode-hook 'latex-hook)
   #+END_SRC 
   
 * Nyxt Integration

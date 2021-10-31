@@ -2,14 +2,18 @@
 (load custom-file)
 
 (defun latex-init-settings ()
-  (add-hook 'LaTeX-mode-hook '(progn (turn-on-cdlatex-mode) (turn-on-reftex)))
   (setq cdlatex-math-modify-alist
 	'((98 "\\mathbb" nil t nil nil)))
   (setq cdlatex-math-symbol-alist
 	'((120 "\\chi" "\\otimes"))))
 
-(use-package auctex
+(defun latex-hook ()
+  (cdlatex-mode 1)
+  (reftex-mode 1))
+
+(use-package latex
   :defer t
+  :ensure auctex
   :config (latex-init-settings))
 
 (defun latex-in-org-settings ()
@@ -84,6 +88,7 @@
        (global-set-key (kbd "M-d") 'smart-kill-word))
 
 (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+(add-hook 'LaTeX-mode-hook 'latex-hook)
 
 (defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
 (defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
