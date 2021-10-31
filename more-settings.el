@@ -55,9 +55,7 @@
 	 (setq dired-guess-shell-alist-user
 	       '(("\\.pdf\\" "zathura")))))
 
-(defun init-mail-settings () (interactive)
-  (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-  (use-package mu4e)
+(defun init-mail-settings () ()
   (setq
    message-send-mail-function 'smtpmail-send-it
    smtpmail-default-smtp-server "smtp.gmail.com"
@@ -68,6 +66,10 @@
   (setq
    mu4e-get-mail-command "offlineimap -q -o"
    mu4e-update-interval 3000))
+
+(use-package mu4e
+  :load-path  "/usr/share/emacs/site-lisp/mu4e"
+  :init (init-mail-settings))
 
 (defun smart-kill-word () (interactive)
   (backward-word)
