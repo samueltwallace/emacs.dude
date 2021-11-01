@@ -10,6 +10,7 @@
 (add-menu-item "s" 'search-in-nyxt)
 
 (defun latex-init-settings ()
+  (setq TeX-parse-self t)
   (setq cdlatex-math-modify-alist
 	'((98 "\\mathbb" nil t nil nil)))
   (setq cdlatex-math-symbol-alist

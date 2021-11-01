@@ -37,6 +37,7 @@
   We add a function for package load-time settings:
   #+BEGIN_SRC emacs-lisp
     (defun latex-init-settings ()
+      (setq TeX-parse-self t)
       (setq cdlatex-math-modify-alist
 	    '((98 "\\mathbb" nil t nil nil)))
       (setq cdlatex-math-symbol-alist
