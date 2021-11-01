@@ -1,6 +1,13 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+(defun add-menu-item (key command)
+       (global-set-key (kbd (concat "C-; " key)) command))
+(add-menu-item "m" 'mu4e)
+(add-menu-item "i" '(lambda () (find-file "~/.emacs.d/index.org")))
+(add-menu-item "a" 'org-agenda)
+(add-menu-item "s" 'search-in-nyxt)
+
 (defun latex-init-settings ()
   (setq cdlatex-math-modify-alist
 	'((98 "\\mathbb" nil t nil nil)))
@@ -37,12 +44,16 @@
 	(mark) (point)))
 
 (defun org-init-settings ()
-  (add-hook 'Org-mode-hook '(progn (visual-line-mode) (org-cdlatex-mode)))
   (latex-in-org-settings)
   (setq org-agenda-start-on-weekday 0)
-  (global-set-key (kbd "C-<tab>") 'org-indent-paragraph)
   (setq org-todo-keywords
 	'((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
+
+(defun org-hook () ()
+       (visual-line-mode)
+       (org-cdlatex-mode)
+       (local-set-key (kbd "C-<tab>") 'org-indent-paragraph)
+       )
 
 (use-package org
   :defer t
@@ -60,13 +71,6 @@
 	       '(("\\.pdf\\" "zathura")))))
 
 (defun init-mail-settings () ()
-  (setq
-   message-send-mail-function 'smtpmail-send-it
-   smtpmail-default-smtp-server "smtp.gmail.com"
-   smtpmail-smtp-server "smtp.gmail.com"
-   user-mail-address "samueltwallace@gmail.com"
-   user-full-name "Sam Wallace"
-   smtpmail-local-domain "gmail.com")
   (setq
    mu4e-get-mail-command "offlineimap -q -o"
    mu4e-update-interval 3000))
@@ -89,6 +93,7 @@
 
 (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
 (add-hook 'LaTeX-mode-hook 'latex-hook)
+(add-hook 'Org-mode-hook 'org-hook)
 
 (defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
 (defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
