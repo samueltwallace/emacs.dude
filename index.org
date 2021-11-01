@@ -33,8 +33,6 @@
 
 * Pure Latex
 
-  fix by adding extra hook function
-
   We add a function for package load-time settings:
   #+BEGIN_SRC emacs-lisp
     (defun latex-init-settings ()
