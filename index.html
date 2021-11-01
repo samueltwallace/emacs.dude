@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-10-31 Sun 22:53 -->
+<!-- 2021-10-31 Sun 22:58 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sam's Emacs</title>
@@ -244,22 +244,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9bc1400">1. Intro</a></li>
-<li><a href="#org3423c1c">2. Loading Other Settings</a></li>
-<li><a href="#org4875b05">3. Shortcut key</a></li>
-<li><a href="#org548585b">4. Pure Latex</a></li>
-<li><a href="#org22f897e">5. Org Settings</a></li>
-<li><a href="#org2cf242d">6. File Manipulation Settings</a></li>
-<li><a href="#org94df233">7. Mu4e Settings</a></li>
-<li><a href="#orgb799298">8. Editing Settings</a></li>
-<li><a href="#orgba08f87">9. Hooks</a></li>
-<li><a href="#orgc3d5b91">10. Nyxt Integration</a></li>
+<li><a href="#org31944e1">1. Intro</a></li>
+<li><a href="#org61e8c15">2. Loading Other Settings</a></li>
+<li><a href="#org68b2757">3. Shortcut key</a></li>
+<li><a href="#org198031b">4. Pure Latex</a></li>
+<li><a href="#org20574d7">5. Org Settings</a></li>
+<li><a href="#org6ab85f4">6. File Manipulation Settings</a></li>
+<li><a href="#orgb8cde34">7. Mu4e Settings</a></li>
+<li><a href="#org670c00e">8. Editing Settings</a></li>
+<li><a href="#org19f754a">9. Hooks</a></li>
+<li><a href="#org4d1a7e9">10. Nyxt Integration</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9bc1400" class="outline-2">
-<h2 id="org9bc1400"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-org31944e1" class="outline-2">
+<h2 id="org31944e1"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Version controlling is done through Git.
@@ -271,8 +271,8 @@ Note that this creates a <i>separate</i> file for these extra settings; some are
 </div>
 </div>
 
-<div id="outline-container-org3423c1c" class="outline-2">
-<h2 id="org3423c1c"><span class="section-number-2">2.</span> Loading Other Settings</h2>
+<div id="outline-container-org61e8c15" class="outline-2">
+<h2 id="org61e8c15"><span class="section-number-2">2.</span> Loading Other Settings</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 We load the custom settings:
@@ -286,8 +286,8 @@ We load the custom settings:
 </div>
 </div>
 
-<div id="outline-container-org4875b05" class="outline-2">
-<h2 id="org4875b05"><span class="section-number-2">3.</span> Shortcut key</h2>
+<div id="outline-container-org68b2757" class="outline-2">
+<h2 id="org68b2757"><span class="section-number-2">3.</span> Shortcut key</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 We make a run key that gives a menu to different programs you might want a glance at.
@@ -296,8 +296,9 @@ We make a run key that gives a menu to different programs you might want a glanc
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
+(defun find-this-file () (find-file "~/.emacs.d/index.org"))
 (add-menu-item "m" 'mu4e)
-(add-menu-item "i" '(lambda () (find-file "~/.emacs.d/index.org")))
+(add-menu-item "i" 'find-this-file)
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "s" 'search-in-nyxt)
 </pre>
@@ -305,8 +306,8 @@ We make a run key that gives a menu to different programs you might want a glanc
 </div>
 </div>
 
-<div id="outline-container-org548585b" class="outline-2">
-<h2 id="org548585b"><span class="section-number-2">4.</span> Pure Latex</h2>
+<div id="outline-container-org198031b" class="outline-2">
+<h2 id="org198031b"><span class="section-number-2">4.</span> Pure Latex</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We add a function for package load-time settings:
@@ -345,8 +346,8 @@ And then we delay loading the package:
 </div>
 </div>
 
-<div id="outline-container-org22f897e" class="outline-2">
-<h2 id="org22f897e"><span class="section-number-2">5.</span> Org Settings</h2>
+<div id="outline-container-org20574d7" class="outline-2">
+<h2 id="org20574d7"><span class="section-number-2">5.</span> Org Settings</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
@@ -414,8 +415,8 @@ And we'll add a package load-time function
 </div>
 </div>
 
-<div id="outline-container-org2cf242d" class="outline-2">
-<h2 id="org2cf242d"><span class="section-number-2">6.</span> File Manipulation Settings</h2>
+<div id="outline-container-org6ab85f4" class="outline-2">
+<h2 id="org6ab85f4"><span class="section-number-2">6.</span> File Manipulation Settings</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Let's make the function for loading settings:
@@ -437,8 +438,8 @@ Let's make the function for loading settings:
 </div>
 </div>
 
-<div id="outline-container-org94df233" class="outline-2">
-<h2 id="org94df233"><span class="section-number-2">7.</span> Mu4e Settings</h2>
+<div id="outline-container-orgb8cde34" class="outline-2">
+<h2 id="orgb8cde34"><span class="section-number-2">7.</span> Mu4e Settings</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Okay, now some more involved configuration&#x2026; <br>
@@ -469,8 +470,8 @@ And then we load the package
 </div>
 </div>
 
-<div id="outline-container-orgb799298" class="outline-2">
-<h2 id="orgb799298"><span class="section-number-2">8.</span> Editing Settings</h2>
+<div id="outline-container-org670c00e" class="outline-2">
+<h2 id="org670c00e"><span class="section-number-2">8.</span> Editing Settings</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 First we'll add some extra editing commands of my own&#x2026;
@@ -500,8 +501,8 @@ Let's load the packages and bind some keys&#x2026;
 </div>
 </div>
 
-<div id="outline-container-orgba08f87" class="outline-2">
-<h2 id="orgba08f87"><span class="section-number-2">9.</span> Hooks</h2>
+<div id="outline-container-org19f754a" class="outline-2">
+<h2 id="org19f754a"><span class="section-number-2">9.</span> Hooks</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Now we add some good default hooks:
@@ -516,8 +517,8 @@ Now we add some good default hooks:
 </div>
 </div>
 
-<div id="outline-container-orgc3d5b91" class="outline-2">
-<h2 id="orgc3d5b91"><span class="section-number-2">10.</span> Nyxt Integration</h2>
+<div id="outline-container-org4d1a7e9" class="outline-2">
+<h2 id="org4d1a7e9"><span class="section-number-2">10.</span> Nyxt Integration</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Here we provide a couple of helper functions for interacting with <a href="https://nyxt.atlas.engineer">Nyxt</a>. I'll explain in a little more detail here.
@@ -585,7 +586,7 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Samuel Wallace</p>
-<p class="date">Created: 2021-10-31 Sun 22:53</p>
+<p class="date">Created: 2021-10-31 Sun 22:58</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
