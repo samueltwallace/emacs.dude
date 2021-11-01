@@ -26,14 +26,7 @@
 (defun latex-in-org-settings ()
   (progn
     (require 'ox-bibtex)
-    (setq org-format-latex-options
-	  '(:foreground default
-			:background: default
-			:scale 2.0
-			:html-foreground "Black"
-			:html-background "Transparent"
-			:html-scale 1.0
-			:matchers ("begin" "$1" "$")))
+    (plist-put org-format-latex-options :scale 2.0)
     ))
 
 (defun org-indent-paragraph () (interactive)
@@ -93,7 +86,7 @@
 
 (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
 (add-hook 'LaTeX-mode-hook 'latex-hook)
-(add-hook 'Org-mode-hook 'org-hook)
+(add-hook 'org-mode-hook 'org-hook)
 
 (defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
 (defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
