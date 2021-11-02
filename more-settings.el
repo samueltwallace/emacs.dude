@@ -3,9 +3,9 @@
 
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
-(defun find-this-file () (find-file "~/.emacs.d/index.org"))
+(defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
 (add-menu-item "m" 'mu4e)
-(add-menu-item "i" 'find-this-file)
+(add-menu-item "i" 'find-init-file)
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "s" 'search-in-nyxt)
 
