@@ -32,7 +32,7 @@
     (add-menu-item "s" 'search-in-nyxt)
   #+END_SRC
 
-* TODO Pure Latex (add \leq \geq to symbol list)
+* Pure Latex
 
   We add a function for package load-time settings:
   #+BEGIN_SRC emacs-lisp
@@ -41,7 +41,8 @@
       (setq cdlatex-math-modify-alist
 	    '((98 "\\mathbb" nil t nil nil)))
       (setq cdlatex-math-symbol-alist
-	    '((120 "\\chi" "\\otimes"))))
+	    '((120 "\\chi" "\\otimes")
+	      (62 "\\geq") (60 "\\leq"))))
   #+END_SRC
 
   Let's set a mode hook function:
@@ -126,7 +127,7 @@
 	     (setq dired-listing-switches "-ahl")
 	     (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 	     (setq dired-guess-shell-alist-user
-		   '(("\\.pdf\\" "zathura")))))
+		   '(("\\.pdf\\'" "zathura")))))
   #+END_SRC
 
 * Mu4e Settings

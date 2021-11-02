@@ -14,7 +14,8 @@
   (setq cdlatex-math-modify-alist
 	'((98 "\\mathbb" nil t nil nil)))
   (setq cdlatex-math-symbol-alist
-	'((120 "\\chi" "\\otimes"))))
+	'((120 "\\chi" "\\otimes")
+	  (62 "\\geq") (60 "\\leq"))))
 
 (defun latex-hook ()
   (cdlatex-mode 1)
@@ -63,7 +64,7 @@
 	 (setq dired-listing-switches "-ahl")
 	 (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 	 (setq dired-guess-shell-alist-user
-	       '(("\\.pdf\\" "zathura")))))
+	       '(("\\.pdf\\'" "zathura")))))
 
 (defun init-mail-settings () ()
   (setq
