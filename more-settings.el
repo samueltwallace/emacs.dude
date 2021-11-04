@@ -15,7 +15,7 @@
 	'((98 "\\mathbb" nil t nil nil)))
   (setq cdlatex-math-symbol-alist
 	'((120 "\\chi" "\\otimes")
-	  (62 "\\geq") (60 "\\leq"))))
+	  (62 "\\geq" "\\geqsim") (60 "\\leq" "\\lesssim"))))
 
 (defun latex-hook ()
   (cdlatex-mode 1)
