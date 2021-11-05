@@ -72,7 +72,7 @@
 	 (setq dired-listing-switches "-ahl")
 	 (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 	 (setq dired-guess-shell-alist-user
-	       '(("\\.pdf\\'" "zathura")))))
+	       '(("\\.pdf$" "zathura *")))))
 
 (defun init-mail-settings () ()
   (setq

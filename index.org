@@ -68,6 +68,7 @@
       :config (latex-init-settings))
   #+END_SRC
   
+** TODO make minor mode for wrapping text in LaTeX but not math mode text
 * Org Settings
 
   Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
@@ -135,12 +136,10 @@
 	     (setq dired-listing-switches "-ahl")
 	     (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 	     (setq dired-guess-shell-alist-user
-		   '(("\\.pdf\\'" "zathura")))))
+		   '(("\\.pdf$" "zathura *")))))
   #+END_SRC
 
 * Mu4e Settings
-
-  Okay, now some more involved configuration... \\
 
   First, sending mail settings:
 
