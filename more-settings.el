@@ -15,11 +15,17 @@
 	'((98 "\\mathbb" nil t nil nil)))
   (setq cdlatex-math-symbol-alist
 	'((120 "\\chi" "\\otimes")
-	  (62 "\\geq" "\\geqsim") (60 "\\leq" "\\lesssim"))))
+	  (62 "\\geq" "\\geqsim" "\\langle")
+	  (60 "\\leq" "\\lesssim" "\\rangle")
+	  (40 "\\left(")
+	  (41 "\\right)")
+	  (91 "\\left[")
+	  (92 "\\right]"))))
 
 (defun latex-hook ()
   (cdlatex-mode 1)
-  (reftex-mode 1))
+  (reftex-mode 1)
+  (prettify-symbols-mode 1))
 
 (use-package latex
   :defer t
@@ -49,6 +55,8 @@
        (visual-line-mode)
        (org-cdlatex-mode)
        (local-set-key (kbd "C-<tab>") 'org-indent-paragraph)
+       (local-set-key (kbd "<C-Up>") 'org-previous-visible-heading)
+       (local-set-key (kbd "<C-Down>") 'org-next-visible-heading)
        )
 
 (use-package org
