@@ -18,6 +18,15 @@
     (load custom-file)
   #+END_SRC
 
+* Neofetch Start Screen
+
+  We make a Neofetch start screen with lots of data for a startup screen.
+
+  #+BEGIN_SRC emacs-lisp
+    (defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
+    (neofetch)
+  #+END_SRC
+
 * Shortcut key
 
   We make a run key that gives a menu to different programs you might want a glance at.
@@ -137,6 +146,13 @@
 	     (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 	     (setq dired-guess-shell-alist-user
 		   '(("\\.pdf$" "zathura *")))))
+  #+END_SRC
+
+  Let's also add a command for listing Zotero-stored files for ease:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun zotero-store () (interactive)
+	   (find-dired "~/Zotero/storage" "-name '*.pdf'"))
   #+END_SRC
 
 * Mu4e Settings

@@ -1,6 +1,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+(defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
+(neofetch)
+
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
 (defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
@@ -73,6 +76,9 @@
 	 (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 	 (setq dired-guess-shell-alist-user
 	       '(("\\.pdf$" "zathura *")))))
+
+(defun zotero-store () (interactive)
+       (find-dired "~/Zotero/storage" "-name '*.pdf'"))
 
 (defun init-mail-settings () ()
   (setq
