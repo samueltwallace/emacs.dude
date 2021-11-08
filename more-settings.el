@@ -90,6 +90,8 @@
 (defun editing-settings () (interactive)
        (use-package counsel)
        (use-package crux)
+       (use-package evil)
+       (evil-mode 1)
        (ivy-mode +1)
        (global-set-key (kbd "C-x s") 'swiper)
        (global-set-key (kbd "C-k") 'crux-smart-kill-line)
