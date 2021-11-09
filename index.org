@@ -63,6 +63,8 @@
 
   #+BEGIN_SRC emacs-lisp
     (defun latex-hook ()
+    (local-set-key (kbd "C-c j i") 'latex-last-item)
+    (local-set-key (kbd "C-c j s") 'latex-last-section)
       (cdlatex-mode 1)
       (reftex-mode 1)
       (prettify-symbols-mode 1))
@@ -79,6 +81,15 @@
   
 ** TODO make minor mode for wrapping text in LaTeX but not math mode text
 ** TODO make functions to jump to previous item, section, etc.
+
+   Let's try to write a function that jumps to the previous thing...
+
+   #+BEGIN_SRC emacs-lisp
+     (defun latex-last-item () (interactive)
+	    (isearch-backward "\\item"))
+     (defun latex-last-section () (interactive)
+	    (isearch-backward "\\.*section"))
+   #+END_SRC
 * Org Settings
 
   Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
