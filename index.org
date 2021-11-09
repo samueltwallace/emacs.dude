@@ -78,6 +78,7 @@
   #+END_SRC
   
 ** TODO make minor mode for wrapping text in LaTeX but not math mode text
+** TODO make functions to jump to previous item, section, etc.
 * Org Settings
 
   Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
