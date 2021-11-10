@@ -20,7 +20,7 @@
 
 * Neofetch Start Screen
 
-  We make a Neofetch start screen with lots of data for a startup screen.
+  We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
 
   #+BEGIN_SRC emacs-lisp
     (defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
@@ -41,6 +41,7 @@
     (add-menu-item "s" 'search-in-nyxt)
   #+END_SRC
 
+** TODO Install and Configure Hydra
 * Pure Latex
 
   We add a function for package load-time settings:

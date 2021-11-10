@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-11-08 Mon 14:38 -->
+<!-- 2021-11-10 Wed 05:06 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sam's Emacs</title>
@@ -244,27 +244,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7569d87">1. Intro</a></li>
-<li><a href="#orgf761593">2. Loading Other Settings</a></li>
-<li><a href="#org13a763c">3. Neofetch Start Screen</a></li>
-<li><a href="#org0b87b2f">4. Shortcut key</a></li>
-<li><a href="#org8aa56a2">5. Pure Latex</a>
+<li><a href="#org542947a">1. Intro</a></li>
+<li><a href="#org2bc12d2">2. Loading Other Settings</a></li>
+<li><a href="#org53dbb44">3. Neofetch Start Screen</a></li>
+<li><a href="#orgebe1a7f">4. Shortcut key</a>
 <ul>
-<li><a href="#org975db8d">5.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
+<li><a href="#orgda94627">4.1. <span class="todo TODO">TODO</span> Install and Configure Hydra</a></li>
 </ul>
 </li>
-<li><a href="#org5c4f799">6. Org Settings</a></li>
-<li><a href="#org88e1255">7. File Manipulation Settings</a></li>
-<li><a href="#org05f8256">8. Mu4e Settings</a></li>
-<li><a href="#orgfe1eb67">9. Editing Settings</a></li>
-<li><a href="#org1243373">10. Hooks</a></li>
-<li><a href="#org1a20b27">11. Nyxt Integration</a></li>
+<li><a href="#orgc2d2469">5. Pure Latex</a>
+<ul>
+<li><a href="#org0afb273">5.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
+<li><a href="#orgd44b7c9">5.2. <span class="todo TODO">TODO</span> make functions to jump to previous item, section, etc.</a></li>
+</ul>
+</li>
+<li><a href="#orgec705d6">6. Org Settings</a></li>
+<li><a href="#org42a704e">7. File Manipulation Settings</a></li>
+<li><a href="#org769aa9e">8. Mu4e Settings</a></li>
+<li><a href="#org9055514">9. Editing Settings</a></li>
+<li><a href="#org873add5">10. Hooks</a></li>
+<li><a href="#org5d4bfa5">11. Nyxt Integration</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7569d87" class="outline-2">
-<h2 id="org7569d87"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-org542947a" class="outline-2">
+<h2 id="org542947a"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Version controlling is done through Git.
@@ -276,8 +281,8 @@ Note that this creates a <i>separate</i> file for these extra settings; some are
 </div>
 </div>
 
-<div id="outline-container-orgf761593" class="outline-2">
-<h2 id="orgf761593"><span class="section-number-2">2.</span> Loading Other Settings</h2>
+<div id="outline-container-org2bc12d2" class="outline-2">
+<h2 id="org2bc12d2"><span class="section-number-2">2.</span> Loading Other Settings</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 We load the custom settings:
@@ -291,11 +296,11 @@ We load the custom settings:
 </div>
 </div>
 
-<div id="outline-container-org13a763c" class="outline-2">
-<h2 id="org13a763c"><span class="section-number-2">3.</span> Neofetch Start Screen</h2>
+<div id="outline-container-org53dbb44" class="outline-2">
+<h2 id="org53dbb44"><span class="section-number-2">3.</span> Neofetch Start Screen</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-We make a Neofetch start screen with lots of data for a startup screen.
+We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
 </p>
 
 <div class="org-src-container">
@@ -306,8 +311,8 @@ We make a Neofetch start screen with lots of data for a startup screen.
 </div>
 </div>
 
-<div id="outline-container-org0b87b2f" class="outline-2">
-<h2 id="org0b87b2f"><span class="section-number-2">4.</span> Shortcut key</h2>
+<div id="outline-container-orgebe1a7f" class="outline-2">
+<h2 id="orgebe1a7f"><span class="section-number-2">4.</span> Shortcut key</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We make a run key that gives a menu to different programs you might want a glance at.
@@ -324,10 +329,13 @@ We make a run key that gives a menu to different programs you might want a glanc
 </pre>
 </div>
 </div>
-</div>
 
-<div id="outline-container-org8aa56a2" class="outline-2">
-<h2 id="org8aa56a2"><span class="section-number-2">5.</span> Pure Latex</h2>
+<div id="outline-container-orgda94627" class="outline-3">
+<h3 id="orgda94627"><span class="section-number-3">4.1.</span> <span class="todo TODO">TODO</span> Install and Configure Hydra</h3>
+</div>
+</div>
+<div id="outline-container-orgc2d2469" class="outline-2">
+<h2 id="orgc2d2469"><span class="section-number-2">5.</span> Pure Latex</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 We add a function for package load-time settings:
@@ -373,12 +381,15 @@ And then we delay loading the package:
 </div>
 </div>
 
-<div id="outline-container-org975db8d" class="outline-3">
-<h3 id="org975db8d"><span class="section-number-3">5.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h3>
+<div id="outline-container-org0afb273" class="outline-3">
+<h3 id="org0afb273"><span class="section-number-3">5.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h3>
+</div>
+<div id="outline-container-orgd44b7c9" class="outline-3">
+<h3 id="orgd44b7c9"><span class="section-number-3">5.2.</span> <span class="todo TODO">TODO</span> make functions to jump to previous item, section, etc.</h3>
 </div>
 </div>
-<div id="outline-container-org5c4f799" class="outline-2">
-<h2 id="org5c4f799"><span class="section-number-2">6.</span> Org Settings</h2>
+<div id="outline-container-orgec705d6" class="outline-2">
+<h2 id="orgec705d6"><span class="section-number-2">6.</span> Org Settings</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
@@ -448,8 +459,8 @@ And we'll add a package load-time function
 </div>
 </div>
 
-<div id="outline-container-org88e1255" class="outline-2">
-<h2 id="org88e1255"><span class="section-number-2">7.</span> File Manipulation Settings</h2>
+<div id="outline-container-org42a704e" class="outline-2">
+<h2 id="org42a704e"><span class="section-number-2">7.</span> File Manipulation Settings</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Let's make the function for loading settings:
@@ -481,8 +492,8 @@ Let's also add a command for listing Zotero-stored files for ease:
 </div>
 </div>
 
-<div id="outline-container-org05f8256" class="outline-2">
-<h2 id="org05f8256"><span class="section-number-2">8.</span> Mu4e Settings</h2>
+<div id="outline-container-org769aa9e" class="outline-2">
+<h2 id="org769aa9e"><span class="section-number-2">8.</span> Mu4e Settings</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 First, sending mail settings:
@@ -509,8 +520,8 @@ And then we load the package
 </div>
 </div>
 
-<div id="outline-container-orgfe1eb67" class="outline-2">
-<h2 id="orgfe1eb67"><span class="section-number-2">9.</span> Editing Settings</h2>
+<div id="outline-container-org9055514" class="outline-2">
+<h2 id="org9055514"><span class="section-number-2">9.</span> Editing Settings</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 First we'll add some extra editing commands of my own&#x2026;
@@ -542,8 +553,8 @@ Let's load the packages and bind some keys&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org1243373" class="outline-2">
-<h2 id="org1243373"><span class="section-number-2">10.</span> Hooks</h2>
+<div id="outline-container-org873add5" class="outline-2">
+<h2 id="org873add5"><span class="section-number-2">10.</span> Hooks</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Now we add some good default hooks:
@@ -558,8 +569,8 @@ Now we add some good default hooks:
 </div>
 </div>
 
-<div id="outline-container-org1a20b27" class="outline-2">
-<h2 id="org1a20b27"><span class="section-number-2">11.</span> Nyxt Integration</h2>
+<div id="outline-container-org5d4bfa5" class="outline-2">
+<h2 id="org5d4bfa5"><span class="section-number-2">11.</span> Nyxt Integration</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 Here we provide a couple of helper functions for interacting with <a href="https://nyxt.atlas.engineer">Nyxt</a>. I'll explain in a little more detail here.
@@ -627,7 +638,7 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Samuel Wallace</p>
-<p class="date">Created: 2021-11-08 Mon 14:38</p>
+<p class="date">Created: 2021-11-10 Wed 05:06</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
