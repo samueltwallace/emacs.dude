@@ -80,7 +80,7 @@
   #+END_SRC
   
 ** TODO make minor mode for wrapping text in LaTeX but not math mode text
-** TODO make functions to jump to previous item, section, etc.
+** TODO make functions to jump to previous item, section, etc. (Hydra?)
 
    Let's try to write a function that jumps to the previous thing...
 
