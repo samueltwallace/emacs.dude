@@ -9,13 +9,12 @@
 
   Note that this creates a /separate/ file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. ~M-x init-mail-settings~) or in a standard init file (e.g. ~(init-mail-settings)~). This is meant to be used in combination with other settings in a standard ~init.el~, allowing for optional settings or delayed settings.
   
-* Loading Other Settings
+* Loading Initial Packages
   
-  We load the custom settings:
+  There are some packages we need to load initially to use throughout:
 
   #+BEGIN_SRC emacs-lisp
-    (setq custom-file "~/.emacs.d/custom.el")
-    (load custom-file)
+    (use-package hydra)
   #+END_SRC
 
 * Neofetch Start Screen
@@ -81,7 +80,7 @@
   #+END_SRC
   
 ** TODO make minor mode for wrapping text in LaTeX but not math mode text
-** TODO make functions to jump to previous item, section, etc. (Hydra?)
+** Jump to items and sections
 
    Let's try to write a function that jumps to the previous thing...
 
@@ -90,7 +89,21 @@
 	    (isearch-backward "\\item"))
      (defun latex-last-section () (interactive)
 	    (isearch-backward "\\.*section"))
+     (defun latex-next-item () (interactive)
+	    (isearch "\\item"))
+     (defun latex-next-section () (interactive)
+	    (isearch "\\.*section"))
    #+END_SRC
+   And then we'll put it in a hydra:
+
+   #+BEGIN_SRC emacs-lisp
+     (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
+     ("i" latex-next-item "next \\item")
+     ("I" latex-last-item "previous \\item")
+     ("s" latex-next-section "next \\\*section")
+     ("S" latex-last-section "previous \\\*section"))
+   #+END_SRC
+   
 * Org Settings
 
   Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
@@ -203,8 +216,6 @@
     (defun editing-settings () (interactive)
 	   (use-package counsel)
 	   (use-package crux)
-	   (use-package evil)
-	   (evil-mode 1)
 	   (ivy-mode +1)
 	   (global-set-key (kbd "C-x s") 'swiper)
 	   (global-set-key (kbd "C-k") 'crux-smart-kill-line)
@@ -270,3 +281,12 @@
 												      :engine (first (last (search-engines (current-buffer))))))))
     
   #+END_SRC
+
+  \appendix
+* Resources
+
+  Here's a brief list of resources for reading on Emacs...
+
+  - [[https://karthinks.com/software/batteries-included-with-emacs/][Built-in Emacs Features]]
+  - [[https://karthinks.com/software/latex-input-for-impatient-scholars/][LaTeX Input]]
+  - [[https://sheer.tj/the_way_of_emacs][The Way of Emacs]]
