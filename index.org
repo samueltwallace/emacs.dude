@@ -224,19 +224,36 @@
 	   (global-set-key (kbd "M-d") 'smart-kill-word))
   #+END_SRC
 
-  Some useful hydras...
+  Some useful keybindings...
 
   #+BEGIN_SRC emacs-lisp
-    (defhydra hydra-window-resize (global-map "C-x w")
-    ("h" shrink-window-horizontally "shrink horizontally")
-    ("l" enlarge-window-horizontally "grow horizontally")
-    ("j" enlarge-window "grow vertically"))
+    (global-set-key (kbd "C-x p v") 'view-mode)
+    (global-set-key (kbd "C-x p f") 'follow-mode)
   #+END_SRC
 
+* Visual/Window settings
+
+
   #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C-x m v") 'view-mode)
-    (global-set-key (kbd "C-x m f") 'follow-mode)
+    (require 'windmove)
+    (defhydra hydra-window-manip (global-map "C-x w")
+      ("h" shrink-window-horizontally "shrink horizontally")
+      ("l" enlarge-window-horizontally "grow horizontally")
+      ("j" enlarge-window "grow vertically")
+      ("0" delete-window "delete window")
+      ("1" delete-other-windows "fullscreen this one")
+      ("2" split-window-below "split below")
+      ("3" split-window-right "split right")
+      ("H" windmove-left "move left")
+      ("J" windmove-down "move down")
+      ("K" windmove-up "move up")
+      ("L" windmove-right "move right")
+      ("<tab>" other-window "cycle-move")
+      ("b" ivy-switch-buffer "select buffer")
+      ("c" clone-indirect-buffer "clone buffer")
+      )
   #+END_SRC
+  
 
 * Hooks
 
