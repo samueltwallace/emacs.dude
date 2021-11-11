@@ -9,6 +9,7 @@
 
   Note that this creates a /separate/ file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. ~M-x init-mail-settings~) or in a standard init file (e.g. ~(init-mail-settings)~). This is meant to be used in combination with other settings in a standard ~init.el~, allowing for optional settings or delayed settings.
   
+** TODO Neaten up the organization of this page some
 * Loading Initial Packages
   
   There are some packages we need to load initially to use throughout:
@@ -40,7 +41,6 @@
     (add-menu-item "s" 'search-in-nyxt)
   #+END_SRC
 
-** TODO Install and Configure Hydra
 * Pure Latex
 
   We add a function for package load-time settings:
@@ -63,8 +63,6 @@
 
   #+BEGIN_SRC emacs-lisp
     (defun latex-hook ()
-    (local-set-key (kbd "C-c j i") 'latex-last-item)
-    (local-set-key (kbd "C-c j s") 'latex-last-section)
       (cdlatex-mode 1)
       (reftex-mode 1)
       (prettify-symbols-mode 1))
@@ -141,20 +139,24 @@
   #+BEGIN_SRC emacs-lisp
     (defun org-hook () ()
 	   (visual-line-mode)
-	   (org-cdlatex-mode)
-	   (local-set-key (kbd "C-<tab>") 'org-indent-paragraph)
-	   (local-set-key (kbd "<C-Up>") 'org-previous-visible-heading)
-	   (local-set-key (kbd "<C-Down>") 'org-next-visible-heading)
-	   )
+	   (org-cdlatex-mode))
   #+END_SRC
 
-
-  And we'll add a package load-time function
+  And a hydra for keybindings:
 
   #+BEGIN_SRC emacs-lisp
-    (use-package org
-      :defer t
-      :config (org-init-settings))
+    (defhydra hydra-org-commands (org-mode-map "C-x h")
+    ("<Up>" 'org-previous-visible-heading "prev heading")
+    ("<Down>" 'org-next-visible-heading "next heading")
+    ("<tab>" 'org-indent-paragraph))
+  #+END_SRC
+    
+    And we'll add a package load-time function
+    
+    #+BEGIN_SRC emacs-lisp
+      (use-package org
+	:defer t
+	:config (org-init-settings))
   #+END_SRC
 
 * File Manipulation Settings
@@ -220,6 +222,20 @@
 	   (global-set-key (kbd "C-x s") 'swiper)
 	   (global-set-key (kbd "C-k") 'crux-smart-kill-line)
 	   (global-set-key (kbd "M-d") 'smart-kill-word))
+  #+END_SRC
+
+  Some useful hydras...
+
+  #+BEGIN_SRC emacs-lisp
+    (defhydra hydra-window-resize (global-map "C-x w")
+    ("h" shrink-window-horizontally "shrink horizontally")
+    ("l" enlarge-window-horizontally "grow horizontally")
+    ("j" enlarge-window "grow vertically"))
+  #+END_SRC
+
+  #+BEGIN_SRC emacs-lisp
+    (global-set-key (kbd "C-x m v") 'view-mode)
+    (global-set-key (kbd "C-x m f") 'follow-mode)
   #+END_SRC
 
 * Hooks

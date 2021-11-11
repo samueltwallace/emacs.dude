@@ -1,5 +1,4 @@
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(use-package hydra)
 
 (defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
 (neofetch)
@@ -35,6 +34,21 @@
   :ensure auctex
   :config (latex-init-settings))
 
+(defun latex-last-item () (interactive)
+       (isearch-backward "\\item"))
+(defun latex-last-section () (interactive)
+       (isearch-backward "\\.*section"))
+(defun latex-next-item () (interactive)
+       (isearch "\\item"))
+(defun latex-next-section () (interactive)
+       (isearch "\\.*section"))
+
+(defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
+("i" latex-next-item "next \\item")
+("I" latex-last-item "previous \\item")
+("s" latex-next-section "next \\\*section")
+("S" latex-last-section "previous \\\*section"))
+
 (defun latex-in-org-settings ()
   (progn
     (require 'ox-bibtex)
@@ -56,11 +70,12 @@
 
 (defun org-hook () ()
        (visual-line-mode)
-       (org-cdlatex-mode)
-       (local-set-key (kbd "C-<tab>") 'org-indent-paragraph)
-       (local-set-key (kbd "<C-Up>") 'org-previous-visible-heading)
-       (local-set-key (kbd "<C-Down>") 'org-next-visible-heading)
-       )
+       (org-cdlatex-mode))
+
+(defhydra hydra-org-commands (org-mode-map "C-x h")
+("<Up>" 'org-previous-visible-heading "prev heading")
+("<Down>" 'org-next-visible-heading "next heading")
+("<tab>" 'org-indent-paragraph))
 
 (use-package org
   :defer t
@@ -96,12 +111,18 @@
 (defun editing-settings () (interactive)
        (use-package counsel)
        (use-package crux)
-       (use-package evil)
-       (evil-mode 1)
        (ivy-mode +1)
        (global-set-key (kbd "C-x s") 'swiper)
        (global-set-key (kbd "C-k") 'crux-smart-kill-line)
        (global-set-key (kbd "M-d") 'smart-kill-word))
+
+(defhydra hydra-window-resize (global-map "C-x w")
+("h" shrink-window-horizontally "shrink horizontally")
+("l" enlarge-window-horizontally "grow horizontally")
+("j" enlarge-window "grow vertically"))
+
+(global-set-key (kbd "C-x m v") 'view-mode)
+(global-set-key (kbd "C-x m f") 'follow-mode)
 
 (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
 (add-hook 'LaTeX-mode-hook 'latex-hook)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-11-10 Wed 05:06 -->
+<!-- 2021-11-10 Wed 22:26 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sam's Emacs</title>
@@ -244,32 +244,33 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org542947a">1. Intro</a></li>
-<li><a href="#org2bc12d2">2. Loading Other Settings</a></li>
-<li><a href="#org53dbb44">3. Neofetch Start Screen</a></li>
-<li><a href="#orgebe1a7f">4. Shortcut key</a>
+<li><a href="#org4872320">1. Intro</a>
 <ul>
-<li><a href="#orgda94627">4.1. <span class="todo TODO">TODO</span> Install and Configure Hydra</a></li>
+<li><a href="#org3ae8d9c">1.1. <span class="todo TODO">TODO</span> Neaten up the organization of this page some</a></li>
 </ul>
 </li>
-<li><a href="#orgc2d2469">5. Pure Latex</a>
+<li><a href="#orgb557186">2. Loading Initial Packages</a></li>
+<li><a href="#org2733517">3. Neofetch Start Screen</a></li>
+<li><a href="#orgb6bf857">4. Shortcut key</a></li>
+<li><a href="#org4939373">5. Pure Latex</a>
 <ul>
-<li><a href="#org0afb273">5.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
-<li><a href="#orgd44b7c9">5.2. <span class="todo TODO">TODO</span> make functions to jump to previous item, section, etc.</a></li>
+<li><a href="#orgdd9c86a">5.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
+<li><a href="#orgeb1bb9f">5.2. Jump to items and sections</a></li>
 </ul>
 </li>
-<li><a href="#orgec705d6">6. Org Settings</a></li>
-<li><a href="#org42a704e">7. File Manipulation Settings</a></li>
-<li><a href="#org769aa9e">8. Mu4e Settings</a></li>
-<li><a href="#org9055514">9. Editing Settings</a></li>
-<li><a href="#org873add5">10. Hooks</a></li>
-<li><a href="#org5d4bfa5">11. Nyxt Integration</a></li>
+<li><a href="#org8a0cf4e">6. Org Settings</a></li>
+<li><a href="#orgafd5464">7. File Manipulation Settings</a></li>
+<li><a href="#org6be084f">8. Mu4e Settings</a></li>
+<li><a href="#orge1eebae">9. Editing Settings</a></li>
+<li><a href="#org808c87c">10. Hooks</a></li>
+<li><a href="#orgdc03c43">11. Nyxt Integration</a></li>
+<li><a href="#org64d8dde">12. Resources</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org542947a" class="outline-2">
-<h2 id="org542947a"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-org4872320" class="outline-2">
+<h2 id="org4872320"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Version controlling is done through Git.
@@ -279,25 +280,27 @@ This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Ver
 Note that this creates a <i>separate</i> file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. <code>M-x init-mail-settings</code>) or in a standard init file (e.g. <code>(init-mail-settings)</code>). This is meant to be used in combination with other settings in a standard <code>init.el</code>, allowing for optional settings or delayed settings.
 </p>
 </div>
-</div>
 
-<div id="outline-container-org2bc12d2" class="outline-2">
-<h2 id="org2bc12d2"><span class="section-number-2">2.</span> Loading Other Settings</h2>
+<div id="outline-container-org3ae8d9c" class="outline-3">
+<h3 id="org3ae8d9c"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Neaten up the organization of this page some</h3>
+</div>
+</div>
+<div id="outline-container-orgb557186" class="outline-2">
+<h2 id="orgb557186"><span class="section-number-2">2.</span> Loading Initial Packages</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-We load the custom settings:
+There are some packages we need to load initially to use throughout:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+<pre class="src src-emacs-lisp">(use-package hydra)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org53dbb44" class="outline-2">
-<h2 id="org53dbb44"><span class="section-number-2">3.</span> Neofetch Start Screen</h2>
+<div id="outline-container-org2733517" class="outline-2">
+<h2 id="org2733517"><span class="section-number-2">3.</span> Neofetch Start Screen</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
@@ -311,8 +314,8 @@ We make a Neofetch start screen with lots of data for a startup screen (and for 
 </div>
 </div>
 
-<div id="outline-container-orgebe1a7f" class="outline-2">
-<h2 id="orgebe1a7f"><span class="section-number-2">4.</span> Shortcut key</h2>
+<div id="outline-container-orgb6bf857" class="outline-2">
+<h2 id="orgb6bf857"><span class="section-number-2">4.</span> Shortcut key</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We make a run key that gives a menu to different programs you might want a glance at.
@@ -329,13 +332,10 @@ We make a run key that gives a menu to different programs you might want a glanc
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgda94627" class="outline-3">
-<h3 id="orgda94627"><span class="section-number-3">4.1.</span> <span class="todo TODO">TODO</span> Install and Configure Hydra</h3>
-</div>
-</div>
-<div id="outline-container-orgc2d2469" class="outline-2">
-<h2 id="orgc2d2469"><span class="section-number-2">5.</span> Pure Latex</h2>
+<div id="outline-container-org4939373" class="outline-2">
+<h2 id="org4939373"><span class="section-number-2">5.</span> Pure Latex</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 We add a function for package load-time settings:
@@ -381,15 +381,45 @@ And then we delay loading the package:
 </div>
 </div>
 
-<div id="outline-container-org0afb273" class="outline-3">
-<h3 id="org0afb273"><span class="section-number-3">5.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h3>
+<div id="outline-container-orgdd9c86a" class="outline-3">
+<h3 id="orgdd9c86a"><span class="section-number-3">5.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h3>
 </div>
-<div id="outline-container-orgd44b7c9" class="outline-3">
-<h3 id="orgd44b7c9"><span class="section-number-3">5.2.</span> <span class="todo TODO">TODO</span> make functions to jump to previous item, section, etc.</h3>
+<div id="outline-container-orgeb1bb9f" class="outline-3">
+<h3 id="orgeb1bb9f"><span class="section-number-3">5.2.</span> Jump to items and sections</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Let's try to write a function that jumps to the previous thing&#x2026;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun latex-last-item () (interactive)
+       (isearch-backward "\\item"))
+(defun latex-last-section () (interactive)
+       (isearch-backward "\\.*section"))
+(defun latex-next-item () (interactive)
+       (isearch "\\item"))
+(defun latex-next-section () (interactive)
+       (isearch "\\.*section"))
+</pre>
+</div>
+<p>
+And then we'll put it in a hydra:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
+("i" latex-next-item "next \\item")
+("I" latex-last-item "previous \\item")
+("s" latex-next-section "next \\\*section")
+("S" latex-last-section "previous \\\*section"))
+</pre>
 </div>
 </div>
-<div id="outline-container-orgec705d6" class="outline-2">
-<h2 id="orgec705d6"><span class="section-number-2">6.</span> Org Settings</h2>
+</div>
+</div>
+
+<div id="outline-container-org8a0cf4e" class="outline-2">
+<h2 id="org8a0cf4e"><span class="section-number-2">6.</span> Org Settings</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
@@ -437,14 +467,21 @@ Let's write an Org-mode-hook function:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defun org-hook () ()
        (visual-line-mode)
-       (org-cdlatex-mode)
-       (local-set-key (kbd "C-&lt;tab&gt;") 'org-indent-paragraph)
-       (local-set-key (kbd "&lt;C-Up&gt;") 'org-previous-visible-heading)
-       (local-set-key (kbd "&lt;C-Down&gt;") 'org-next-visible-heading)
-       )
+       (org-cdlatex-mode))
 </pre>
 </div>
 
+<p>
+And a hydra for keybindings:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defhydra hydra-org-commands (org-mode-map "C-x h")
+("&lt;Up&gt;" 'org-previous-visible-heading "prev heading")
+("&lt;Down&gt;" 'org-next-visible-heading "next heading")
+("&lt;tab&gt;" 'org-indent-paragraph))
+</pre>
+</div>
 
 <p>
 And we'll add a package load-time function
@@ -459,8 +496,8 @@ And we'll add a package load-time function
 </div>
 </div>
 
-<div id="outline-container-org42a704e" class="outline-2">
-<h2 id="org42a704e"><span class="section-number-2">7.</span> File Manipulation Settings</h2>
+<div id="outline-container-orgafd5464" class="outline-2">
+<h2 id="orgafd5464"><span class="section-number-2">7.</span> File Manipulation Settings</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Let's make the function for loading settings:
@@ -492,8 +529,8 @@ Let's also add a command for listing Zotero-stored files for ease:
 </div>
 </div>
 
-<div id="outline-container-org769aa9e" class="outline-2">
-<h2 id="org769aa9e"><span class="section-number-2">8.</span> Mu4e Settings</h2>
+<div id="outline-container-org6be084f" class="outline-2">
+<h2 id="org6be084f"><span class="section-number-2">8.</span> Mu4e Settings</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 First, sending mail settings:
@@ -520,8 +557,8 @@ And then we load the package
 </div>
 </div>
 
-<div id="outline-container-org9055514" class="outline-2">
-<h2 id="org9055514"><span class="section-number-2">9.</span> Editing Settings</h2>
+<div id="outline-container-orge1eebae" class="outline-2">
+<h2 id="orge1eebae"><span class="section-number-2">9.</span> Editing Settings</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 First we'll add some extra editing commands of my own&#x2026;
@@ -542,19 +579,35 @@ Let's load the packages and bind some keys&#x2026;
 <pre class="src src-emacs-lisp">(defun editing-settings () (interactive)
        (use-package counsel)
        (use-package crux)
-       (use-package evil)
-       (evil-mode 1)
        (ivy-mode +1)
        (global-set-key (kbd "C-x s") 'swiper)
        (global-set-key (kbd "C-k") 'crux-smart-kill-line)
        (global-set-key (kbd "M-d") 'smart-kill-word))
 </pre>
 </div>
+
+<p>
+Some useful hydras&#x2026;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defhydra hydra-window-resize (global-map "C-x w")
+("h" shrink-window-horizontally "shrink horizontally")
+("l" enlarge-window-horizontally "grow horizontally")
+("j" enlarge-window "grow vertically"))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key (kbd "C-x m v") 'view-mode)
+(global-set-key (kbd "C-x m f") 'follow-mode)
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org873add5" class="outline-2">
-<h2 id="org873add5"><span class="section-number-2">10.</span> Hooks</h2>
+<div id="outline-container-org808c87c" class="outline-2">
+<h2 id="org808c87c"><span class="section-number-2">10.</span> Hooks</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Now we add some good default hooks:
@@ -569,8 +622,8 @@ Now we add some good default hooks:
 </div>
 </div>
 
-<div id="outline-container-org5d4bfa5" class="outline-2">
-<h2 id="org5d4bfa5"><span class="section-number-2">11.</span> Nyxt Integration</h2>
+<div id="outline-container-orgdc03c43" class="outline-2">
+<h2 id="orgdc03c43"><span class="section-number-2">11.</span> Nyxt Integration</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 Here we provide a couple of helper functions for interacting with <a href="https://nyxt.atlas.engineer">Nyxt</a>. I'll explain in a little more detail here.
@@ -633,12 +686,30 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 
 </pre>
 </div>
+
+<p>
+\appendix
+</p>
+</div>
+</div>
+<div id="outline-container-org64d8dde" class="outline-2">
+<h2 id="org64d8dde"><span class="section-number-2">12.</span> Resources</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Here's a brief list of resources for reading on Emacs&#x2026;
+</p>
+
+<ul class="org-ul">
+<li><a href="https://karthinks.com/software/batteries-included-with-emacs/">Built-in Emacs Features</a></li>
+<li><a href="https://karthinks.com/software/latex-input-for-impatient-scholars/">LaTeX Input</a></li>
+<li><a href="https://sheer.tj/the_way_of_emacs">The Way of Emacs</a></li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Samuel Wallace</p>
-<p class="date">Created: 2021-11-10 Wed 05:06</p>
+<p class="date">Created: 2021-11-10 Wed 22:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
