@@ -247,6 +247,7 @@
       ("H" windmove-left "move left")
       ("J" windmove-down "move down")
       ("K" windmove-up "move up")
+      ("=" balance-windows "equal sizing")
       ("L" windmove-right "move right")
       ("<tab>" other-window "cycle-move")
       ("b" ivy-switch-buffer "select buffer")
