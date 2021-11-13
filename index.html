@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-11-13 Sat 12:03 -->
+<!-- 2021-11-13 Sat 14:25 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sam's Emacs</title>
@@ -244,39 +244,47 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8fdf32c">1. Intro</a>
+<li><a href="#orgde7c5cd">1. Intro</a></li>
+<li><a href="#org82078c7">2. Startup</a>
 <ul>
-<li><a href="#orga948343">1.1. <span class="todo TODO">TODO</span> Neaten up the organization of this page some</a></li>
+<li><a href="#org276d560">2.1. Loading Initial Packages</a></li>
+<li><a href="#org94a5f07">2.2. Neofetch Start Screen</a></li>
 </ul>
 </li>
-<li><a href="#org025bc9b">2. Loading Initial Packages</a></li>
-<li><a href="#org1987162">3. Neofetch Start Screen</a></li>
-<li><a href="#org019d78a">4. Shortcut key</a></li>
-<li><a href="#org698c23b">5. Pure Latex</a>
+<li><a href="#org6d99f1e">3. Modes</a>
 <ul>
-<li><a href="#orgfcf8ff9">5.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
-<li><a href="#org3e14037">5.2. Jump to items and sections</a></li>
+<li><a href="#org16dc8a8">3.1. Pure Latex</a>
+<ul>
+<li><a href="#org7ba75d8">3.1.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
+<li><a href="#orgd84e162">3.1.2. Jump to items and sections</a></li>
 </ul>
 </li>
-<li><a href="#orgcec9296">6. Org Settings</a></li>
-<li><a href="#org897f4e5">7. File Manipulation Settings</a></li>
-<li><a href="#org9620aa0">8. Mu4e Settings</a></li>
-<li><a href="#org1290fe3">9. Editing Settings</a></li>
-<li><a href="#org2a28202">10. Visual/Window settings</a>
-<ul>
-<li><a href="#org72515eb">10.1. <span class="todo TODO">TODO</span> Try EXWM (?)</a></li>
-<li><a href="#orge4d7953">10.2. Dynamic Window Layouts</a></li>
+<li><a href="#org228de75">3.2. Org Settings</a></li>
+<li><a href="#orgf36990e">3.3. Mu4e Settings</a></li>
+<li><a href="#org08db429">3.4. Hooks</a></li>
 </ul>
 </li>
-<li><a href="#org644a75b">11. Hooks</a></li>
-<li><a href="#orgb50aa8c">12. Nyxt Integration</a></li>
-<li><a href="#orgdd0849d">13. Resources</a></li>
+<li><a href="#orgcff3762">4. Keybindings and Visuals</a>
+<ul>
+<li><a href="#orge28b90e">4.1. File Manipulation Settings</a></li>
+<li><a href="#orgc489d8d">4.2. Editing Settings</a></li>
+<li><a href="#org87e77bc">4.3. Visual/Window settings</a>
+<ul>
+<li><a href="#org28f5828">4.3.1. <span class="todo TODO">TODO</span> Try EXWM (?)</a></li>
+<li><a href="#orgb51249d">4.3.2. Dynamic Window Layouts</a></li>
+</ul>
+</li>
+<li><a href="#orga4d0ed5">4.4. Shortcut key</a></li>
+</ul>
+</li>
+<li><a href="#org7b4fdba">5. Nyxt Integration</a></li>
+<li><a href="#org4b4de63">6. Resources</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8fdf32c" class="outline-2">
-<h2 id="org8fdf32c"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-orgde7c5cd" class="outline-2">
+<h2 id="orgde7c5cd"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Version controlling is done through Git.
@@ -286,14 +294,15 @@ This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Ver
 Note that this creates a <i>separate</i> file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. <code>M-x init-mail-settings</code>) or in a standard init file (e.g. <code>(init-mail-settings)</code>). This is meant to be used in combination with other settings in a standard <code>init.el</code>, allowing for optional settings or delayed settings.
 </p>
 </div>
+</div>
 
-<div id="outline-container-orga948343" class="outline-3">
-<h3 id="orga948343"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Neaten up the organization of this page some</h3>
-</div>
-</div>
-<div id="outline-container-org025bc9b" class="outline-2">
-<h2 id="org025bc9b"><span class="section-number-2">2.</span> Loading Initial Packages</h2>
+<div id="outline-container-org82078c7" class="outline-2">
+<h2 id="org82078c7"><span class="section-number-2">2.</span> Startup</h2>
 <div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org276d560" class="outline-3">
+<h3 id="org276d560"><span class="section-number-3">2.1.</span> Loading Initial Packages</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 There are some packages we need to load initially to use throughout:
 </p>
@@ -305,44 +314,30 @@ There are some packages we need to load initially to use throughout:
 </div>
 </div>
 
-<div id="outline-container-org1987162" class="outline-2">
-<h2 id="org1987162"><span class="section-number-2">3.</span> Neofetch Start Screen</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org94a5f07" class="outline-3">
+<h3 id="org94a5f07"><span class="section-number-3">2.2.</span> Neofetch Start Screen</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
 </p>
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
+(setq inhibit-startup-screen t)
 (neofetch)
 </pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org019d78a" class="outline-2">
-<h2 id="org019d78a"><span class="section-number-2">4.</span> Shortcut key</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-We make a run key that gives a menu to different programs you might want a glance at.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(defun add-menu-item (key command)
-       (global-set-key (kbd (concat "C-; " key)) command))
-(defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
-(add-menu-item "m" 'mu4e)
-(add-menu-item "i" 'find-init-file)
-(add-menu-item "a" 'org-agenda)
-(add-menu-item "s" 'search-in-nyxt)
-</pre>
-</div>
-</div>
 </div>
 
-<div id="outline-container-org698c23b" class="outline-2">
-<h2 id="org698c23b"><span class="section-number-2">5.</span> Pure Latex</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org6d99f1e" class="outline-2">
+<h2 id="org6d99f1e"><span class="section-number-2">3.</span> Modes</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org16dc8a8" class="outline-3">
+<h3 id="org16dc8a8"><span class="section-number-3">3.1.</span> Pure Latex</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 We add a function for package load-time settings:
 </p>
@@ -392,12 +387,12 @@ And then we delay loading the package:
 </div>
 </div>
 
-<div id="outline-container-orgfcf8ff9" class="outline-3">
-<h3 id="orgfcf8ff9"><span class="section-number-3">5.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h3>
+<div id="outline-container-org7ba75d8" class="outline-4">
+<h4 id="org7ba75d8"><span class="section-number-4">3.1.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h4>
 </div>
-<div id="outline-container-org3e14037" class="outline-3">
-<h3 id="org3e14037"><span class="section-number-3">5.2.</span> Jump to items and sections</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-orgd84e162" class="outline-4">
+<h4 id="orgd84e162"><span class="section-number-4">3.1.2.</span> Jump to items and sections</h4>
+<div class="outline-text-4" id="text-3-1-2">
 <p>
 Let's try to write a function that jumps to the previous thing&#x2026;
 </p>
@@ -417,9 +412,9 @@ Let's try to write a function that jumps to the previous thing&#x2026;
 </div>
 </div>
 
-<div id="outline-container-orgcec9296" class="outline-2">
-<h2 id="orgcec9296"><span class="section-number-2">6.</span> Org Settings</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org228de75" class="outline-3">
+<h3 id="org228de75"><span class="section-number-3">3.2.</span> Org Settings</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
 </p>
@@ -495,9 +490,57 @@ And we'll add a package load-time function
 </div>
 </div>
 
-<div id="outline-container-org897f4e5" class="outline-2">
-<h2 id="org897f4e5"><span class="section-number-2">7.</span> File Manipulation Settings</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgf36990e" class="outline-3">
+<h3 id="orgf36990e"><span class="section-number-3">3.3.</span> Mu4e Settings</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+First, update mail settings:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun init-mail-settings () ()
+  (setq
+   mu4e-get-mail-command "offlineimap -q -o"
+   mu4e-update-interval 3000))
+</pre>
+</div>
+
+<p>
+And then we load the package
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package mu4e
+  :load-path  "/usr/share/emacs/site-lisp/mu4e"
+  :init (init-mail-settings))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org08db429" class="outline-3">
+<h3 id="org08db429"><span class="section-number-3">3.4.</span> Hooks</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Now we add some good default hooks:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+(add-hook 'LaTeX-mode-hook 'latex-hook)
+(add-hook 'org-mode-hook 'org-hook)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcff3762" class="outline-2">
+<h2 id="orgcff3762"><span class="section-number-2">4.</span> Keybindings and Visuals</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orge28b90e" class="outline-3">
+<h3 id="orge28b90e"><span class="section-number-3">4.1.</span> File Manipulation Settings</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 Let's make the function for loading settings:
 </p>
@@ -528,37 +571,9 @@ Let's also add a command for listing Zotero-stored files for ease:
 </div>
 </div>
 
-<div id="outline-container-org9620aa0" class="outline-2">
-<h2 id="org9620aa0"><span class="section-number-2">8.</span> Mu4e Settings</h2>
-<div class="outline-text-2" id="text-8">
-<p>
-First, update mail settings:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(defun init-mail-settings () ()
-  (setq
-   mu4e-get-mail-command "offlineimap -q -o"
-   mu4e-update-interval 3000))
-</pre>
-</div>
-
-<p>
-And then we load the package
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(use-package mu4e
-  :load-path  "/usr/share/emacs/site-lisp/mu4e"
-  :init (init-mail-settings))
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org1290fe3" class="outline-2">
-<h2 id="org1290fe3"><span class="section-number-2">9.</span> Editing Settings</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-orgc489d8d" class="outline-3">
+<h3 id="orgc489d8d"><span class="section-number-3">4.2.</span> Editing Settings</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 First we'll add some extra editing commands of my own&#x2026;
 </p>
@@ -597,9 +612,9 @@ Some useful keybindings&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org2a28202" class="outline-2">
-<h2 id="org2a28202"><span class="section-number-2">10.</span> Visual/Window settings</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-org87e77bc" class="outline-3">
+<h3 id="org87e77bc"><span class="section-number-3">4.3.</span> Visual/Window settings</h3>
+<div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(require 'windmove)
 (defhydra hydra-window-manip (global-map "C-x w")
@@ -623,13 +638,13 @@ Some useful keybindings&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org72515eb" class="outline-3">
-<h3 id="org72515eb"><span class="section-number-3">10.1.</span> <span class="todo TODO">TODO</span> Try EXWM (?)</h3>
+<div id="outline-container-org28f5828" class="outline-4">
+<h4 id="org28f5828"><span class="section-number-4">4.3.1.</span> <span class="todo TODO">TODO</span> Try EXWM (?)</h4>
 </div>
 
-<div id="outline-container-orge4d7953" class="outline-3">
-<h3 id="orge4d7953"><span class="section-number-3">10.2.</span> Dynamic Window Layouts</h3>
-<div class="outline-text-3" id="text-10-2">
+<div id="outline-container-orgb51249d" class="outline-4">
+<h4 id="orgb51249d"><span class="section-number-4">4.3.2.</span> Dynamic Window Layouts</h4>
+<div class="outline-text-4" id="text-4-3-2">
 <p>
 Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
 </p>
@@ -647,7 +662,8 @@ We first do an XMonad Tall layout:
        (if (one-window-p) (split-window-right)
 	 (progn
 	   (select-window (xmonad-tree-navigator (car (window-tree))))
-	   (split-window-below))))
+	   (split-window-below)
+	   (balance-windows))))
 </pre>
 </div>
 
@@ -686,25 +702,29 @@ And now we add a function to switch between layouts:
 </div>
 </div>
 
-<div id="outline-container-org644a75b" class="outline-2">
-<h2 id="org644a75b"><span class="section-number-2">11.</span> Hooks</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-orga4d0ed5" class="outline-3">
+<h3 id="orga4d0ed5"><span class="section-number-3">4.4.</span> Shortcut key</h3>
+<div class="outline-text-3" id="text-4-4">
 <p>
-Now we add some good default hooks:
+We make a run key that gives a menu to different programs you might want a glance at.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
-(add-hook 'LaTeX-mode-hook 'latex-hook)
-(add-hook 'org-mode-hook 'org-hook)
+<pre class="src src-emacs-lisp">(defun add-menu-item (key command)
+       (global-set-key (kbd (concat "C-; " key)) command))
+(defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
+(add-menu-item "m" 'mu4e)
+(add-menu-item "i" 'find-init-file)
+(add-menu-item "a" 'org-agenda)
+(add-menu-item "s" 'search-in-nyxt)
 </pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb50aa8c" class="outline-2">
-<h2 id="orgb50aa8c"><span class="section-number-2">12.</span> Nyxt Integration</h2>
-<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org7b4fdba" class="outline-2">
+<h2 id="org7b4fdba"><span class="section-number-2">5.</span> Nyxt Integration</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Here we provide a couple of helper functions for interacting with <a href="https://nyxt.atlas.engineer">Nyxt</a>. I'll explain in a little more detail here.
 </p>
@@ -769,9 +789,9 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 </div>
 </div>
 
-<div id="outline-container-orgdd0849d" class="outline-2">
-<h2 id="orgdd0849d"><span class="section-number-2">13.</span> Resources</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-org4b4de63" class="outline-2">
+<h2 id="org4b4de63"><span class="section-number-2">6.</span> Resources</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 Here's a brief list of resources for reading on Emacs&#x2026;
 </p>
@@ -788,7 +808,7 @@ Here's a brief list of resources for reading on Emacs&#x2026;
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Samuel Wallace</p>
-<p class="date">Created: 2021-11-13 Sat 12:03</p>
+<p class="date">Created: 2021-11-13 Sat 14:25</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

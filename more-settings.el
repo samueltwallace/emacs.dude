@@ -1,15 +1,8 @@
 (use-package hydra)
 
 (defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
+(setq inhibit-startup-screen t)
 (neofetch)
-
-(defun add-menu-item (key command)
-       (global-set-key (kbd (concat "C-; " key)) command))
-(defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
-(add-menu-item "m" 'mu4e)
-(add-menu-item "i" 'find-init-file)
-(add-menu-item "a" 'org-agenda)
-(add-menu-item "s" 'search-in-nyxt)
 
 (defun latex-init-settings ()
   (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
@@ -80,6 +73,19 @@
   :defer t
   :config (org-init-settings))
 
+(defun init-mail-settings () ()
+  (setq
+   mu4e-get-mail-command "offlineimap -q -o"
+   mu4e-update-interval 3000))
+
+(use-package mu4e
+  :load-path  "/usr/share/emacs/site-lisp/mu4e"
+  :init (init-mail-settings))
+
+(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+(add-hook 'LaTeX-mode-hook 'latex-hook)
+(add-hook 'org-mode-hook 'org-hook)
+
 (defun file-manipulation-settings () (interactive)
        (progn
 	 (use-package projectile)
@@ -93,15 +99,6 @@
 
 (defun zotero-store () (interactive)
        (find-dired "~/Zotero/storage" "-name '*.pdf'"))
-
-(defun init-mail-settings () ()
-  (setq
-   mu4e-get-mail-command "offlineimap -q -o"
-   mu4e-update-interval 3000))
-
-(use-package mu4e
-  :load-path  "/usr/share/emacs/site-lisp/mu4e"
-  :init (init-mail-settings))
 
 (defun smart-kill-word () (interactive)
   (backward-word)
@@ -146,7 +143,8 @@
        (if (one-window-p) (split-window-right)
 	 (progn
 	   (select-window (xmonad-tree-navigator (car (window-tree))))
-	   (split-window-below))))
+	   (split-window-below)
+	   (balance-windows))))
 
 (defun bsp-tree-navigator (tree)
   (if (windowp tree) tree
@@ -166,9 +164,13 @@
        (if (member symbol layout-list) (setq split-window-preferred-function symbol)
 	 (error "Not a layout in layout-list")))
 
-(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
-(add-hook 'LaTeX-mode-hook 'latex-hook)
-(add-hook 'org-mode-hook 'org-hook)
+(defun add-menu-item (key command)
+       (global-set-key (kbd (concat "C-; " key)) command))
+(defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
+(add-menu-item "m" 'mu4e)
+(add-menu-item "i" 'find-init-file)
+(add-menu-item "a" 'org-agenda)
+(add-menu-item "s" 'search-in-nyxt)
 
 (defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
 (defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))

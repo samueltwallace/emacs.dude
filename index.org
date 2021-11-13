@@ -9,305 +9,306 @@
 
   Note that this creates a /separate/ file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. ~M-x init-mail-settings~) or in a standard init file (e.g. ~(init-mail-settings)~). This is meant to be used in combination with other settings in a standard ~init.el~, allowing for optional settings or delayed settings.
   
-** TODO Neaten up the organization of this page some
-* Loading Initial Packages
+* Startup
+** Loading Initial Packages
   
-  There are some packages we need to load initially to use throughout:
-
-  #+BEGIN_SRC emacs-lisp
-    (use-package hydra)
-  #+END_SRC
-
-* Neofetch Start Screen
-
-  We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
-
-  #+BEGIN_SRC emacs-lisp
-    (defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
-    (neofetch)
-  #+END_SRC
-
-* Shortcut key
-
-  We make a run key that gives a menu to different programs you might want a glance at.
-
-  #+BEGIN_SRC emacs-lisp
-    (defun add-menu-item (key command)
-	   (global-set-key (kbd (concat "C-; " key)) command))
-    (defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
-    (add-menu-item "m" 'mu4e)
-    (add-menu-item "i" 'find-init-file)
-    (add-menu-item "a" 'org-agenda)
-    (add-menu-item "s" 'search-in-nyxt)
-  #+END_SRC
-
-* Pure Latex
-
-  We add a function for package load-time settings:
-  #+BEGIN_SRC emacs-lisp
-    (defun latex-init-settings ()
-      (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
-	("i" latex-next-item "next \\item")
-	("I" latex-last-item "previous \\item")
-	("s" latex-next-section "next \\.*section")
-	("S" latex-last-section "previous \\.*section"))
-      (setq TeX-parse-self t)
-      (setq cdlatex-math-modify-alist
-	    '((98 "\\mathbb" nil t nil nil)))
-      (setq cdlatex-math-symbol-alist
-	    '((120 "\\chi" "\\otimes")
-	      (62 "\\geq" "\\geqsim" "\\langle")
-	      (60 "\\leq" "\\lesssim" "\\rangle")
-	      (40 "\\left(")
-	      (41 "\\right)")
-	      (91 "\\left[")
-	      (92 "\\right]"))))
-  #+END_SRC
-
-  Let's set a mode hook function:
-
-  #+BEGIN_SRC emacs-lisp
-    (defun latex-hook ()
-      (cdlatex-mode 1)
-      (reftex-mode 1)
-      (prettify-symbols-mode 1))
-#+END_SRC
-  
-  And then we delay loading the package:
-
-  #+BEGIN_SRC emacs-lisp
-    (use-package latex
-      :defer t
-      :ensure auctex
-      :config (latex-init-settings))
-  #+END_SRC
-  
-** TODO make minor mode for wrapping text in LaTeX but not math mode text
-** Jump to items and sections
-
-   Let's try to write a function that jumps to the previous thing...
+   There are some packages we need to load initially to use throughout:
 
    #+BEGIN_SRC emacs-lisp
-     (defun latex-last-item () (interactive)
-	    (isearch-backward "\\item"))
-     (defun latex-last-section () (interactive)
-	    (isearch-backward "\\.*section"))
-     (defun latex-next-item () (interactive)
-	    (isearch "\\item"))
-     (defun latex-next-section () (interactive)
-	    (isearch "\\.*section"))
+     (use-package hydra)
    #+END_SRC
-   
-* Org Settings
 
-  Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
-  #+BEGIN_SRC emacs-lisp
-    (defun latex-in-org-settings ()
-      (progn
-	(require 'ox-bibtex)
-	(plist-put org-format-latex-options :scale 2.0)
-	))
-  #+END_SRC
+** Neofetch Start Screen
 
-  A small helper function
+   We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
 
-  #+BEGIN_SRC emacs-lisp
-    (defun org-indent-paragraph () (interactive)
-	   (org-backward-paragraph)
-	   (push-mark)
-	   (org-forward-paragraph)
-	   (org-indent-region
-	    (mark) (point)))
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
+     (setq inhibit-startup-screen t)
+     (neofetch)
+   #+END_SRC
 
-  Let's add some keywords, keybindings, and such:
+* Modes
+** Pure Latex
 
-  #+BEGIN_SRC emacs-lisp
-    (defun org-init-settings ()
-      (latex-in-org-settings)
-      (setq org-agenda-start-on-weekday 0)
-      (setq org-todo-keywords
-	    '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
-  #+END_SRC
+   We add a function for package load-time settings:
+   #+BEGIN_SRC emacs-lisp
+     (defun latex-init-settings ()
+       (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
+	 ("i" latex-next-item "next \\item")
+	 ("I" latex-last-item "previous \\item")
+	 ("s" latex-next-section "next \\.*section")
+	 ("S" latex-last-section "previous \\.*section"))
+       (setq TeX-parse-self t)
+       (setq cdlatex-math-modify-alist
+	     '((98 "\\mathbb" nil t nil nil)))
+       (setq cdlatex-math-symbol-alist
+	     '((120 "\\chi" "\\otimes")
+	       (62 "\\geq" "\\geqsim" "\\langle")
+	       (60 "\\leq" "\\lesssim" "\\rangle")
+	       (40 "\\left(")
+	       (41 "\\right)")
+	       (91 "\\left[")
+	       (92 "\\right]"))))
+   #+END_SRC
 
-  Let's write an Org-mode-hook function:
+   Let's set a mode hook function:
 
-  #+BEGIN_SRC emacs-lisp
-    (defun org-hook () ()
-	   (visual-line-mode)
-	   (org-cdlatex-mode))
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defun latex-hook ()
+       (cdlatex-mode 1)
+       (reftex-mode 1)
+       (prettify-symbols-mode 1))
+ #+END_SRC
+  
+   And then we delay loading the package:
 
-  And a hydra for keybindings:
+   #+BEGIN_SRC emacs-lisp
+     (use-package latex
+       :defer t
+       :ensure auctex
+       :config (latex-init-settings))
+   #+END_SRC
+  
+*** TODO make minor mode for wrapping text in LaTeX but not math mode text
+*** Jump to items and sections
 
-  #+BEGIN_SRC emacs-lisp
-    (defhydra hydra-org-commands (org-mode-map "C-x h")
-    ("<Up>" 'org-previous-visible-heading "prev heading")
-    ("<Down>" 'org-next-visible-heading "next heading")
-    ("<tab>" 'org-indent-paragraph))
-  #+END_SRC
-    
-    And we'll add a package load-time function
-    
+    Let's try to write a function that jumps to the previous thing...
+
     #+BEGIN_SRC emacs-lisp
-      (use-package org
-	:defer t
-	:config (org-init-settings))
-  #+END_SRC
+      (defun latex-last-item () (interactive)
+	     (isearch-backward "\\item"))
+      (defun latex-last-section () (interactive)
+	     (isearch-backward "\\.*section"))
+      (defun latex-next-item () (interactive)
+	     (isearch "\\item"))
+      (defun latex-next-section () (interactive)
+	     (isearch "\\.*section"))
+    #+END_SRC
+   
+** Org Settings
 
-* File Manipulation Settings
-
-  Let's make the function for loading settings:
-
-  #+BEGIN_SRC emacs-lisp
-    (defun file-manipulation-settings () (interactive)
-	   (progn
-	     (use-package projectile)
-	     (use-package magit)
-	     (use-package dired-x)
-	     (projectile-mode +1)
-	     (setq dired-listing-switches "-ahl")
-	     (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
-	     (setq dired-guess-shell-alist-user
-		   '(("\\.pdf$" "zathura *")))))
-  #+END_SRC
-
-  Let's also add a command for listing Zotero-stored files for ease:
-
-  #+BEGIN_SRC emacs-lisp
-    (defun zotero-store () (interactive)
-	   (find-dired "~/Zotero/storage" "-name '*.pdf'"))
-  #+END_SRC
-
-* Mu4e Settings
-
-  First, update mail settings:
-
-  #+BEGIN_SRC emacs-lisp
-    (defun init-mail-settings () ()
-      (setq
-       mu4e-get-mail-command "offlineimap -q -o"
-       mu4e-update-interval 3000))
-  #+END_SRC
-
-  And then we load the package
-  
-  #+BEGIN_SRC emacs-lisp
-    (use-package mu4e
-      :load-path  "/usr/share/emacs/site-lisp/mu4e"
-      :init (init-mail-settings))
-  #+END_SRC
-
-* Editing Settings
-
-  First we'll add some extra editing commands of my own...
-
-  #+BEGIN_SRC emacs-lisp
-    (defun smart-kill-word () (interactive)
-      (backward-word)
-      (kill-word 1))
-  #+END_SRC
-  
-  Let's load the packages and bind some keys...
-
-  #+BEGIN_SRC emacs-lisp
-    (defun editing-settings () (interactive)
-	   (use-package counsel)
-	   (use-package crux)
-	   (ivy-mode +1)
-	   (global-set-key (kbd "C-x s") 'swiper)
-	   (global-set-key (kbd "C-k") 'crux-smart-kill-line)
-	   (global-set-key (kbd "M-d") 'smart-kill-word))
-  #+END_SRC
-
-  Some useful keybindings...
-
-  #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C-x p v") 'view-mode)
-    (global-set-key (kbd "C-x p f") 'follow-mode)
-  #+END_SRC
-
-* Visual/Window settings
-
-
-  #+BEGIN_SRC emacs-lisp
-    (require 'windmove)
-    (defhydra hydra-window-manip (global-map "C-x w")
-      ("h" shrink-window-horizontally "shrink horizontally")
-      ("l" enlarge-window-horizontally "grow horizontally")
-      ("j" enlarge-window "grow vertically")
-      ("0" delete-window "delete window")
-      ("1" delete-other-windows "fullscreen this one")
-      ("2" split-window-below "split below")
-      ("3" split-window-right "split right")
-      ("H" windmove-left "move left")
-      ("J" windmove-down "move down")
-      ("K" windmove-up "move up")
-      ("=" balance-windows "equal sizing")
-      ("L" windmove-right "move right")
-      ("<tab>" other-window "cycle-move")
-      ("b" display-buffer "select buffer")
-      ("c" clone-indirect-buffer-other-window "clone buffer")
-      )
-  #+END_SRC
-  
-** TODO Try EXWM (?)
-
-** Dynamic Window Layouts
-
-   Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
-
-   We first do an XMonad Tall layout:
+   Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
    #+BEGIN_SRC emacs-lisp
-	  (defun xmonad-tree-navigator (tree)
-	    (if (windowp tree) tree
-	      (if (listp tree) (xmonad-tree-navigator (car (last tree)))
-		  (error "Encountered a non-list or non window argument"))))
+     (defun latex-in-org-settings ()
+       (progn
+	 (require 'ox-bibtex)
+	 (plist-put org-format-latex-options :scale 2.0)
+	 ))
+   #+END_SRC
+
+   A small helper function
+
+   #+BEGIN_SRC emacs-lisp
+     (defun org-indent-paragraph () (interactive)
+	    (org-backward-paragraph)
+	    (push-mark)
+	    (org-forward-paragraph)
+	    (org-indent-region
+	     (mark) (point)))
+   #+END_SRC
+
+   Let's add some keywords, keybindings, and such:
+
+   #+BEGIN_SRC emacs-lisp
+     (defun org-init-settings ()
+       (latex-in-org-settings)
+       (setq org-agenda-start-on-weekday 0)
+       (setq org-todo-keywords
+	     '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
+   #+END_SRC
+
+   Let's write an Org-mode-hook function:
+
+   #+BEGIN_SRC emacs-lisp
+     (defun org-hook () ()
+	    (visual-line-mode)
+	    (org-cdlatex-mode))
+   #+END_SRC
+
+   And a hydra for keybindings:
+
+   #+BEGIN_SRC emacs-lisp
+     (defhydra hydra-org-commands (org-mode-map "C-x h")
+     ("<Up>" 'org-previous-visible-heading "prev heading")
+     ("<Down>" 'org-next-visible-heading "next heading")
+     ("<tab>" 'org-indent-paragraph))
+   #+END_SRC
+    
+     And we'll add a package load-time function
+    
+     #+BEGIN_SRC emacs-lisp
+       (use-package org
+	 :defer t
+	 :config (org-init-settings))
+   #+END_SRC
+
+** Mu4e Settings
+
+   First, update mail settings:
+
+   #+BEGIN_SRC emacs-lisp
+     (defun init-mail-settings () ()
+       (setq
+	mu4e-get-mail-command "offlineimap -q -o"
+	mu4e-update-interval 3000))
+   #+END_SRC
+
+   And then we load the package
+  
+   #+BEGIN_SRC emacs-lisp
+     (use-package mu4e
+       :load-path  "/usr/share/emacs/site-lisp/mu4e"
+       :init (init-mail-settings))
+   #+END_SRC
+** Hooks
+
+   Now we add some good default hooks:
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+     (add-hook 'LaTeX-mode-hook 'latex-hook)
+     (add-hook 'org-mode-hook 'org-hook)
+   #+END_SRC 
+  
+* Keybindings and Visuals
+** File Manipulation Settings
+
+   Let's make the function for loading settings:
+
+   #+BEGIN_SRC emacs-lisp
+     (defun file-manipulation-settings () (interactive)
+	    (progn
+	      (use-package projectile)
+	      (use-package magit)
+	      (use-package dired-x)
+	      (projectile-mode +1)
+	      (setq dired-listing-switches "-ahl")
+	      (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+	      (setq dired-guess-shell-alist-user
+		    '(("\\.pdf$" "zathura *")))))
+   #+END_SRC
+
+   Let's also add a command for listing Zotero-stored files for ease:
+
+   #+BEGIN_SRC emacs-lisp
+     (defun zotero-store () (interactive)
+	    (find-dired "~/Zotero/storage" "-name '*.pdf'"))
+   #+END_SRC
+
+** Editing Settings
+
+   First we'll add some extra editing commands of my own...
+
+   #+BEGIN_SRC emacs-lisp
+     (defun smart-kill-word () (interactive)
+       (backward-word)
+       (kill-word 1))
+   #+END_SRC
+  
+   Let's load the packages and bind some keys...
+
+   #+BEGIN_SRC emacs-lisp
+     (defun editing-settings () (interactive)
+	    (use-package counsel)
+	    (use-package crux)
+	    (ivy-mode +1)
+	    (global-set-key (kbd "C-x s") 'swiper)
+	    (global-set-key (kbd "C-k") 'crux-smart-kill-line)
+	    (global-set-key (kbd "M-d") 'smart-kill-word))
+   #+END_SRC
+
+   Some useful keybindings...
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "C-x p v") 'view-mode)
+     (global-set-key (kbd "C-x p f") 'follow-mode)
+   #+END_SRC
+
+** Visual/Window settings
+
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'windmove)
+     (defhydra hydra-window-manip (global-map "C-x w")
+       ("h" shrink-window-horizontally "shrink horizontally")
+       ("l" enlarge-window-horizontally "grow horizontally")
+       ("j" enlarge-window "grow vertically")
+       ("0" delete-window "delete window")
+       ("1" delete-other-windows "fullscreen this one")
+       ("2" split-window-below "split below")
+       ("3" split-window-right "split right")
+       ("H" windmove-left "move left")
+       ("J" windmove-down "move down")
+       ("K" windmove-up "move up")
+       ("=" balance-windows "equal sizing")
+       ("L" windmove-right "move right")
+       ("<tab>" other-window "cycle-move")
+       ("b" display-buffer "select buffer")
+       ("c" clone-indirect-buffer-other-window "clone buffer")
+       )
+   #+END_SRC
+  
+*** TODO Try EXWM (?)
+
+*** Dynamic Window Layouts
+
+    Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
+
+    We first do an XMonad Tall layout:
+    #+BEGIN_SRC emacs-lisp
+	   (defun xmonad-tree-navigator (tree)
+	     (if (windowp tree) tree
+	       (if (listp tree) (xmonad-tree-navigator (car (last tree)))
+		   (error "Encountered a non-list or non window argument"))))
 	  
-	  (defun xmonad-tall (curr-win)
-		 (if (one-window-p) (split-window-right)
-		   (progn
-		     (select-window (xmonad-tree-navigator (car (window-tree))))
-		     (split-window-below)
-		     (balance-windows))))
-   #+END_SRC
+	   (defun xmonad-tall (curr-win)
+		  (if (one-window-p) (split-window-right)
+		    (progn
+		      (select-window (xmonad-tree-navigator (car (window-tree))))
+		      (split-window-below)
+		      (balance-windows))))
+    #+END_SRC
 
-   And we do a BSPWM one:
+    And we do a BSPWM one:
 
-   #+BEGIN_SRC emacs-lisp
-     (defun bsp-tree-navigator (tree)
-       (if (windowp tree) tree
-	 (if (listp tree) (bsp-tree-navigator (car (last tree)))
-	   (error "Encountered a non-list or non-window argument"))))
+    #+BEGIN_SRC emacs-lisp
+      (defun bsp-tree-navigator (tree)
+	(if (windowp tree) tree
+	  (if (listp tree) (bsp-tree-navigator (car (last tree)))
+	    (error "Encountered a non-list or non-window argument"))))
      
-     (defun bspwm (curr-win)
-	    (let ((to-window (bsp-tree-navigator (car (window-tree)))))
-	      (progn
-		(select-window to-window)
-		(if (window-combined-p to-window t)
-		    (split-window-below)
-		  (split-window-right)))))
-   #+END_SRC
+      (defun bspwm (curr-win)
+	     (let ((to-window (bsp-tree-navigator (car (window-tree)))))
+	       (progn
+		 (select-window to-window)
+		 (if (window-combined-p to-window t)
+		     (split-window-below)
+		   (split-window-right)))))
+    #+END_SRC
 
-   And now we add a function to switch between layouts:
+    And now we add a function to switch between layouts:
+
+    #+BEGIN_SRC emacs-lisp
+      (setq layout-list '(split-window-sensibly xmonad-tall bspwm))
+      (defun select-window-layout (symbol) (interactive "Slayout: ")
+	     (if (member symbol layout-list) (setq split-window-preferred-function symbol)
+	       (error "Not a layout in layout-list")))
+    #+END_SRC
+
+** Shortcut key
+
+   We make a run key that gives a menu to different programs you might want a glance at.
 
    #+BEGIN_SRC emacs-lisp
-     (setq layout-list '(split-window-sensibly xmonad-tall bspwm))
-     (defun select-window-layout (symbol) (interactive "Slayout: ")
-	    (if (member symbol layout-list) (setq split-window-preferred-function symbol)
-	      (error "Not a layout in layout-list")))
+     (defun add-menu-item (key command)
+	    (global-set-key (kbd (concat "C-; " key)) command))
+     (defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
+     (add-menu-item "m" 'mu4e)
+     (add-menu-item "i" 'find-init-file)
+     (add-menu-item "a" 'org-agenda)
+     (add-menu-item "s" 'search-in-nyxt)
    #+END_SRC
-
-* Hooks
-
-  Now we add some good default hooks:
-
-  #+BEGIN_SRC emacs-lisp
-    (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
-    (add-hook 'LaTeX-mode-hook 'latex-hook)
-    (add-hook 'org-mode-hook 'org-hook)
-  #+END_SRC 
-  
 * Nyxt Integration
 
   Here we provide a couple of helper functions for interacting with [[https://nyxt.atlas.engineer][Nyxt]]. I'll explain in a little more detail here.
