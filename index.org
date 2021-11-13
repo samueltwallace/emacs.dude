@@ -98,8 +98,8 @@
      (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
      ("i" latex-next-item "next \\item")
      ("I" latex-last-item "previous \\item")
-     ("s" latex-next-section "next \\\*section")
-     ("S" latex-last-section "previous \\\*section"))
+     ("s" latex-next-section "next \\.*section")
+     ("S" latex-last-section "previous \\.*section"))
    #+END_SRC
    
 * Org Settings
@@ -185,7 +185,7 @@
 
 * Mu4e Settings
 
-  First, sending mail settings:
+  First, update mail settings:
 
   #+BEGIN_SRC emacs-lisp
     (defun init-mail-settings () ()
@@ -250,12 +250,57 @@
       ("=" balance-windows "equal sizing")
       ("L" windmove-right "move right")
       ("<tab>" other-window "cycle-move")
-      ("b" ivy-switch-buffer "select buffer")
+      ("b" display-buffer "select buffer")
       ("c" clone-indirect-buffer "clone buffer")
       )
   #+END_SRC
   
 ** TODO Try EXWM (?)
+
+** Dynamic Window Layouts
+
+   Here we look to implement two dynamic window layouts, inspired by tiling window managers.
+
+   We first do an XMonad Tall layout:
+   #+BEGIN_SRC emacs-lisp
+     (defun xmonad-tree-navigator (tree)
+       (if (windowp tree) tree
+	 (if (listp tree) (xmonad-tree-navigator (car (last tree)))
+	     (error "Encountered a non-list or non window argument"))))
+     
+     (defun xmonad-tall ()
+	    (if (one-window-p) (split-window-right)
+	      (progn
+		(select-window (xmonad-tree-navigator (car (window-tree))))
+		(split-window-below))))
+   #+END_SRC
+
+   And we do a BSPWM one:
+
+   #+BEGIN_SRC emacs-lisp
+     (defun bsp-tree-navigator (tree)
+       (if (windowp tree) tree
+	 (if (listp tree) (bsp-tree-navigator (car (last tree)))
+	   (error "Encountered a non-list or non-window argument"))))
+     
+     (defun bspwm ()
+	    (let ((to-window (bsp-tree-navigator (car (window-tree)))))
+	      (progn
+		(select-window to-window)
+		(if (window-combined-p to-window)
+		    (split-window-below)
+		  (split-window-right)))))
+   #+END_SRC
+
+   And now we add a function to switch between layouts:
+
+   #+BEGIN_SRC emacs-lisp
+     (setq layout-list '(split-window-sensibly xmonad-tall bspwm))
+     (defun select-window-layout (symbol) (interactive "Slayout: ")
+	    (if (member symbol layout-list) (setq split-window-preferred-function symbol)
+	      (error "Not a layout in layout-list")))
+   #+END_SRC
+
 * Hooks
 
   Now we add some good default hooks:
@@ -325,3 +370,4 @@
   - [[https://karthinks.com/software/latex-input-for-impatient-scholars/][LaTeX Input]]
   - [[https://sheer.tj/the_way_of_emacs.html][The Way of Emacs]]
   - [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs GitHub]]
+  - The keybindings (in Emacs, of course) ~C-h r~ and ~C-h i~

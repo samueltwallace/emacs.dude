@@ -46,8 +46,8 @@
 (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
 ("i" latex-next-item "next \\item")
 ("I" latex-last-item "previous \\item")
-("s" latex-next-section "next \\\*section")
-("S" latex-last-section "previous \\\*section"))
+("s" latex-next-section "next \\.*section")
+("S" latex-last-section "previous \\.*section"))
 
 (defun latex-in-org-settings ()
   (progn
@@ -134,9 +134,38 @@
   ("=" balance-windows "equal sizing")
   ("L" windmove-right "move right")
   ("<tab>" other-window "cycle-move")
-  ("b" ivy-switch-buffer "select buffer")
+  ("b" display-buffer "select buffer")
   ("c" clone-indirect-buffer "clone buffer")
   )
+
+(defun xmonad-tree-navigator (tree)
+  (if (windowp tree) tree
+    (if (listp tree) (xmonad-tree-navigator (car (last tree)))
+	(error "Encountered a non-list or non window argument"))))
+
+(defun xmonad-tall ()
+       (if (one-window-p) (split-window-right)
+	 (progn
+	   (select-window (xmonad-tree-navigator (car (window-tree))))
+	   (split-window-below))))
+
+(defun bsp-tree-navigator (tree)
+  (if (windowp tree) tree
+    (if (listp tree) (bsp-tree-navigator (car (last tree)))
+      (error "Encountered a non-list or non-window argument"))))
+
+(defun bspwm ()
+       (let ((to-window (bsp-tree-navigator (car (window-tree)))))
+	 (progn
+	   (select-window to-window)
+	   (if (window-combined-p to-window)
+	       (split-window-below)
+	     (split-window-right)))))
+
+(setq layout-list '(split-window-sensibly xmonad-tall bspwm))
+(defun select-window-layout (symbol) (interactive "Slayout: ")
+       (if (member symbol layout-list) (setq split-window-preferred-function symbol)
+	 (error "Not a layout in layout-list")))
 
 (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
 (add-hook 'LaTeX-mode-hook 'latex-hook)
