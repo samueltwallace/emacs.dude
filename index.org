@@ -324,3 +324,4 @@
   - [[https://karthinks.com/software/batteries-included-with-emacs/][Built-in Emacs Features]]
   - [[https://karthinks.com/software/latex-input-for-impatient-scholars/][LaTeX Input]]
   - [[https://sheer.tj/the_way_of_emacs.html][The Way of Emacs]]
+  - [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs GitHub]]
