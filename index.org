@@ -46,6 +46,11 @@
   We add a function for package load-time settings:
   #+BEGIN_SRC emacs-lisp
     (defun latex-init-settings ()
+      (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
+	("i" latex-next-item "next \\item")
+	("I" latex-last-item "previous \\item")
+	("s" latex-next-section "next \\.*section")
+	("S" latex-last-section "previous \\.*section"))
       (setq TeX-parse-self t)
       (setq cdlatex-math-modify-alist
 	    '((98 "\\mathbb" nil t nil nil)))
@@ -91,15 +96,6 @@
 	    (isearch "\\item"))
      (defun latex-next-section () (interactive)
 	    (isearch "\\.*section"))
-   #+END_SRC
-   And then we'll put it in a hydra:
-
-   #+BEGIN_SRC emacs-lisp
-     (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
-     ("i" latex-next-item "next \\item")
-     ("I" latex-last-item "previous \\item")
-     ("s" latex-next-section "next \\.*section")
-     ("S" latex-last-section "previous \\.*section"))
    #+END_SRC
    
 * Org Settings
@@ -251,7 +247,7 @@
       ("L" windmove-right "move right")
       ("<tab>" other-window "cycle-move")
       ("b" display-buffer "select buffer")
-      ("c" clone-indirect-buffer "clone buffer")
+      ("c" clone-indirect-buffer-other-window "clone buffer")
       )
   #+END_SRC
   
@@ -268,7 +264,7 @@
 	 (if (listp tree) (xmonad-tree-navigator (car (last tree)))
 	     (error "Encountered a non-list or non window argument"))))
      
-     (defun xmonad-tall ()
+     (defun xmonad-tall (curr-win)
 	    (if (one-window-p) (split-window-right)
 	      (progn
 		(select-window (xmonad-tree-navigator (car (window-tree))))
@@ -283,11 +279,11 @@
 	 (if (listp tree) (bsp-tree-navigator (car (last tree)))
 	   (error "Encountered a non-list or non-window argument"))))
      
-     (defun bspwm ()
+     (defun bspwm (curr-win)
 	    (let ((to-window (bsp-tree-navigator (car (window-tree)))))
 	      (progn
 		(select-window to-window)
-		(if (window-combined-p to-window)
+		(if (window-combined-p to-window t)
 		    (split-window-below)
 		  (split-window-right)))))
    #+END_SRC

@@ -12,6 +12,11 @@
 (add-menu-item "s" 'search-in-nyxt)
 
 (defun latex-init-settings ()
+  (defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
+    ("i" latex-next-item "next \\item")
+    ("I" latex-last-item "previous \\item")
+    ("s" latex-next-section "next \\.*section")
+    ("S" latex-last-section "previous \\.*section"))
   (setq TeX-parse-self t)
   (setq cdlatex-math-modify-alist
 	'((98 "\\mathbb" nil t nil nil)))
@@ -42,12 +47,6 @@
        (isearch "\\item"))
 (defun latex-next-section () (interactive)
        (isearch "\\.*section"))
-
-(defhydra hydra-latex-jump (latex-mode-map "C-x C-j")
-("i" latex-next-item "next \\item")
-("I" latex-last-item "previous \\item")
-("s" latex-next-section "next \\.*section")
-("S" latex-last-section "previous \\.*section"))
 
 (defun latex-in-org-settings ()
   (progn
@@ -135,7 +134,7 @@
   ("L" windmove-right "move right")
   ("<tab>" other-window "cycle-move")
   ("b" display-buffer "select buffer")
-  ("c" clone-indirect-buffer "clone buffer")
+  ("c" clone-indirect-buffer-other-window "clone buffer")
   )
 
 (defun xmonad-tree-navigator (tree)
@@ -143,7 +142,7 @@
     (if (listp tree) (xmonad-tree-navigator (car (last tree)))
 	(error "Encountered a non-list or non window argument"))))
 
-(defun xmonad-tall ()
+(defun xmonad-tall (curr-win)
        (if (one-window-p) (split-window-right)
 	 (progn
 	   (select-window (xmonad-tree-navigator (car (window-tree))))
@@ -154,11 +153,11 @@
     (if (listp tree) (bsp-tree-navigator (car (last tree)))
       (error "Encountered a non-list or non-window argument"))))
 
-(defun bspwm ()
+(defun bspwm (curr-win)
        (let ((to-window (bsp-tree-navigator (car (window-tree)))))
 	 (progn
 	   (select-window to-window)
-	   (if (window-combined-p to-window)
+	   (if (window-combined-p to-window t)
 	       (split-window-below)
 	     (split-window-right)))))
 
