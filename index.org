@@ -255,20 +255,21 @@
 
 ** Dynamic Window Layouts
 
-   Here we look to implement two dynamic window layouts, inspired by tiling window managers.
+   Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
 
    We first do an XMonad Tall layout:
    #+BEGIN_SRC emacs-lisp
-     (defun xmonad-tree-navigator (tree)
-       (if (windowp tree) tree
-	 (if (listp tree) (xmonad-tree-navigator (car (last tree)))
-	     (error "Encountered a non-list or non window argument"))))
-     
-     (defun xmonad-tall (curr-win)
-	    (if (one-window-p) (split-window-right)
-	      (progn
-		(select-window (xmonad-tree-navigator (car (window-tree))))
-		(split-window-below))))
+	  (defun xmonad-tree-navigator (tree)
+	    (if (windowp tree) tree
+	      (if (listp tree) (xmonad-tree-navigator (car (last tree)))
+		  (error "Encountered a non-list or non window argument"))))
+	  
+	  (defun xmonad-tall (curr-win)
+		 (if (one-window-p) (split-window-right)
+		   (progn
+		     (select-window (xmonad-tree-navigator (car (window-tree))))
+		     (split-window-below)
+		     (balance-windows))))
    #+END_SRC
 
    And we do a BSPWM one:
@@ -357,7 +358,6 @@
     
   #+END_SRC
 
-  \appendix
 * Resources
 
   Here's a brief list of resources for reading on Emacs...
