@@ -186,3 +186,9 @@
 								     `(buffer-load (make-instance 'new-url-query
 												  :query ,search-term
 												  :engine (first (last (search-engines (current-buffer))))))))
+
+(setq stumpish-path "~/.stumpwm.d/modules/util/stumpish/stumpish")
+(defun eval-in-stumpwm (s-exps) (call-process stumpish-path nil nil nil (format "eval %S" s-exps)))
+(defun eval-region-in-stumpwm (start end) (interactive "r") (eval-in-stumpwm (read (buffer-substring start end))))
+
+;; write some functions!
