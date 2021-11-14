@@ -171,6 +171,7 @@
 (add-menu-item "i" 'find-init-file)
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "s" 'search-in-nyxt)
+(add-menu-item "p" 'proced)
 
 (defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
 (defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
