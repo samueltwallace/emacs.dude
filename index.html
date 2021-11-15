@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-11-14 Sun 08:59 -->
+<!-- 2021-11-15 Mon 10:00 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sam's Emacs</title>
@@ -244,47 +244,56 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1a66ab3">1. Intro</a></li>
-<li><a href="#orgb79f004">2. Startup</a>
+<li><a href="#org46d7125">1. Intro</a></li>
+<li><a href="#org7230247">2. Startup</a>
 <ul>
-<li><a href="#org82ab9cd">2.1. Loading Initial Packages</a></li>
-<li><a href="#org05b9e76">2.2. Neofetch Start Screen</a></li>
+<li><a href="#org0c5d21d">2.1. Loading Initial Packages</a></li>
+<li><a href="#org403776a">2.2. Neofetch Start Screen</a></li>
 </ul>
 </li>
-<li><a href="#org923f869">3. Modes</a>
+<li><a href="#orgdbd552e">3. Modes</a>
 <ul>
-<li><a href="#org125fc16">3.1. Pure Latex</a>
+<li><a href="#org26c6984">3.1. Pure Latex</a>
 <ul>
-<li><a href="#org505e3de">3.1.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
-<li><a href="#orgdca185a">3.1.2. Jump to items and sections</a></li>
+<li><a href="#orgb5c6f0b">3.1.1. <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
+<li><a href="#org26dc658">3.1.2. Jump to items and sections</a></li>
 </ul>
 </li>
-<li><a href="#org2b0a706">3.2. Org Settings</a></li>
-<li><a href="#org8969c1c">3.3. Mu4e Settings</a></li>
-<li><a href="#org90ebc2d">3.4. Hooks</a></li>
+<li><a href="#orgbffe4a4">3.2. Org Settings</a></li>
+<li><a href="#org2a5a462">3.3. Mu4e Settings</a></li>
+<li><a href="#org2f35921">3.4. Hooks</a></li>
 </ul>
 </li>
-<li><a href="#orga31e30b">4. Keybindings and Visuals</a>
+<li><a href="#org5d9eba5">4. Keybindings and Visuals</a>
 <ul>
-<li><a href="#orgc260f85">4.1. File Manipulation Settings</a></li>
-<li><a href="#orge837ee1">4.2. Editing Settings</a></li>
-<li><a href="#orgf9bf409">4.3. Visual/Window settings</a>
+<li><a href="#org786588e">4.1. File Manipulation Settings</a></li>
+<li><a href="#orgd3703a3">4.2. Editing Settings</a></li>
+<li><a href="#org26d2956">4.3. Visual/Window settings</a>
 <ul>
-<li><a href="#orgd793b26">4.3.1. <span class="todo TODO">TODO</span> Try EXWM (?)</a></li>
-<li><a href="#org2ac0949">4.3.2. Dynamic Window Layouts</a></li>
+<li><a href="#orge04d8c9">4.3.1. <span class="todo TODO">TODO</span> Try EXWM (?)</a></li>
+<li><a href="#orgd82486a">4.3.2. Dynamic Window Layouts</a></li>
 </ul>
 </li>
-<li><a href="#org09ed4aa">4.4. Shortcut key</a></li>
+<li><a href="#orgb0825e3">4.4. Shortcut key</a></li>
 </ul>
 </li>
-<li><a href="#orgef0905c">5. Nyxt Integration</a></li>
-<li><a href="#org83a9fcc">6. Resources</a></li>
+<li><a href="#org2c2e373">5. External Integrations</a>
+<ul>
+<li><a href="#orga331413">5.1. Nyxt Integration</a></li>
+<li><a href="#org5097300">5.2. Stumpwm</a>
+<ul>
+<li><a href="#org242c596">5.2.1. <span class="todo TODO">TODO</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org0aabd71">6. Resources</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1a66ab3" class="outline-2">
-<h2 id="org1a66ab3"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-org46d7125" class="outline-2">
+<h2 id="org46d7125"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Version controlling is done through Git.
@@ -296,12 +305,12 @@ Note that this creates a <i>separate</i> file for these extra settings; some are
 </div>
 </div>
 
-<div id="outline-container-orgb79f004" class="outline-2">
-<h2 id="orgb79f004"><span class="section-number-2">2.</span> Startup</h2>
+<div id="outline-container-org7230247" class="outline-2">
+<h2 id="org7230247"><span class="section-number-2">2.</span> Startup</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org82ab9cd" class="outline-3">
-<h3 id="org82ab9cd"><span class="section-number-3">2.1.</span> Loading Initial Packages</h3>
+<div id="outline-container-org0c5d21d" class="outline-3">
+<h3 id="org0c5d21d"><span class="section-number-3">2.1.</span> Loading Initial Packages</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 There are some packages we need to load initially to use throughout:
@@ -314,8 +323,8 @@ There are some packages we need to load initially to use throughout:
 </div>
 </div>
 
-<div id="outline-container-org05b9e76" class="outline-3">
-<h3 id="org05b9e76"><span class="section-number-3">2.2.</span> Neofetch Start Screen</h3>
+<div id="outline-container-org403776a" class="outline-3">
+<h3 id="org403776a"><span class="section-number-3">2.2.</span> Neofetch Start Screen</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
@@ -331,12 +340,12 @@ We make a Neofetch start screen with lots of data for a startup screen (and for 
 </div>
 </div>
 
-<div id="outline-container-org923f869" class="outline-2">
-<h2 id="org923f869"><span class="section-number-2">3.</span> Modes</h2>
+<div id="outline-container-orgdbd552e" class="outline-2">
+<h2 id="orgdbd552e"><span class="section-number-2">3.</span> Modes</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org125fc16" class="outline-3">
-<h3 id="org125fc16"><span class="section-number-3">3.1.</span> Pure Latex</h3>
+<div id="outline-container-org26c6984" class="outline-3">
+<h3 id="org26c6984"><span class="section-number-3">3.1.</span> Pure Latex</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We add a function for package load-time settings:
@@ -387,11 +396,11 @@ And then we delay loading the package:
 </div>
 </div>
 
-<div id="outline-container-org505e3de" class="outline-4">
-<h4 id="org505e3de"><span class="section-number-4">3.1.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h4>
+<div id="outline-container-orgb5c6f0b" class="outline-4">
+<h4 id="orgb5c6f0b"><span class="section-number-4">3.1.1.</span> <span class="todo TODO">TODO</span> make minor mode for wrapping text in LaTeX but not math mode text</h4>
 </div>
-<div id="outline-container-orgdca185a" class="outline-4">
-<h4 id="orgdca185a"><span class="section-number-4">3.1.2.</span> Jump to items and sections</h4>
+<div id="outline-container-org26dc658" class="outline-4">
+<h4 id="org26dc658"><span class="section-number-4">3.1.2.</span> Jump to items and sections</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 Let's try to write a function that jumps to the previous thing&#x2026;
@@ -412,8 +421,8 @@ Let's try to write a function that jumps to the previous thing&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org2b0a706" class="outline-3">
-<h3 id="org2b0a706"><span class="section-number-3">3.2.</span> Org Settings</h3>
+<div id="outline-container-orgbffe4a4" class="outline-3">
+<h3 id="orgbffe4a4"><span class="section-number-3">3.2.</span> Org Settings</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
@@ -473,7 +482,7 @@ And a hydra for keybindings:
 <pre class="src src-emacs-lisp">(defhydra hydra-org-commands (org-mode-map "C-x h")
 ("&lt;Up&gt;" 'org-previous-visible-heading "prev heading")
 ("&lt;Down&gt;" 'org-next-visible-heading "next heading")
-("&lt;tab&gt;" 'org-indent-paragraph))
+("&lt;tab&gt;" 'org-indent-paragraph "indent paragraph"))
 </pre>
 </div>
 
@@ -490,8 +499,8 @@ And we'll add a package load-time function
 </div>
 </div>
 
-<div id="outline-container-org8969c1c" class="outline-3">
-<h3 id="org8969c1c"><span class="section-number-3">3.3.</span> Mu4e Settings</h3>
+<div id="outline-container-org2a5a462" class="outline-3">
+<h3 id="org2a5a462"><span class="section-number-3">3.3.</span> Mu4e Settings</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 First, update mail settings:
@@ -517,8 +526,8 @@ And then we load the package
 </div>
 </div>
 </div>
-<div id="outline-container-org90ebc2d" class="outline-3">
-<h3 id="org90ebc2d"><span class="section-number-3">3.4.</span> Hooks</h3>
+<div id="outline-container-org2f35921" class="outline-3">
+<h3 id="org2f35921"><span class="section-number-3">3.4.</span> Hooks</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Now we add some good default hooks:
@@ -534,12 +543,12 @@ Now we add some good default hooks:
 </div>
 </div>
 
-<div id="outline-container-orga31e30b" class="outline-2">
-<h2 id="orga31e30b"><span class="section-number-2">4.</span> Keybindings and Visuals</h2>
+<div id="outline-container-org5d9eba5" class="outline-2">
+<h2 id="org5d9eba5"><span class="section-number-2">4.</span> Keybindings and Visuals</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgc260f85" class="outline-3">
-<h3 id="orgc260f85"><span class="section-number-3">4.1.</span> File Manipulation Settings</h3>
+<div id="outline-container-org786588e" class="outline-3">
+<h3 id="org786588e"><span class="section-number-3">4.1.</span> File Manipulation Settings</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Let's make the function for loading settings:
@@ -571,8 +580,8 @@ Let's also add a command for listing Zotero-stored files for ease:
 </div>
 </div>
 
-<div id="outline-container-orge837ee1" class="outline-3">
-<h3 id="orge837ee1"><span class="section-number-3">4.2.</span> Editing Settings</h3>
+<div id="outline-container-orgd3703a3" class="outline-3">
+<h3 id="orgd3703a3"><span class="section-number-3">4.2.</span> Editing Settings</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 First we'll add some extra editing commands of my own&#x2026;
@@ -612,8 +621,8 @@ Some useful keybindings&#x2026;
 </div>
 </div>
 
-<div id="outline-container-orgf9bf409" class="outline-3">
-<h3 id="orgf9bf409"><span class="section-number-3">4.3.</span> Visual/Window settings</h3>
+<div id="outline-container-org26d2956" class="outline-3">
+<h3 id="org26d2956"><span class="section-number-3">4.3.</span> Visual/Window settings</h3>
 <div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(require 'windmove)
@@ -638,12 +647,12 @@ Some useful keybindings&#x2026;
 </div>
 </div>
 
-<div id="outline-container-orgd793b26" class="outline-4">
-<h4 id="orgd793b26"><span class="section-number-4">4.3.1.</span> <span class="todo TODO">TODO</span> Try EXWM (?)</h4>
+<div id="outline-container-orge04d8c9" class="outline-4">
+<h4 id="orge04d8c9"><span class="section-number-4">4.3.1.</span> <span class="todo TODO">TODO</span> Try EXWM (?)</h4>
 </div>
 
-<div id="outline-container-org2ac0949" class="outline-4">
-<h4 id="org2ac0949"><span class="section-number-4">4.3.2.</span> Dynamic Window Layouts</h4>
+<div id="outline-container-orgd82486a" class="outline-4">
+<h4 id="orgd82486a"><span class="section-number-4">4.3.2.</span> Dynamic Window Layouts</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
 Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
@@ -662,8 +671,7 @@ We first do an XMonad Tall layout:
        (if (one-window-p) (split-window-right)
 	 (progn
 	   (select-window (xmonad-tree-navigator (car (window-tree))))
-	   (split-window-below)
-	   (balance-windows))))
+	   (split-window-below))))
 </pre>
 </div>
 
@@ -696,14 +704,16 @@ And now we add a function to switch between layouts:
 (defun select-window-layout (symbol) (interactive "Slayout: ")
        (if (member symbol layout-list) (setq split-window-preferred-function symbol)
 	 (error "Not a layout in layout-list")))
+(defun current-window-layout () (interactive)
+       (message split-window-preferred-function))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org09ed4aa" class="outline-3">
-<h3 id="org09ed4aa"><span class="section-number-3">4.4.</span> Shortcut key</h3>
+<div id="outline-container-orgb0825e3" class="outline-3">
+<h3 id="orgb0825e3"><span class="section-number-3">4.4.</span> Shortcut key</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 We make a run key that gives a menu to different programs you might want a glance at.
@@ -723,9 +733,14 @@ We make a run key that gives a menu to different programs you might want a glanc
 </div>
 </div>
 </div>
-<div id="outline-container-orgef0905c" class="outline-2">
-<h2 id="orgef0905c"><span class="section-number-2">5.</span> Nyxt Integration</h2>
+
+<div id="outline-container-org2c2e373" class="outline-2">
+<h2 id="org2c2e373"><span class="section-number-2">5.</span> External Integrations</h2>
 <div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orga331413" class="outline-3">
+<h3 id="orga331413"><span class="section-number-3">5.1.</span> Nyxt Integration</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 Here we provide a couple of helper functions for interacting with <a href="https://nyxt.atlas.engineer">Nyxt</a>. I'll explain in a little more detail here.
 </p>
@@ -789,9 +804,75 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 </div>
 </div>
 </div>
+<div id="outline-container-org5097300" class="outline-3">
+<h3 id="org5097300"><span class="section-number-3">5.2.</span> Stumpwm</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Let's be able to give commands to Stumpwm. Instead of doing this through slime or Sly, we can do it through <code>stumpish</code>, a command shell for stumpwm. It's in the stumpwm contrib module. We save the path to it and make a function to run Lisp code in Stumpwm:
+</p>
 
-<div id="outline-container-org83a9fcc" class="outline-2">
-<h2 id="org83a9fcc"><span class="section-number-2">6.</span> Resources</h2>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq stumpish-path "~/.stumpwm.d/modules/util/stumpish/stumpish")
+(defun eval-in-stumpwm (s-exps) (call-process stumpish-path nil nil nil (format "eval %S" s-exps)))
+(defun eval-in-stumpwm-and-return (s-exps) (read (shell-command-to-string (concat
+									   stumpish-path " eval "
+									   (shell-quote-argument (format "%S" s-exps))))))
+(defun eval-region-in-stumpwm (start end) (interactive "r") (eval-in-stumpwm (read (buffer-substring start end))))
+</pre>
+</div>
+
+<p>
+We would also like to be able to pass ELisp to Emacs from Stumpwm:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(defun stumpwm-eval-in-emacs (s-exps)
+  (run-shell-command (concatenate 'string "emacsclient --eval '" (write-to-string s-exps :case :downcase) "'")))
+</pre>
+</div>
+
+
+
+<p>
+And now we're ready to write some helpful interaction commands!
+</p>
+</div>
+
+<div id="outline-container-org242c596" class="outline-4">
+<h4 id="org242c596"><span class="section-number-4">5.2.1.</span> <span class="todo TODO">TODO</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+First we collect the window tree from stumpwm:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(defun get-stumpwm-desktop () (eval-in-stumpwm-and-return
+			       '(progn
+				  (dump-desktop-to-file "~/.stumpwm.d/.desktop")
+				  ())))
+
+
+
+(defun make-desktop-to-buffer ()
+  (let (( window-tree (get-stumpwm-desktop)))
+    '()
+    )) ;;finish
+</pre>
+</div>
+
+<p>
+I am running into some problems with this&#x2026; Stumpwm doesn't expose enough useful functions to get a full desktop tree. Accessor functions are hidden, slot values as well&#x2026; Not sure what the solution is.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org0aabd71" class="outline-2">
+<h2 id="org0aabd71"><span class="section-number-2">6.</span> Resources</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Here's a brief list of resources for reading on Emacs&#x2026;
@@ -809,7 +890,7 @@ Here's a brief list of resources for reading on Emacs&#x2026;
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Samuel Wallace</p>
-<p class="date">Created: 2021-11-14 Sun 08:59</p>
+<p class="date">Created: 2021-11-15 Mon 10:00</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

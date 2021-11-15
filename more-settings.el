@@ -67,7 +67,7 @@
 (defhydra hydra-org-commands (org-mode-map "C-x h")
 ("<Up>" 'org-previous-visible-heading "prev heading")
 ("<Down>" 'org-next-visible-heading "next heading")
-("<tab>" 'org-indent-paragraph))
+("<tab>" 'org-indent-paragraph "indent paragraph"))
 
 (use-package org
   :defer t
@@ -143,8 +143,7 @@
        (if (one-window-p) (split-window-right)
 	 (progn
 	   (select-window (xmonad-tree-navigator (car (window-tree))))
-	   (split-window-below)
-	   (balance-windows))))
+	   (split-window-below))))
 
 (defun bsp-tree-navigator (tree)
   (if (windowp tree) tree
@@ -163,6 +162,8 @@
 (defun select-window-layout (symbol) (interactive "Slayout: ")
        (if (member symbol layout-list) (setq split-window-preferred-function symbol)
 	 (error "Not a layout in layout-list")))
+(defun current-window-layout () (interactive)
+       (message split-window-preferred-function))
 
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
@@ -190,6 +191,7 @@
 
 (setq stumpish-path "~/.stumpwm.d/modules/util/stumpish/stumpish")
 (defun eval-in-stumpwm (s-exps) (call-process stumpish-path nil nil nil (format "eval %S" s-exps)))
+(defun eval-in-stumpwm-and-return (s-exps) (read (shell-command-to-string (concat
+									   stumpish-path " eval "
+									   (shell-quote-argument (format "%S" s-exps))))))
 (defun eval-region-in-stumpwm (start end) (interactive "r") (eval-in-stumpwm (read (buffer-substring start end))))
-
-;; write some functions!

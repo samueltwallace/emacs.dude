@@ -393,7 +393,9 @@
     #+BEGIN_SRC emacs-lisp :tangle no
       
       (defun get-stumpwm-desktop () (eval-in-stumpwm-and-return
-				     '())) ;;finish!
+				     '(progn
+					(dump-desktop-to-file "~/.stumpwm.d/.desktop")
+					())))
       
       
       
@@ -402,6 +404,10 @@
 	  '()
 	  )) ;;finish
     #+END_SRC
+
+    I am running into some problems with this... Stumpwm doesn't expose enough useful functions to get a full desktop tree. Accessor functions are hidden, slot values as well... Not sure what the solution is.
+
+
 
 * Resources
 
