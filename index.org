@@ -294,6 +294,8 @@
       (defun select-window-layout (symbol) (interactive "Slayout: ")
 	     (if (member symbol layout-list) (setq split-window-preferred-function symbol)
 	       (error "Not a layout in layout-list")))
+      (defun current-window-layout () (interactive)
+	     (message split-window-preferred-function))
     #+END_SRC
 
 ** Shortcut key
