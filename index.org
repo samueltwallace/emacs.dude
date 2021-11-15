@@ -132,7 +132,7 @@
      (defhydra hydra-org-commands (org-mode-map "C-x h")
      ("<Up>" 'org-previous-visible-heading "prev heading")
      ("<Down>" 'org-next-visible-heading "next heading")
-     ("<tab>" 'org-indent-paragraph))
+     ("<tab>" 'org-indent-paragraph "indent paragraph"))
    #+END_SRC
     
      And we'll add a package load-time function
@@ -367,6 +367,9 @@
    #+BEGIN_SRC emacs-lisp
      (setq stumpish-path "~/.stumpwm.d/modules/util/stumpish/stumpish")
      (defun eval-in-stumpwm (s-exps) (call-process stumpish-path nil nil nil (format "eval %S" s-exps)))
+     (defun eval-in-stumpwm-and-return (s-exps) (read (shell-command-to-string (concat
+										stumpish-path " eval "
+										(shell-quote-argument (format "%S" s-exps))))))
      (defun eval-region-in-stumpwm (start end) (interactive "r") (eval-in-stumpwm (read (buffer-substring start end))))
    #+END_SRC
 
@@ -380,10 +383,23 @@
      
      
      And now we're ready to write some helpful interaction commands!
-     
-     #+BEGIN_SRC emacs-lisp
-   ;; write some functions!
-     #+END_SRC
+
+*** TODO Write major mode for editing a buffer for window manager interaction (dired/org-style)
+
+    First we collect the window tree from stumpwm:
+
+    #+BEGIN_SRC emacs-lisp :tangle no
+      
+      (defun get-stumpwm-desktop () (eval-in-stumpwm-and-return
+				     '())) ;;finish!
+      
+      
+      
+      (defun make-desktop-to-buffer ()
+	(let (( window-tree (get-stumpwm-desktop)))
+	  '()
+	  )) ;;finish
+    #+END_SRC
 
 * Resources
 
