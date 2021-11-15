@@ -405,8 +405,7 @@
 	  )) ;;finish
     #+END_SRC
 
-    I am running into some problems with this... Stumpwm doesn't expose enough useful functions to get a full desktop tree. Accessor functions are hidden, slot values as well... Not sure what the solution is.
-
+    I am running into some problems with this... Stumpwm doesn't expose enough useful functions to get a full desktop tree. Accessor functions are hidden, slot values as well... Not sure what the solution is. (Maybe try SLIME ?)
 
 
 * Resources
