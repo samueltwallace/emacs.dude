@@ -266,8 +266,7 @@
 		  (if (one-window-p) (split-window-right)
 		    (progn
 		      (select-window (xmonad-tree-navigator (car (window-tree))))
-		      (split-window-below)
-		      (balance-windows))))
+		      (split-window-below))))
     #+END_SRC
 
     And we do a BSPWM one:
