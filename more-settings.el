@@ -165,6 +165,13 @@
 (defun current-window-layout () (interactive)
        (message split-window-preferred-function))
 
+(use-package avy)
+(global-set-key (kbd "M-g g") 'avy-goto-char-2)
+(global-set-key (kbd "M-g M-g") 'avy-goto-line)
+(global-set-key (kbd "M-g k") 'avy-kill-region)
+(global-set-key (kbd "M-g t") 'avy-move-region)
+(global-set-key (kbd "M-g w") 'avy-copy-region)
+
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
 (defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
