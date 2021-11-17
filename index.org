@@ -202,8 +202,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (defun smart-kill-word () (interactive)
-       (backward-word)
-       (kill-word 1))
+       (forward-word)
+       (kill-word -1))
    #+END_SRC
   
    Let's load the packages and bind some keys...
@@ -419,7 +419,6 @@
     #+END_SRC
 
     I am running into some problems with this... Stumpwm doesn't expose enough useful functions to get a full desktop tree. Accessor functions are hidden, slot values as well... Not sure what the solution is. (Maybe try SLIME ?)
-
 
 * Resources
 
