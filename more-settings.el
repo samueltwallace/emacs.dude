@@ -101,8 +101,8 @@
        (find-dired "~/Zotero/storage" "-name '*.pdf'"))
 
 (defun smart-kill-word () (interactive)
-  (backward-word)
-  (kill-word 1))
+  (forward-word)
+  (kill-word -1))
 
 (defun editing-settings () (interactive)
        (use-package counsel)
