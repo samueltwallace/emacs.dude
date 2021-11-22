@@ -1,3 +1,5 @@
+(setq custom-file "~/.emacs.d/custom.el")
+(load-file custom-file)
 (use-package hydra)
 
 (defun neofetch () (interactive) (async-shell-command "neofetch" "*Neofetch*"))
@@ -56,6 +58,10 @@
 
 (defun org-init-settings ()
   (latex-in-org-settings)
+  (defhydra hydra-org-commands (org-mode-map "C-x h")
+    ("<Up>" 'org-previous-visible-heading "prev heading")
+    ("<Down>" 'org-next-visible-heading "next heading")
+    ("<tab>" 'org-indent-paragraph "indent paragraph"))
   (setq org-agenda-start-on-weekday 0)
   (setq org-todo-keywords
 	'((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
@@ -64,10 +70,7 @@
        (visual-line-mode)
        (org-cdlatex-mode))
 
-(defhydra hydra-org-commands (org-mode-map "C-x h")
-("<Up>" 'org-previous-visible-heading "prev heading")
-("<Down>" 'org-next-visible-heading "next heading")
-("<tab>" 'org-indent-paragraph "indent paragraph"))
+
 
 (use-package org
   :defer t

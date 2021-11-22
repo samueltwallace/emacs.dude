@@ -15,6 +15,8 @@
    There are some packages we need to load initially to use throughout:
 
    #+BEGIN_SRC emacs-lisp
+     (setq custom-file "~/.emacs.d/custom.el")
+     (load-file custom-file)
      (use-package hydra)
    #+END_SRC
 
@@ -113,6 +115,10 @@
    #+BEGIN_SRC emacs-lisp
      (defun org-init-settings ()
        (latex-in-org-settings)
+       (defhydra hydra-org-commands (org-mode-map "C-x h")
+	 ("<Up>" 'org-previous-visible-heading "prev heading")
+	 ("<Down>" 'org-next-visible-heading "next heading")
+	 ("<tab>" 'org-indent-paragraph "indent paragraph"))
        (setq org-agenda-start-on-weekday 0)
        (setq org-todo-keywords
 	     '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
@@ -129,10 +135,6 @@
    And a hydra for keybindings:
 
    #+BEGIN_SRC emacs-lisp
-     (defhydra hydra-org-commands (org-mode-map "C-x h")
-     ("<Up>" 'org-previous-visible-heading "prev heading")
-     ("<Down>" 'org-next-visible-heading "next heading")
-     ("<tab>" 'org-indent-paragraph "indent paragraph"))
    #+END_SRC
     
      And we'll add a package load-time function
