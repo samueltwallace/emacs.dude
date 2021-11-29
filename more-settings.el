@@ -137,10 +137,13 @@
 (unbind-key "C-z")
 (defun machine-uptime () (interactive) (shell-command "uptime"))
 (defun pacman-update () (interactive) (async-shell-command "sudo pacman -Syu"))
+(defun get-weather () (interactive)
+       (async-shell-command "curl -s 'https://wttr.in/chicago?0p'" "*wttr.in*" nil))
 (global-set-key (kbd "C-z p") 'ping)
 (global-set-key (kbd "C-z t") 'machine-uptime)
 (global-set-key (kbd "C-z b") 'battery)
 (global-set-key (kbd "C-z u") 'pacman-update)
+(global-set-key (kbd "C-z w") 'get-weather)
 
 (require 'windmove)
 (defhydra hydra-window-manip (global-map "C-x o")
@@ -159,6 +162,8 @@
   ("o" other-window "cycle-move")
   ("b" display-buffer "select buffer")
   ("c" clone-indirect-buffer-other-window "clone buffer")
+  ("x" kill-buffer "kill buffer")
+  ("q" bury-buffer "bury-buffer")
   )
 
 (defun xmonad-tree-navigator (tree)
