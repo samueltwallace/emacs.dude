@@ -96,7 +96,7 @@
 	 (use-package dired-x)
 	 (projectile-mode +1)
 	 (setq dired-listing-switches "-ahl")
-	 (define-key projectile-mode-map (kbd "M-,") 'projectile-command-map)
+	 (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
 	 (setq dired-guess-shell-alist-user
 	       '(("\\.pdf$" "zathura *")))))
 
@@ -132,8 +132,8 @@
 	 ("SPC" set-mark-command "set mark")
        ))
 
-(global-set-key (kbd "C-x p v") 'view-mode)
-(global-set-key (kbd "C-x p f") 'follow-mode)
+(global-set-key (kbd "C-c v v") 'view-mode)
+(global-set-key (kbd "C-c v f") 'follow-mode)
 (unbind-key "C-z")
 (defun machine-uptime () (interactive) (shell-command "uptime"))
 (defun pacman-update () (interactive) (async-shell-command "sudo pacman -Syu"))
