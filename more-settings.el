@@ -126,7 +126,7 @@
 	 ("w" forward-word "forward word")
 	 ("b" backward-word "back word")
 	 ("J" join-line "join line")
-	 ("k" kill-region "kill region")
+	 ("K" kill-region "kill region")
 	 ("r" kill-rectangle "kill rect")
 	 ("R" string-rectangle "replace rect")
 	 ("SPC" set-mark-command "set mark")
