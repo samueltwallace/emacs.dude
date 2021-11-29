@@ -243,10 +243,12 @@
      (global-set-key (kbd "C-x p v") 'view-mode)
      (global-set-key (kbd "C-x p f") 'follow-mode)
      (unbind-key "C-z")
+     (defun machine-uptime () (interactive) (shell-command "uptime"))
+     (defun pacman-update () (interactive) (async-shell-command "sudo pacman -Syu"))
      (global-set-key (kbd "C-z p") 'ping)
-     (glboal-set-key (kbd "C-z t") #'(lambda () (shell-command "uptime")))
+     (global-set-key (kbd "C-z t") 'machine-uptime)
      (global-set-key (kbd "C-z b") 'battery)
-     (global-set-key (kbd "C-z u") #'(lambda () (async-shell-command "sudo pacman -Syu")))
+     (global-set-key (kbd "C-z u") 'pacman-update)
    #+END_SRC
 
 ** Visual/Window settings
@@ -452,4 +454,5 @@
   - [[https://karthinks.com/software/latex-input-for-impatient-scholars/][LaTeX Input]]
   - [[https://sheer.tj/the_way_of_emacs.html][The Way of Emacs]]
   - [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs GitHub]]
+  - [[https://www.masteringemacs.org/][Mastering Emacs]]
   - The keybindings (in Emacs, of course) ~C-h r~ and ~C-h i~
