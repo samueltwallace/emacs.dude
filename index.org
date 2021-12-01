@@ -460,4 +460,5 @@
   - [[https://sheer.tj/the_way_of_emacs.html][The Way of Emacs]]
   - [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs GitHub]]
   - [[https://www.masteringemacs.org/][Mastering Emacs]]
+  - [[https://sachachua.com/blog/2014/04/emacs-beginner-resources/][Sacha Chua's Beginner Resources]]
   - The keybindings (in Emacs, of course) ~C-h r~ and ~C-h i~
