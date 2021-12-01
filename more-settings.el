@@ -70,8 +70,6 @@
        (visual-line-mode)
        (org-cdlatex-mode))
 
-
-
 (use-package org
   :defer t
   :config (org-init-settings))
@@ -111,6 +109,10 @@
        (use-package counsel)
        (use-package crux)
        (ivy-mode +1)
+       (counsel-mode +1)
+       (counsel-projectile-mode +1)
+       (ivy-bibtex +1)
+       (setq bibtex-completion-bibliography '("~/zoterolib.bib"))
        (global-set-key (kbd "C-x s") 'swiper)
        (global-set-key (kbd "C-k") 'crux-smart-kill-line)
        (global-set-key (kbd "M-d") 'smart-kill-word)
