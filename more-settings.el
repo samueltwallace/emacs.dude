@@ -34,15 +34,6 @@
   :ensure auctex
   :config (latex-init-settings))
 
-(defun latex-last-item () (interactive)
-       (isearch-backward "\\item"))
-(defun latex-last-section () (interactive)
-       (isearch-backward "\\.*section"))
-(defun latex-next-item () (interactive)
-       (isearch "\\item"))
-(defun latex-next-section () (interactive)
-       (isearch "\\.*section"))
-
 (defun latex-in-org-settings ()
   (progn
     (require 'ox-bibtex)
@@ -58,10 +49,6 @@
 
 (defun org-init-settings ()
   (latex-in-org-settings)
-  (defhydra hydra-org-commands (org-mode-map "C-x h")
-    ("<Up>" 'org-previous-visible-heading "prev heading")
-    ("<Down>" 'org-next-visible-heading "next heading")
-    ("<tab>" 'org-indent-paragraph "indent paragraph"))
   (setq org-agenda-start-on-weekday 0)
   (setq org-todo-keywords
 	'((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
@@ -105,6 +92,8 @@
   (forward-word)
   (kill-word -1))
 
+(setq sentence-end-double-space nil)
+
 (defun editing-settings () (interactive)
        (use-package counsel)
        (use-package crux)
@@ -147,26 +136,9 @@
 (global-set-key (kbd "C-z u") 'pacman-update)
 (global-set-key (kbd "C-z w") 'get-weather)
 
-(require 'windmove)
-(defhydra hydra-window-manip (global-map "C-x o")
-  ("H" shrink-window-horizontally "shrink horizontally")
-  ("L" enlarge-window-horizontally "grow horizontally")
-  ("J" enlarge-window "grow vertically")
-  ("0" delete-window "delete window")
-  ("1" delete-other-windows "fullscreen this one")
-  ("2" split-window-below "split below")
-  ("3" split-window-right "split right")
-  ("h" windmove-left "move left")
-  ("j" windmove-down "move down")
-  ("k" windmove-up "move up")
-  ("=" balance-windows "equal sizing")
-  ("L" windmove-right "move right")
-  ("o" other-window "cycle-move")
-  ("b" display-buffer "select buffer")
-  ("c" clone-indirect-buffer-other-window "clone buffer")
-  ("x" kill-buffer "kill buffer")
-  ("q" bury-buffer "bury-buffer")
-  )
+(global-set-key (kbd "M-o") 'ace-window)
+(global-set-key (kbd "C-x b") 'display-buffer)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
 (defun xmonad-tree-navigator (tree)
   (if (windowp tree) tree
@@ -214,25 +186,3 @@
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "s" 'search-in-nyxt)
 (add-menu-item "p" 'proced)
-
-(defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
-(defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
-
-(defun set-in-nyxt (variable elisp) (eval-in-nyxt `(setq ,variable (list ,@elisp))))
-(defun eval-region-in-nyxt (start end) (interactive "r") (eval-in-nyxt (read (buffer-substring start end))))
-
-(defun get-nyxt-buffers () (eval-in-nyxt
-			    '(eval-in-emacs
-			      `(setq nyxt-buffer-list
-				     (list ,@(mapcar #'title (buffer-list)))))))
-(defun search-in-nyxt (search-term) (interactive "sSeach in Nyxt:") (eval-in-nyxt
-								     `(buffer-load (make-instance 'new-url-query
-												  :query ,search-term
-												  :engine (first (last (search-engines (current-buffer))))))))
-
-(setq stumpish-path "~/.stumpwm.d/modules/util/stumpish/stumpish")
-(defun eval-in-stumpwm (s-exps) (call-process stumpish-path nil nil nil (format "eval %S" s-exps)))
-(defun eval-in-stumpwm-and-return (s-exps) (read (shell-command-to-string (concat
-									   stumpish-path " eval "
-									   (shell-quote-argument (format "%S" s-exps))))))
-(defun eval-region-in-stumpwm (start end) (interactive "r") (eval-in-stumpwm (read (buffer-substring start end))))

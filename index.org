@@ -20,7 +20,7 @@
      (use-package hydra)
    #+END_SRC
 
-** Neofetch Start Screen
+** Neofetch Start Screen :bling:
 
    We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
 
@@ -31,7 +31,7 @@
    #+END_SRC
 
 * Modes
-** Pure Latex
+** Pure Latex :TeX:
 
    We add a function for package load-time settings:
    #+BEGIN_SRC emacs-lisp
@@ -72,12 +72,15 @@
        :config (latex-init-settings))
    #+END_SRC
   
-*** TODO make minor mode for wrapping text in LaTeX but not math mode text
-*** Jump to items and sections
+*** CANCELLED make minor mode for wrapping text in LaTeX but not math mode text
+
+Decided I didn't mind... probably not worth the effort.
+
+*** CANCELLED Jump to items and sections
 
     Let's try to write a function that jumps to the previous thing...
 
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (defun latex-last-item () (interactive)
 	     (isearch-backward "\\item"))
       (defun latex-last-section () (interactive)
@@ -88,9 +91,10 @@
 	     (isearch "\\.*section"))
     #+END_SRC
    
-** Org Settings
+** Org Settings :Org:
 
    Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
+   
    #+BEGIN_SRC emacs-lisp
      (defun latex-in-org-settings ()
        (progn
@@ -115,10 +119,6 @@
    #+BEGIN_SRC emacs-lisp
      (defun org-init-settings ()
        (latex-in-org-settings)
-       (defhydra hydra-org-commands (org-mode-map "C-x h")
-	 ("<Up>" 'org-previous-visible-heading "prev heading")
-	 ("<Down>" 'org-next-visible-heading "next heading")
-	 ("<tab>" 'org-indent-paragraph "indent paragraph"))
        (setq org-agenda-start-on-weekday 0)
        (setq org-todo-keywords
 	     '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
@@ -193,7 +193,7 @@
 	    (find-dired "~/Zotero/storage" "-name '*.pdf'"))
    #+END_SRC
 
-** Editing Settings
+** Editing Settings :keys:
 
    First we'll add some extra editing commands of my own...
 
@@ -202,7 +202,13 @@
        (forward-word)
        (kill-word -1))
    #+END_SRC
-  
+
+   This makes conforms to how I do things:
+
+   #+BEGIN_SRC emacs-lisp
+     (setq sentence-end-double-space nil)
+   #+END_SRC
+
    Let's load the packages and bind some keys...
 
    #+BEGIN_SRC emacs-lisp
@@ -257,29 +263,14 @@
 
 
    #+BEGIN_SRC emacs-lisp
-     (require 'windmove)
-     (defhydra hydra-window-manip (global-map "C-x o")
-       ("H" shrink-window-horizontally "shrink horizontally")
-       ("L" enlarge-window-horizontally "grow horizontally")
-       ("J" enlarge-window "grow vertically")
-       ("0" delete-window "delete window")
-       ("1" delete-other-windows "fullscreen this one")
-       ("2" split-window-below "split below")
-       ("3" split-window-right "split right")
-       ("h" windmove-left "move left")
-       ("j" windmove-down "move down")
-       ("k" windmove-up "move up")
-       ("=" balance-windows "equal sizing")
-       ("L" windmove-right "move right")
-       ("o" other-window "cycle-move")
-       ("b" display-buffer "select buffer")
-       ("c" clone-indirect-buffer-other-window "clone buffer")
-       ("x" kill-buffer "kill buffer")
-       ("q" bury-buffer "bury-buffer")
-       )
+     (global-set-key (kbd "M-o") 'ace-window)
+     (global-set-key (kbd "C-x b") 'display-buffer)
+     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
    #+END_SRC
   
-*** TODO Try EXWM (?)
+*** CANCELLED Try EXWM (?) :bling:
+
+Decided not to. A fully-featured window manager is /probably/ better.
 
 *** Dynamic Window Layouts
 
@@ -287,16 +278,16 @@
 
     We first do an XMonad Tall layout:
     #+BEGIN_SRC emacs-lisp
-	   (defun xmonad-tree-navigator (tree)
-	     (if (windowp tree) tree
-	       (if (listp tree) (xmonad-tree-navigator (car (last tree)))
-		   (error "Encountered a non-list or non window argument"))))
-	  
-	   (defun xmonad-tall (curr-win)
-		  (if (one-window-p) (split-window-right)
-		    (progn
-		      (select-window (xmonad-tree-navigator (car (window-tree))))
-		      (split-window-below))))
+      (defun xmonad-tree-navigator (tree)
+	(if (windowp tree) tree
+	  (if (listp tree) (xmonad-tree-navigator (car (last tree)))
+	      (error "Encountered a non-list or non window argument"))))
+
+      (defun xmonad-tall (curr-win)
+	     (if (one-window-p) (split-window-right)
+	       (progn
+		 (select-window (xmonad-tree-navigator (car (window-tree))))
+		 (split-window-below))))
     #+END_SRC
 
     And we do a BSPWM one:
@@ -340,7 +331,7 @@
      (global-set-key (kbd "M-g w") 'avy-copy-region)
    #+END_SRC
 
-** Shortcut key
+** Shortcut key :keys:
 
    We make a run key that gives a menu to different programs you might want a glance at.
 
@@ -356,20 +347,20 @@
    #+END_SRC
 
 * External Integrations
-** Nyxt Integration
+** CANCELLED Nyxt Integration                                           :web:
 
    Here we provide a couple of helper functions for interacting with [[https://nyxt.atlas.engineer][Nyxt]]. I'll explain in a little more detail here.
 
    We pass Lisp code to the running Nyxt process via shell commands. This requires that ~REMOTE-EXECUTION-P~ must not be ~nil~ (in Nyxt). Once that is done, we can use the following functions to pass arbitrary Lisp code:
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (defun format-for-nyxt-eval (list)  (shell-quote-argument (format "%S" list))) ;; prepare lisp code to be passed to the shell
      (defun eval-in-nyxt (s-exps)  (call-process "nyxt" nil nil nil (concat "--remote --eval " (format-for-nyxt-eval s-exps))))
    #+END_SRC
 
    Now we can only do so by elisp code, to prevent mistakes. Now we can use it!
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (defun set-in-nyxt (variable elisp) (eval-in-nyxt `(setq ,variable (list ,@elisp))))
      (defun eval-region-in-nyxt (start end) (interactive "r") (eval-in-nyxt (read (buffer-substring start end))))
    #+END_SRC
@@ -394,7 +385,7 @@
 
    (Taken directly from [[https://nyxt.atlas.engineer/article/emacs-hacks.org][here]]) then we can use the following function in Emacs:
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (defun get-nyxt-buffers () (eval-in-nyxt
 				 '(eval-in-emacs
 				   `(setq nyxt-buffer-list
@@ -405,11 +396,11 @@
 												       :engine (first (last (search-engines (current-buffer))))))))
     
    #+END_SRC
-** Stumpwm
+** CANCELLED Stumpwm                                                     :wm:
 
    Let's be able to give commands to Stumpwm. Instead of doing this through slime or Sly, we can do it through ~stumpish~, a command shell for stumpwm. It's in the stumpwm contrib module. We save the path to it and make a function to run Lisp code in Stumpwm:
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (setq stumpish-path "~/.stumpwm.d/modules/util/stumpish/stumpish")
      (defun eval-in-stumpwm (s-exps) (call-process stumpish-path nil nil nil (format "eval %S" s-exps)))
      (defun eval-in-stumpwm-and-return (s-exps) (read (shell-command-to-string (concat
@@ -429,7 +420,7 @@
      
      And now we're ready to write some helpful interaction commands!
 
-*** TODO Write major mode for editing a buffer for window manager interaction (dired/org-style)
+*** CANCELLED Write major mode for editing a buffer for window manager interaction (dired/org-style)
 
     First we collect the window tree from stumpwm:
 
@@ -449,6 +440,8 @@
     #+END_SRC
 
     I am running into some problems with this... Stumpwm doesn't expose enough useful functions to get a full desktop tree. Accessor functions are hidden, slot values as well... Not sure what the solution is. (Maybe try SLIME ?)
+
+    Checking in on this after a while... I'm not using stumpwm so gave up.
 
 * Resources
 
