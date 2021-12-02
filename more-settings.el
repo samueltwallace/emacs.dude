@@ -111,7 +111,6 @@
        (ivy-mode +1)
        (counsel-mode +1)
        (counsel-projectile-mode +1)
-       (ivy-bibtex +1)
        (setq bibtex-completion-bibliography '("~/zoterolib.bib"))
        (global-set-key (kbd "C-x s") 'swiper)
        (global-set-key (kbd "C-k") 'crux-smart-kill-line)
