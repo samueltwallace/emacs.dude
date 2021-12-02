@@ -444,6 +444,7 @@ Decided not to. A fully-featured window manager is /probably/ better.
     Checking in on this after a while... I'm not using stumpwm so gave up.
 
 * Resources
+** Beginner and General Resources
 
   Here's a brief list of resources for reading on Emacs...
 
@@ -454,3 +455,12 @@ Decided not to. A fully-featured window manager is /probably/ better.
   - [[https://www.masteringemacs.org/][Mastering Emacs]]
   - [[https://sachachua.com/blog/2014/04/emacs-beginner-resources/][Sacha Chua's Beginner Resources]]
   - The keybindings (in Emacs, of course) ~C-h r~ and ~C-h i~
+
+** Other's Configs
+
+Here are some other well-developed configs I've found:
+
+  - [[https://sachachua.com/dotemacs/][Sacha Chua's config]]
+  - [[https://github.com/daviwil/emacs-from-scratch][Streamed Config]] A config built entirely on stream, so you can go and watch a video explanation of the config building process
+  - [[https://emacs.metaphoric.dev/][Megumacs]] A config I found randomly on GitHub
+  - [[https://protesilaos.com/emacs/dotemacs][Prot's config]] A config by an Emacs package writer
