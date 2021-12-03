@@ -138,6 +138,8 @@
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x b") 'display-buffer)
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(global-set-key (kbd "M-s m") 'counsel-imenu)
+(global-set-key (kbd "M-s b") 'counsel-ibuffer)
 
 (defun xmonad-tree-navigator (tree)
   (if (windowp tree) tree
