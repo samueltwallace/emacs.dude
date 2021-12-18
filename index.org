@@ -183,7 +183,7 @@ Decided I didn't mind... probably not worth the effort.
 	      (setq dired-listing-switches "-ahl")
 	      (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
 	      (setq dired-guess-shell-alist-user
-		    '(("\\.pdf$" "zathura *")))))
+		    '(("\\.pdf$" "okular *")))))
    #+END_SRC
 
    Let's also add a command for listing Zotero-stored files for ease:

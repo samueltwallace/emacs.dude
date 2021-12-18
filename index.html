@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-12-03 Fri 09:41 -->
+<!-- 2021-12-18 Sat 12:59 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sam's Emacs</title>
@@ -221,62 +221,62 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgecf69dd">1. Intro</a></li>
-<li><a href="#orgfaa2e18">2. Startup</a>
+<li><a href="#org08bee73">1. Intro</a></li>
+<li><a href="#orgf560094">2. Startup</a>
 <ul>
-<li><a href="#orgf507b4c">2.1. Loading Initial Packages</a></li>
-<li><a href="#org876adb0">2.2. Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></a></li>
+<li><a href="#orgf81414c">2.1. Loading Initial Packages</a></li>
+<li><a href="#org0a28ab1">2.2. Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org1a64458">3. Modes</a>
+<li><a href="#org8ddfc3b">3. Modes</a>
 <ul>
-<li><a href="#org7853c7e">3.1. Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></a>
+<li><a href="#org70b0d29">3.1. Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></a>
 <ul>
-<li><a href="#org4bded48">3.1.1. <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
-<li><a href="#org8667aba">3.1.2. <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</a></li>
+<li><a href="#org0631ad5">3.1.1. <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
+<li><a href="#orga533fb8">3.1.2. <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</a></li>
 </ul>
 </li>
-<li><a href="#org6cbd1f8">3.2. Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></a></li>
-<li><a href="#org0b01371">3.3. Mu4e Settings</a></li>
-<li><a href="#orgbc9d6ac">3.4. Hooks</a></li>
+<li><a href="#org1dd2851">3.2. Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></a></li>
+<li><a href="#org20ec0ab">3.3. Mu4e Settings</a></li>
+<li><a href="#org1de860d">3.4. Hooks</a></li>
 </ul>
 </li>
-<li><a href="#orgb6a8968">4. Keybindings and Visuals</a>
+<li><a href="#org8b60eac">4. Keybindings and Visuals</a>
 <ul>
-<li><a href="#org8e1ed09">4.1. File Manipulation Settings</a></li>
-<li><a href="#orgbd6900d">4.2. Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
-<li><a href="#orga64e30c">4.3. Visual/Window settings</a>
+<li><a href="#org6492e0a">4.1. File Manipulation Settings</a></li>
+<li><a href="#orgb928efc">4.2. Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
+<li><a href="#orgc906b84">4.3. Visual/Window settings</a>
 <ul>
-<li><a href="#org83b9c19">4.3.1. <span class="done CANCELLED">CANCELLED</span> Try EXWM (?)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></a></li>
-<li><a href="#org083e288">4.3.2. Dynamic Window Layouts</a></li>
+<li><a href="#org50d52bb">4.3.1. <span class="done CANCELLED">CANCELLED</span> Try EXWM (?)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></a></li>
+<li><a href="#org3e3ca92">4.3.2. Dynamic Window Layouts</a></li>
 </ul>
 </li>
-<li><a href="#org53f0ba8">4.4. Avy</a></li>
-<li><a href="#org9bb8412">4.5. Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
+<li><a href="#orgb7d57da">4.4. Avy</a></li>
+<li><a href="#org140d711">4.5. Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org70beee8">5. External Integrations</a>
+<li><a href="#org422e678">5. External Integrations</a>
 <ul>
-<li><a href="#org503ed73">5.1. <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
-<li><a href="#org8c67e81">5.2. <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></a>
+<li><a href="#orgb8582bc">5.1. <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
+<li><a href="#org31c2f2b">5.2. <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></a>
 <ul>
-<li><a href="#orgd0f498b">5.2.1. <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</a></li>
+<li><a href="#org61674d8">5.2.1. <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgae78919">6. Resources</a>
+<li><a href="#org637f295">6. Resources</a>
 <ul>
-<li><a href="#org805626c">6.1. Beginner and General Resources</a></li>
-<li><a href="#org161f244">6.2. Other's Configs</a></li>
+<li><a href="#orgb247ea4">6.1. Beginner and General Resources</a></li>
+<li><a href="#org70cd182">6.2. Other's Configs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgecf69dd" class="outline-2">
-<h2 id="orgecf69dd"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-org08bee73" class="outline-2">
+<h2 id="org08bee73"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Version controlling is done through Git.
@@ -288,12 +288,12 @@ Note that this creates a <i>separate</i> file for these extra settings; some are
 </div>
 </div>
 
-<div id="outline-container-orgfaa2e18" class="outline-2">
-<h2 id="orgfaa2e18"><span class="section-number-2">2.</span> Startup</h2>
+<div id="outline-container-orgf560094" class="outline-2">
+<h2 id="orgf560094"><span class="section-number-2">2.</span> Startup</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgf507b4c" class="outline-3">
-<h3 id="orgf507b4c"><span class="section-number-3">2.1.</span> Loading Initial Packages</h3>
+<div id="outline-container-orgf81414c" class="outline-3">
+<h3 id="orgf81414c"><span class="section-number-3">2.1.</span> Loading Initial Packages</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 There are some packages we need to load initially to use throughout:
@@ -308,8 +308,8 @@ There are some packages we need to load initially to use throughout:
 </div>
 </div>
 
-<div id="outline-container-org876adb0" class="outline-3">
-<h3 id="org876adb0"><span class="section-number-3">2.2.</span> Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></h3>
+<div id="outline-container-org0a28ab1" class="outline-3">
+<h3 id="org0a28ab1"><span class="section-number-3">2.2.</span> Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
@@ -325,12 +325,12 @@ We make a Neofetch start screen with lots of data for a startup screen (and for 
 </div>
 </div>
 
-<div id="outline-container-org1a64458" class="outline-2">
-<h2 id="org1a64458"><span class="section-number-2">3.</span> Modes</h2>
+<div id="outline-container-org8ddfc3b" class="outline-2">
+<h2 id="org8ddfc3b"><span class="section-number-2">3.</span> Modes</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org7853c7e" class="outline-3">
-<h3 id="org7853c7e"><span class="section-number-3">3.1.</span> Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></h3>
+<div id="outline-container-org70b0d29" class="outline-3">
+<h3 id="org70b0d29"><span class="section-number-3">3.1.</span> Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We add a function for package load-time settings:
@@ -381,8 +381,8 @@ And then we delay loading the package:
 </div>
 </div>
 
-<div id="outline-container-org4bded48" class="outline-4">
-<h4 id="org4bded48"><span class="section-number-4">3.1.1.</span> <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</h4>
+<div id="outline-container-org0631ad5" class="outline-4">
+<h4 id="org0631ad5"><span class="section-number-4">3.1.1.</span> <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Decided I didn't mind&#x2026; probably not worth the effort.
@@ -390,8 +390,8 @@ Decided I didn't mind&#x2026; probably not worth the effort.
 </div>
 </div>
 
-<div id="outline-container-org8667aba" class="outline-4">
-<h4 id="org8667aba"><span class="section-number-4">3.1.2.</span> <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</h4>
+<div id="outline-container-orga533fb8" class="outline-4">
+<h4 id="orga533fb8"><span class="section-number-4">3.1.2.</span> <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 Let's try to write a function that jumps to the previous thing&#x2026;
@@ -412,8 +412,8 @@ Let's try to write a function that jumps to the previous thing&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org6cbd1f8" class="outline-3">
-<h3 id="org6cbd1f8"><span class="section-number-3">3.2.</span> Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></h3>
+<div id="outline-container-org1dd2851" class="outline-3">
+<h3 id="org1dd2851"><span class="section-number-3">3.2.</span> Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
@@ -479,8 +479,8 @@ And we'll add a package load-time function
 </div>
 </div>
 
-<div id="outline-container-org0b01371" class="outline-3">
-<h3 id="org0b01371"><span class="section-number-3">3.3.</span> Mu4e Settings</h3>
+<div id="outline-container-org20ec0ab" class="outline-3">
+<h3 id="org20ec0ab"><span class="section-number-3">3.3.</span> Mu4e Settings</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 First, update mail settings:
@@ -506,8 +506,8 @@ And then we load the package
 </div>
 </div>
 </div>
-<div id="outline-container-orgbc9d6ac" class="outline-3">
-<h3 id="orgbc9d6ac"><span class="section-number-3">3.4.</span> Hooks</h3>
+<div id="outline-container-org1de860d" class="outline-3">
+<h3 id="org1de860d"><span class="section-number-3">3.4.</span> Hooks</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Now we add some good default hooks:
@@ -523,12 +523,12 @@ Now we add some good default hooks:
 </div>
 </div>
 
-<div id="outline-container-orgb6a8968" class="outline-2">
-<h2 id="orgb6a8968"><span class="section-number-2">4.</span> Keybindings and Visuals</h2>
+<div id="outline-container-org8b60eac" class="outline-2">
+<h2 id="org8b60eac"><span class="section-number-2">4.</span> Keybindings and Visuals</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org8e1ed09" class="outline-3">
-<h3 id="org8e1ed09"><span class="section-number-3">4.1.</span> File Manipulation Settings</h3>
+<div id="outline-container-org6492e0a" class="outline-3">
+<h3 id="org6492e0a"><span class="section-number-3">4.1.</span> File Manipulation Settings</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Let's make the function for loading settings:
@@ -544,7 +544,7 @@ Let's make the function for loading settings:
 	 (setq dired-listing-switches "-ahl")
 	 (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
 	 (setq dired-guess-shell-alist-user
-	       '(("\\.pdf$" "zathura *")))))
+	       '(("\\.pdf$" "okular *")))))
 </pre>
 </div>
 
@@ -560,8 +560,8 @@ Let's also add a command for listing Zotero-stored files for ease:
 </div>
 </div>
 
-<div id="outline-container-orgbd6900d" class="outline-3">
-<h3 id="orgbd6900d"><span class="section-number-3">4.2.</span> Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
+<div id="outline-container-orgb928efc" class="outline-3">
+<h3 id="orgb928efc"><span class="section-number-3">4.2.</span> Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 First we'll add some extra editing commands of my own&#x2026;
@@ -640,8 +640,8 @@ Some useful keybindings&#x2026;
 </div>
 </div>
 
-<div id="outline-container-orga64e30c" class="outline-3">
-<h3 id="orga64e30c"><span class="section-number-3">4.3.</span> Visual/Window settings</h3>
+<div id="outline-container-orgc906b84" class="outline-3">
+<h3 id="orgc906b84"><span class="section-number-3">4.3.</span> Visual/Window settings</h3>
 <div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-set-key (kbd "M-o") 'ace-window)
@@ -653,8 +653,8 @@ Some useful keybindings&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org83b9c19" class="outline-4">
-<h4 id="org83b9c19"><span class="section-number-4">4.3.1.</span> <span class="done CANCELLED">CANCELLED</span> Try EXWM (?)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></h4>
+<div id="outline-container-org50d52bb" class="outline-4">
+<h4 id="org50d52bb"><span class="section-number-4">4.3.1.</span> <span class="done CANCELLED">CANCELLED</span> Try EXWM (?)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></h4>
 <div class="outline-text-4" id="text-4-3-1">
 <p>
 Decided not to. A fully-featured window manager is <i>probably</i> better.
@@ -662,8 +662,8 @@ Decided not to. A fully-featured window manager is <i>probably</i> better.
 </div>
 </div>
 
-<div id="outline-container-org083e288" class="outline-4">
-<h4 id="org083e288"><span class="section-number-4">4.3.2.</span> Dynamic Window Layouts</h4>
+<div id="outline-container-org3e3ca92" class="outline-4">
+<h4 id="org3e3ca92"><span class="section-number-4">4.3.2.</span> Dynamic Window Layouts</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
 Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
@@ -723,8 +723,8 @@ And now we add a function to switch between layouts:
 </div>
 </div>
 
-<div id="outline-container-org53f0ba8" class="outline-3">
-<h3 id="org53f0ba8"><span class="section-number-3">4.4.</span> Avy</h3>
+<div id="outline-container-orgb7d57da" class="outline-3">
+<h3 id="orgb7d57da"><span class="section-number-3">4.4.</span> Avy</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 Let's get warmed up with some simple keybindings for avy:
@@ -742,8 +742,8 @@ Let's get warmed up with some simple keybindings for avy:
 </div>
 </div>
 
-<div id="outline-container-org9bb8412" class="outline-3">
-<h3 id="org9bb8412"><span class="section-number-3">4.5.</span> Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
+<div id="outline-container-org140d711" class="outline-3">
+<h3 id="org140d711"><span class="section-number-3">4.5.</span> Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 We make a run key that gives a menu to different programs you might want a glance at.
@@ -764,12 +764,12 @@ We make a run key that gives a menu to different programs you might want a glanc
 </div>
 </div>
 
-<div id="outline-container-org70beee8" class="outline-2">
-<h2 id="org70beee8"><span class="section-number-2">5.</span> External Integrations</h2>
+<div id="outline-container-org422e678" class="outline-2">
+<h2 id="org422e678"><span class="section-number-2">5.</span> External Integrations</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org503ed73" class="outline-3">
-<h3 id="org503ed73"><span class="section-number-3">5.1.</span> <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
+<div id="outline-container-orgb8582bc" class="outline-3">
+<h3 id="orgb8582bc"><span class="section-number-3">5.1.</span> <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Here we provide a couple of helper functions for interacting with <a href="https://nyxt.atlas.engineer">Nyxt</a>. I'll explain in a little more detail here.
@@ -834,8 +834,8 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 </div>
 </div>
 </div>
-<div id="outline-container-org8c67e81" class="outline-3">
-<h3 id="org8c67e81"><span class="section-number-3">5.2.</span> <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></h3>
+<div id="outline-container-org31c2f2b" class="outline-3">
+<h3 id="org31c2f2b"><span class="section-number-3">5.2.</span> <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 Let's be able to give commands to Stumpwm. Instead of doing this through slime or Sly, we can do it through <code>stumpish</code>, a command shell for stumpwm. It's in the stumpwm contrib module. We save the path to it and make a function to run Lisp code in Stumpwm:
@@ -868,8 +868,8 @@ And now we're ready to write some helpful interaction commands!
 </p>
 </div>
 
-<div id="outline-container-orgd0f498b" class="outline-4">
-<h4 id="orgd0f498b"><span class="section-number-4">5.2.1.</span> <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</h4>
+<div id="outline-container-org61674d8" class="outline-4">
+<h4 id="org61674d8"><span class="section-number-4">5.2.1.</span> <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <p>
 First we collect the window tree from stumpwm:
@@ -903,12 +903,12 @@ Checking in on this after a while&#x2026; I'm not using stumpwm so gave up.
 </div>
 </div>
 
-<div id="outline-container-orgae78919" class="outline-2">
-<h2 id="orgae78919"><span class="section-number-2">6.</span> Resources</h2>
+<div id="outline-container-org637f295" class="outline-2">
+<h2 id="org637f295"><span class="section-number-2">6.</span> Resources</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org805626c" class="outline-3">
-<h3 id="org805626c"><span class="section-number-3">6.1.</span> Beginner and General Resources</h3>
+<div id="outline-container-orgb247ea4" class="outline-3">
+<h3 id="orgb247ea4"><span class="section-number-3">6.1.</span> Beginner and General Resources</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 Here's a brief list of resources for reading on Emacs&#x2026;
@@ -926,8 +926,8 @@ Here's a brief list of resources for reading on Emacs&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org161f244" class="outline-3">
-<h3 id="org161f244"><span class="section-number-3">6.2.</span> Other's Configs</h3>
+<div id="outline-container-org70cd182" class="outline-3">
+<h3 id="org70cd182"><span class="section-number-3">6.2.</span> Other's Configs</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 Here are some other well-developed configs I've found:
@@ -945,7 +945,7 @@ Here are some other well-developed configs I've found:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Samuel Wallace</p>
-<p class="date">Created: 2021-12-03 Fri 09:41</p>
+<p class="date">Created: 2021-12-18 Sat 12:59</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

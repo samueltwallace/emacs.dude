@@ -83,7 +83,7 @@
 	 (setq dired-listing-switches "-ahl")
 	 (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
 	 (setq dired-guess-shell-alist-user
-	       '(("\\.pdf$" "zathura *")))))
+	       '(("\\.pdf$" "okular *")))))
 
 (defun zotero-store () (interactive)
        (find-dired "~/Zotero/storage" "-name '*.pdf'"))
