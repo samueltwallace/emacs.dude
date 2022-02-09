@@ -148,7 +148,7 @@ Decided I didn't mind... probably not worth the effort.
      (defun init-mail-settings () ()
        (setq
 	mu4e-get-mail-command "offlineimap -q -o"
-	mu4e-update-interval 3000))
+	mu4e-update-interval 30000))
    #+END_SRC
 
    And then we load the package

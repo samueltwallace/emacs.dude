@@ -64,7 +64,7 @@
 (defun init-mail-settings () ()
   (setq
    mu4e-get-mail-command "offlineimap -q -o"
-   mu4e-update-interval 3000))
+   mu4e-update-interval 30000))
 
 (use-package mu4e
   :load-path  "/usr/share/emacs/site-lisp/mu4e"
