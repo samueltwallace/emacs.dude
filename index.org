@@ -267,6 +267,7 @@ Decided I didn't mind... probably not worth the effort.
      (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
      (global-set-key (kbd "M-s m") 'counsel-imenu)
      (global-set-key (kbd "M-s b") 'counsel-ibuffer)
+     (global-set-key (kbd "M-S-x") 'counsel-linux-app)
    #+END_SRC
   
 *** CANCELLED Try EXWM (?) :bling:
@@ -319,6 +320,20 @@ Decided not to. A fully-featured window manager is /probably/ better.
 	     (message split-window-preferred-function))
     #+END_SRC
 
+** TODO Minibuffer Frame
+
+Here we create a pop-up minibuffer window to use where ever. The model is this: you should run ~emacsclient --eval '(runner)'~ and the minibuffer menu should appear.
+
+#+BEGIN_SRC emacs-lisp
+  (defun runner () (interactive)
+    (setq default-minibuffer-frame (make-frame '((minibuffer . only) (title . "erunner"))))
+    (setq minibuffer-auto-raise t))
+#+END_SRC
+
+Currently needs:
+ - raise frame if already created
+ - put frames in main frame
+
 ** Avy
 
    Let's get warmed up with some simple keybindings for avy:
@@ -330,6 +345,8 @@ Decided not to. A fully-featured window manager is /probably/ better.
      (global-set-key (kbd "M-g k") 'avy-kill-region)
      (global-set-key (kbd "M-g t") 'avy-move-region)
      (global-set-key (kbd "M-g w") 'avy-copy-region)
+     (global-set-key (kbd "M-g f") 'avy-goto-char-in-line)
+     (global-set-key (kbd "M-g e") 'avy-goto-end-of-line)
    #+END_SRC
 
 ** Shortcut key :keys:

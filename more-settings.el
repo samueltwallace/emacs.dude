@@ -140,6 +140,7 @@
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 (global-set-key (kbd "M-s m") 'counsel-imenu)
 (global-set-key (kbd "M-s b") 'counsel-ibuffer)
+(global-set-key (kbd "M-S-x") 'counsel-linux-app)
 
 (defun xmonad-tree-navigator (tree)
   (if (windowp tree) tree
@@ -172,12 +173,18 @@
 (defun current-window-layout () (interactive)
        (message split-window-preferred-function))
 
+(defun runner () (interactive)
+  (setq default-minibuffer-frame (make-frame '((minibuffer . only) (title . "erunner"))))
+  (setq minibuffer-auto-raise t))
+
 (use-package avy)
 (global-set-key (kbd "M-g g") 'avy-goto-char-2)
 (global-set-key (kbd "M-g M-g") 'avy-goto-line)
 (global-set-key (kbd "M-g k") 'avy-kill-region)
 (global-set-key (kbd "M-g t") 'avy-move-region)
 (global-set-key (kbd "M-g w") 'avy-copy-region)
+(global-set-key (kbd "M-g f") 'avy-goto-char-in-line)
+(global-set-key (kbd "M-g e") 'avy-goto-end-of-line)
 
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
