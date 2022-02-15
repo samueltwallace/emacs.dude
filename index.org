@@ -332,7 +332,7 @@ Here we create a pop-up minibuffer window to use where ever. The model is this: 
 
 Currently needs:
  - raise frame if already created
- - put frames in main frame
+ - put windows in main frame
 
 ** Avy
 
