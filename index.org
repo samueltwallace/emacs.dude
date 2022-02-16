@@ -325,10 +325,10 @@ Decided not to. A fully-featured window manager is /probably/ better.
 Here we create a pop-up minibuffer window to use where ever. The model is this: you should run ~emacsclient --eval '(runner)'~ and the minibuffer menu should appear.
 
 #+BEGIN_SRC emacs-lisp
-       (defun runner () (interactive)
-	      (setq default-minibuffer-frame (make-frame
-					      '((minibuffer . only) (title . "erunner") (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
-	      (setq minibuffer-auto-raise t))
+  (defun runner () (interactive)
+	 (setq default-minibuffer-frame (make-frame
+					 '((minibuffer . only) (title . "erunner") (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
+	 (setq minibuffer-auto-raise t))
 #+END_SRC
 
 Currently needs:
