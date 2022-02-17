@@ -140,7 +140,7 @@
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 (global-set-key (kbd "M-s m") 'counsel-imenu)
 (global-set-key (kbd "M-s b") 'counsel-ibuffer)
-(global-set-key (kbd "M-S-x") 'counsel-linux-app)
+(global-set-key (kbd "M-z") 'counsel-linux-app)
 
 (defun xmonad-tree-navigator (tree)
   (if (windowp tree) tree
@@ -174,8 +174,9 @@
        (message split-window-preferred-function))
 
 (defun runner () (interactive)
-  (setq default-minibuffer-frame (make-frame '((minibuffer . only) (title . "erunner"))))
-  (setq minibuffer-auto-raise t))
+       (setq default-minibuffer-frame (make-frame
+				       '((minibuffer . only) (title . "erunner") (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
+       (setq minibuffer-auto-raise t))
 
 (use-package avy)
 (global-set-key (kbd "M-g g") 'avy-goto-char-2)
