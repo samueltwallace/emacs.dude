@@ -176,3 +176,14 @@
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "s" 'search-in-nyxt)
 (add-menu-item "p" 'proced)
+
+(use-package elfeed)
+(global-set-key (kbd "C-; e") 'elfeed)
+(setq elfeed-feeds
+      '(("http://arxiv.org/rss/math.AP" preprint)
+	("https://cvgmt.sns.it/papers/rss.xml" preprint)
+	("http://arxiv.org/rss/cond-mat.soft" preprint)
+	("https://planet.emacslife.com/atom.xml" emacs)
+	("https://kbd.news/rss2.php" keyboard)
+	("https://sachachua.com/blog/feed/" emacs)
+	))

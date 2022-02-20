@@ -443,6 +443,23 @@ Currently needs:
 
     Checking in on this after a while... I'm not using stumpwm so gave up.
 
+** Elfeed
+
+Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
+
+#+BEGIN_src emacs-lisp
+  (use-package elfeed)
+  (global-set-key (kbd "C-; e") 'elfeed)
+  (setq elfeed-feeds
+	'(("http://arxiv.org/rss/math.AP" preprint)
+	  ("https://cvgmt.sns.it/papers/rss.xml" preprint)
+	  ("http://arxiv.org/rss/cond-mat.soft" preprint)
+	  ("https://planet.emacslife.com/atom.xml" emacs)
+	  ("https://kbd.news/rss2.php" keyboard)
+	  ("https://sachachua.com/blog/feed/" emacs)
+	  ))
+#+END_src
+
 * Resources
 ** Beginner and General Resources
 
