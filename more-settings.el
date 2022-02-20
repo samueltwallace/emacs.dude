@@ -177,7 +177,8 @@
 (add-menu-item "s" 'search-in-nyxt)
 (add-menu-item "p" 'proced)
 
-(use-package elfeed)
+(use-package elfeed
+  :ensure t)
 (global-set-key (kbd "C-; e") 'elfeed)
 (setq elfeed-feeds
       '(("http://arxiv.org/rss/math.AP" preprint)

@@ -448,7 +448,8 @@ Currently needs:
 Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 
 #+BEGIN_src emacs-lisp
-  (use-package elfeed)
+  (use-package elfeed
+    :ensure t)
   (global-set-key (kbd "C-; e") 'elfeed)
   (setq elfeed-feeds
 	'(("http://arxiv.org/rss/math.AP" preprint)
