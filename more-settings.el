@@ -7,6 +7,10 @@
 
 (defun latex-init-settings ()
   (setq TeX-parse-self t)
+  (add-to-list 'TeX-command-list
+	       '("latexmk lualatex compile" "latexmk -lualatex %s" TeX-run-command nil t)
+	       '("latexmk lualatex preview" "latexmk -lualatex -pvc -view=none %s" TeX-run-command nil t))
+  (setq TeX-view-program-selection '((output-pdf "Okular")))
   (setq cdlatex-math-modify-alist
 	'((98 "\\mathbb" nil t nil nil)))
   (setq cdlatex-math-symbol-alist
