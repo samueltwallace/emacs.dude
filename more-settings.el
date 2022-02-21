@@ -48,11 +48,19 @@
 (defun org-init-settings ()
   (latex-in-org-settings)
   (setq org-agenda-start-on-weekday 0)
+  (require 'org-ref-ivy)
+  (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+ org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+ org-ref-insert-label-function 'org-ref-insert-label-link
+ org-ref-insert-ref-function 'org-ref-insert-ref-link)
+  (require 'org-ref)
+  (require 'org-noter)
   (setq org-todo-keywords
 	'((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
 
 (defun org-hook () ()
        (visual-line-mode)
+       (local-set-key (kbd "C-c ]") 'org-ref-insert-link-hydra)
        (org-cdlatex-mode))
 
 (use-package org
