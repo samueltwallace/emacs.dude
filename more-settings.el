@@ -196,3 +196,5 @@
 	("https://kbd.news/rss2.php" keyboard)
 	("https://sachachua.com/blog/feed/" emacs)
 	))
+
+(defun wiki-search (search-term) (interactive "sSearch Wikipedia: ") (browse-url (concat "https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" search-term)))

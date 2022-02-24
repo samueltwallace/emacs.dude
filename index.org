@@ -469,6 +469,14 @@ Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 	  ))
 #+END_src
 
+** Wikipedia Search
+
+Let's search Wikipedia...
+
+#+BEGIN_src emacs-lisp
+  (defun wiki-search (search-term) (interactive "sSearch Wikipedia: ") (browse-url (concat "https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" search-term)))
+#+END_src
+
 * Resources
 ** Beginner and General Resources
 
