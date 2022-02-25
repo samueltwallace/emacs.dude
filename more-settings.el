@@ -131,6 +131,40 @@
 (global-set-key (kbd "M-s b") 'counsel-ibuffer)
 (global-set-key (kbd "M-z") 'counsel-linux-app)
 
+(defun exwm-settings ()
+  (setq exwm-workspace-number 4)
+  (add-hook 'exwm-update-class-hook
+	(lambda ()
+	  (unless (or (string-prefix-p "sun-awt-X11-" exwm-instance-name)
+		      (string= "gimp" exwm-instance-name))
+	    (exwm-workspace-rename-buffer exwm-class-name))))
+  (add-hook 'exwm-update-title-hook
+	    (lambda ()
+	  (when (or (not exwm-instance-name)
+		    (string-prefix-p "sun-awt-X11-" exwm-instance-name)
+		    (string= "gimp" exwm-instance-name))
+	    (exwm-workspace-rename-buffer exwm-title))))
+  (setq exwm-input-global-keys
+	`((,(kbd "s-SPC") . (lambda (command)
+			      (interactive (list (read-shell-command "$ ")))
+			      (start-process-shell-command command nil command)))
+	  (,(kbd "s-r") . exwm-reset)
+	  (,(kbd "s-o") . exwm-workspace-switch)
+	  )
+	)
+  (exwm-enable)
+  )
+(use-package exwm-randr
+  :config (progn
+	    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "HDMI-1"))
+	    (add-hook 'ewm-randr-screen-change-hook
+		      (lambda ()
+			(start-process-shell-command
+			 "xrandr" nil "xrandr --output HDMI-1 --right-of eDP-1 --auto")))
+	    (exwm-randr-enable)))
+(use-package exwm
+  :config (exwm-settings))
+
 (defun xmonad-tree-navigator (tree)
   (if (windowp tree) tree
     (if (listp tree) (xmonad-tree-navigator (car (last tree)))
