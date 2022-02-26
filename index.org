@@ -518,6 +518,13 @@ Let's search Wikipedia...
   (defun wiki-search (search-term) (interactive "sSearch Wikipedia: ") (browse-url (concat "https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" search-term)))
 #+END_src
 
+** PDF tools
+
+#+BEGIN_SRC emacs-lisp
+  (use-package pdf-tools
+    :config (pdf-tools-install))
+#+END_SRC
+
 * Resources
 ** Beginner and General Resources
 

@@ -232,3 +232,6 @@
 	))
 
 (defun wiki-search (search-term) (interactive "sSearch Wikipedia: ") (browse-url (concat "https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" search-term)))
+
+(use-package pdf-tools
+  :config (pdf-tools-install))
