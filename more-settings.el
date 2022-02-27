@@ -156,7 +156,7 @@
   )
 (use-package exwm-randr
   :config (progn
-	    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "HDMI-1"))
+	    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "HDMI-1" 2 "eDP-1" 3 "HDMI-1"))
 	    (add-hook 'ewm-randr-screen-change-hook
 		      (lambda ()
 			(start-process-shell-command
