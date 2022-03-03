@@ -150,6 +150,7 @@
 			      (start-process-shell-command command nil command)))
 	  (,(kbd "s-r") . exwm-reset)
 	  (,(kbd "s-o") . exwm-workspace-switch)
+	  (,(kbd "s-g") . (lambda () (start-process "slock" nil "slock")))
 	  )
 	)
   (exwm-enable)
