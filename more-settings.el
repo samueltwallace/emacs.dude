@@ -152,13 +152,14 @@
 			      (start-process-shell-command command nil command)))
 	  (,(kbd "s-r") . exwm-reset)
 	  (,(kbd "s-o") . exwm-workspace-switch)
+	  (,(kbd "s-g") . (lambda () (start-process "slock" nil "slock")))
 	  )
 	)
   (exwm-enable)
   )
 (use-package exwm-randr
   :config (progn
-	    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "HDMI-1" 2 "eDP-1" 3 "HDMI-1"))
+	    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "eDP-1" 2 "HDMI-1" 3 "HDMI-1" 4 "DP-1" 5 "DP-1"))
 	    (add-hook 'ewm-randr-screen-change-hook
 		      (lambda ()
 			(start-process-shell-command
