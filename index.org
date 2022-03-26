@@ -37,11 +37,13 @@
      (defun latex-init-settings ()
        (setq TeX-parse-self t)
        (add-to-list 'TeX-command-list
-		    '("latexmk lualatex compile" "latexmk -lualatex %s" TeX-run-command nil t)
+		    '("latexmk lualatex compile" "latexmk -lualatex %s" TeX-run-command nil t))
+       (add-to-list 'TeX-command-list
 		    '("latexmk lualatex preview" "latexmk -lualatex -pvc -view=none %s" TeX-run-command nil t))
        (setq TeX-view-program-selection '((output-pdf "Okular")))
        (setq cdlatex-math-modify-alist
-	     '((98 "\\mathbb" nil t nil nil)))
+	     '((98 "\\mathbb" nil t nil nil)
+	       (102 "\\mathfrak" nil t nil nil)))
        (setq cdlatex-math-symbol-alist
 	     '((120 "\\chi" "\\otimes")
 	       (62 "\\geq" "\\geqsim" "\\rangle")
@@ -49,7 +51,7 @@
 	       (40 "\\left(")
 	       (41 "\\right)")
 	       (91 "\\left[")
-	       (92 "\\right]"))))
+	       (93 "\\right]"))))
    #+END_SRC
 
    Let's set a mode hook function:
