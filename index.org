@@ -365,8 +365,8 @@ Here we create a pop-up minibuffer window to use where ever. The model is this: 
 #+END_SRC
 
 Currently needs:
- - raise frame if already created
- - *DONE* put windows in main frame (just use ~C-x C-f~ or regular keybindings; just not the usual keybinds)
+ - [ ] raise frame if already created
+ - [X] put windows in main frame (just use ~C-x C-f~ or regular keybindings; just not the usual keybinds)
 
 ** Avy
 
