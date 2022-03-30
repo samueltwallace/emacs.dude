@@ -14,6 +14,8 @@
   (setq TeX-view-program-selection '((output-pdf "Okular")))
   (setq cdlatex-math-modify-alist
 	'((98 "\\mathbb" nil t nil nil)
+	  (124 "\\abs*" nil t nil nil)
+	  (123 "\\set*" nil t nil nil)
 	  (102 "\\mathfrak" nil t nil nil)))
   (setq cdlatex-math-symbol-alist
 	'((120 "\\chi" "\\otimes")
