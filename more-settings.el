@@ -206,12 +206,10 @@
 				       '((minibuffer . only) (title . "erunner") (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
        (setq minibuffer-auto-raise t))
 
-(use-package avy)
+(use-package avy) 
 (global-set-key (kbd "M-g g") 'avy-goto-char-2)
+(global-set-key (kbd "M-g c") 'avy-goto-char)
 (global-set-key (kbd "M-g M-g") 'avy-goto-line)
-(global-set-key (kbd "M-g k") 'avy-kill-region)
-(global-set-key (kbd "M-g t") 'avy-move-region)
-(global-set-key (kbd "M-g w") 'avy-copy-region)
 (global-set-key (kbd "M-g f") 'avy-goto-char-in-line)
 (global-set-key (kbd "M-g e") 'avy-goto-end-of-line)
 
@@ -221,7 +219,6 @@
 (add-menu-item "m" 'mu4e)
 (add-menu-item "i" 'find-init-file)
 (add-menu-item "a" 'org-agenda)
-(add-menu-item "s" 'search-in-nyxt)
 (add-menu-item "p" 'proced)
 
 (use-package elfeed
