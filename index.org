@@ -327,14 +327,14 @@ Here we goooo....
 		 (split-window-below))))
     #+END_SRC
 
-    And we do a BSPWM one:
+    And we do a BSPWM one (or a vertical split version):
 
     #+BEGIN_SRC emacs-lisp
       (defun bsp-tree-navigator (tree)
 	(if (windowp tree) tree
 	  (if (listp tree) (bsp-tree-navigator (car (last tree)))
 	    (error "Encountered a non-list or non-window argument"))))
-     
+
       (defun bspwm (curr-win)
 	     (let ((to-window (bsp-tree-navigator (car (window-tree)))))
 	       (progn
@@ -342,12 +342,20 @@ Here we goooo....
 		 (if (window-combined-p to-window t)
 		     (split-window-below)
 		   (split-window-right)))))
+      
+      (defun bspwm-vert (curr-win)
+	     (let ((to-window (bsp-tree-navigator (car (window-tree)))))
+	       (progn
+		 (select-window to-window)
+		 (if (window-combined-p to-window t)
+		     (split-window-right)
+		   (split-window-below)))))
     #+END_SRC
 
     And now we add a function to switch between layouts:
 
     #+BEGIN_SRC emacs-lisp
-      (setq layout-list '(split-window-sensibly xmonad-tall bspwm))
+      (setq layout-list '(split-window-sensibly xmonad-tall bspwm bspwm-vert))
       (defun select-window-layout (symbol) (interactive "Slayout: ")
 	     (if (member symbol layout-list) (setq split-window-preferred-function symbol)
 	       (error "Not a layout in layout-list")))

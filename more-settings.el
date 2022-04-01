@@ -194,7 +194,15 @@
 	       (split-window-below)
 	     (split-window-right)))))
 
-(setq layout-list '(split-window-sensibly xmonad-tall bspwm))
+(defun bspwm-vert (curr-win)
+       (let ((to-window (bsp-tree-navigator (car (window-tree)))))
+	 (progn
+	   (select-window to-window)
+	   (if (window-combined-p to-window t)
+	       (split-window-right)
+	     (split-window-below)))))
+
+(setq layout-list '(split-window-sensibly xmonad-tall bspwm bspwm-vert))
 (defun select-window-layout (symbol) (interactive "Slayout: ")
        (if (member symbol layout-list) (setq split-window-preferred-function symbol)
 	 (error "Not a layout in layout-list")))
