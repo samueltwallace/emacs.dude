@@ -40,6 +40,8 @@
 		    '("latexmk lualatex compile" "latexmk -lualatex %s" TeX-run-command nil t))
        (add-to-list 'TeX-command-list
 		    '("latexmk lualatex preview" "latexmk -lualatex -pvc -view=none %s" TeX-run-command nil t))
+       (add-to-list 'TeX-command-list
+		    '("latexindent" "latexindent -w %s" TeX-run-command nil t))
        (setq TeX-view-program-selection '((output-pdf "Okular")))
        (setq cdlatex-math-modify-alist
 	     '((98 "\\mathbb" nil t nil nil)
