@@ -30,7 +30,7 @@
    #+END_SRC
 
 * Modes
-** Pure Latex :TeX:
+** TODO Pure Latex                                                      :TeX:
 
    We add a function for package load-time settings:
    #+BEGIN_SRC emacs-lisp
@@ -395,6 +395,7 @@ Currently needs:
      (add-menu-item "i" 'find-init-file)
      (add-menu-item "a" 'org-agenda)
      (add-menu-item "p" 'proced)
+     (add-menu-item "b" 'ivy-bibtex)
    #+END_SRC
 
 * External Integrations

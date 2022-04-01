@@ -220,6 +220,7 @@
 (add-menu-item "i" 'find-init-file)
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "p" 'proced)
+(add-menu-item "b" 'ivy-bibtex)
 
 (use-package elfeed
   :ensure t)
