@@ -263,7 +263,7 @@ Decided I didn't mind... probably not worth the effort.
      (global-set-key (kbd "M-z") 'counsel-linux-app)
    #+END_SRC
   
-*** IN PROGRESS Try EXWM                                              :bling:
+*** IN PROGRESS Try EXWM                                           :bling:wm:
 
 +Decided not to. A fully-afeatured window manager is /probably/ better.+
 
@@ -493,9 +493,9 @@ Currently needs:
 
     I am running into some problems with this... Stumpwm doesn't expose enough useful functions to get a full desktop tree. Accessor functions are hidden, slot values as well... Not sure what the solution is. (Maybe try SLIME ?)
 
-    Checking in on this after a while... I'm not using stumpwm so gave up.
+    <2021-11-15 Mon> Checking in on this after a while... I'm not using stumpwm so gave up.
 
-** Elfeed
+** Elfeed                                                               :web:
 
 Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 
@@ -513,7 +513,7 @@ Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 	  ))
 #+END_src
 
-** Wikipedia Search
+** Wikipedia Search                                                     :web:
 
 Let's search Wikipedia...
 
