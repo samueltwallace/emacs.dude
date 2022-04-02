@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-01 Fri 08:30 -->
-<meta charset="utf-8" />
+<!-- 2022-04-01 Fri 10:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sam's Emacs</title>
 <meta name="author" content="Samuel Wallace" />
@@ -221,66 +223,66 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7f9f5eb">1. Intro</a></li>
-<li><a href="#org7ad8cac">2. Startup</a>
+<li><a href="#orgabfe9ae">1. Intro</a></li>
+<li><a href="#org36adad3">2. Startup</a>
 <ul>
-<li><a href="#orga03d10a">2.1. Loading Initial Packages</a></li>
-<li><a href="#org8abe282">2.2. Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></a></li>
+<li><a href="#org79f994d">2.1. Loading Initial Packages</a></li>
+<li><a href="#org327cec5">2.2. Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org1f938c5">3. Modes</a>
+<li><a href="#org299e4f5">3. Modes</a>
 <ul>
-<li><a href="#org5bcc955">3.1. <span class="todo TODO">TODO</span> Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></a>
+<li><a href="#org29f4d08">3.1. <span class="todo TODO">TODO</span> Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></a>
 <ul>
-<li><a href="#org9c7d3a5">3.1.1. <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
-<li><a href="#org0dea697">3.1.2. <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</a></li>
+<li><a href="#org4543f23">3.1.1. <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</a></li>
+<li><a href="#orgbec24e6">3.1.2. <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</a></li>
 </ul>
 </li>
-<li><a href="#org56ea916">3.2. Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></a></li>
-<li><a href="#org28cd540">3.3. Mu4e Settings</a></li>
-<li><a href="#org5b46f1c">3.4. Hooks</a></li>
+<li><a href="#orgd47257f">3.2. Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></a></li>
+<li><a href="#orgd5c93a3">3.3. Mu4e Settings</a></li>
+<li><a href="#orge05a2ef">3.4. Hooks</a></li>
 </ul>
 </li>
-<li><a href="#org898e19e">4. Keybindings and Visuals</a>
+<li><a href="#org7e07e38">4. Keybindings and Visuals</a>
 <ul>
-<li><a href="#org8a08332">4.1. File Manipulation Settings</a></li>
-<li><a href="#org25a7429">4.2. Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
-<li><a href="#org8cb9c6a">4.3. Visual/Window settings</a>
+<li><a href="#orgafbe628">4.1. File Manipulation Settings</a></li>
+<li><a href="#org65dadfb">4.2. Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
+<li><a href="#org8e3d085">4.3. Visual/Window settings</a>
 <ul>
-<li><a href="#orgc1d1b0b">4.3.1. <span class="todo IN_PROGRESS">IN PROGRESS</span> Try EXWM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span>&#xa0;<span class="wm">wm</span></span></a></li>
-<li><a href="#orgf84f853">4.3.2. Dynamic Window Layouts</a></li>
+<li><a href="#org50725f6">4.3.1. <span class="todo IN_PROGRESS">IN PROGRESS</span> Try EXWM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span>&#xa0;<span class="wm">wm</span></span></a></li>
+<li><a href="#org0dc2834">4.3.2. Dynamic Window Layouts</a></li>
 </ul>
 </li>
-<li><a href="#org04a48a5">4.4. <span class="todo TODO">TODO</span> Minibuffer Frame</a></li>
-<li><a href="#org6bfe2f4">4.5. Avy</a></li>
-<li><a href="#org7956fce">4.6. Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
+<li><a href="#orgc9497de">4.4. <span class="todo TODO">TODO</span> Minibuffer Frame</a></li>
+<li><a href="#org128d46b">4.5. Avy</a></li>
+<li><a href="#org0510022">4.6. Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></a></li>
 </ul>
 </li>
-<li><a href="#orgb64afbc">5. External Integrations</a>
+<li><a href="#org4e3b51e">5. External Integrations</a>
 <ul>
-<li><a href="#orgb33a8dd">5.1. <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
-<li><a href="#orgaf13827">5.2. <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></a>
+<li><a href="#org3ffee6d">5.1. <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
+<li><a href="#orge5277a4">5.2. <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></a>
 <ul>
-<li><a href="#orgae881b5">5.2.1. <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</a></li>
+<li><a href="#org507a7c2">5.2.1. <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</a></li>
 </ul>
 </li>
-<li><a href="#org3e79418">5.3. Elfeed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
-<li><a href="#org948f59b">5.4. Wikipedia Search&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
-<li><a href="#orgde7c2bd">5.5. PDF tools</a></li>
+<li><a href="#orge16eb56">5.3. Elfeed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
+<li><a href="#orgd346ab4">5.4. Wikipedia Search&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></a></li>
+<li><a href="#org9c8f097">5.5. PDF tools</a></li>
 </ul>
 </li>
-<li><a href="#orgeb4bd62">6. Resources</a>
+<li><a href="#orgbae314e">6. Resources</a>
 <ul>
-<li><a href="#orgc6eda8f">6.1. Beginner and General Resources</a></li>
-<li><a href="#org0dccfe8">6.2. Other's Configs</a></li>
+<li><a href="#orge1f3c4c">6.1. Beginner and General Resources</a></li>
+<li><a href="#orgae5ff70">6.2. Other's Configs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7f9f5eb" class="outline-2">
-<h2 id="org7f9f5eb"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-orgabfe9ae" class="outline-2">
+<h2 id="orgabfe9ae"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This config is mainly for writing a mixture of Org and \(\LaTeX\) documents. Version controlling is done through Git.
@@ -292,35 +294,35 @@ Note that this creates a <i>separate</i> file for these extra settings; some are
 </div>
 </div>
 
-<div id="outline-container-org7ad8cac" class="outline-2">
-<h2 id="org7ad8cac"><span class="section-number-2">2.</span> Startup</h2>
+<div id="outline-container-org36adad3" class="outline-2">
+<h2 id="org36adad3"><span class="section-number-2">2.</span> Startup</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orga03d10a" class="outline-3">
-<h3 id="orga03d10a"><span class="section-number-3">2.1.</span> Loading Initial Packages</h3>
+<div id="outline-container-org79f994d" class="outline-3">
+<h3 id="org79f994d"><span class="section-number-3">2.1.</span> Loading Initial Packages</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 There are some packages we need to load initially to use throughout:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">setq</span> custom-file <span style="color: #b8bb26;">"~/.emacs.d/custom.el"</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">setq</span> custom-file <span style="color: #f1fa8c;">"~/.emacs.d/custom.el"</span>)
 (load-file custom-file)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8abe282" class="outline-3">
-<h3 id="org8abe282"><span class="section-number-3">2.2.</span> Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></h3>
+<div id="outline-container-org327cec5" class="outline-3">
+<h3 id="org327cec5"><span class="section-number-3">2.2.</span> Neofetch Start Screen&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span></span></h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 We make a Neofetch start screen with lots of data for a startup screen (and for that sweet karma).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">neofetch</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>) (async-shell-command <span style="color: #b8bb26;">"neofetch"</span> <span style="color: #b8bb26;">"*Neofetch*"</span>))
-(<span style="color: #fb4933; font-weight: bold;">setq</span> inhibit-startup-screen t)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">neofetch</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>) (async-shell-command <span style="color: #f1fa8c;">"neofetch"</span> <span style="color: #f1fa8c;">"*Neofetch*"</span>))
+(<span style="color: #ff79c6; font-weight: bold;">setq</span> inhibit-startup-screen t)
 (neofetch)
 </pre>
 </div>
@@ -328,37 +330,39 @@ We make a Neofetch start screen with lots of data for a startup screen (and for 
 </div>
 </div>
 
-<div id="outline-container-org1f938c5" class="outline-2">
-<h2 id="org1f938c5"><span class="section-number-2">3.</span> Modes</h2>
+<div id="outline-container-org299e4f5" class="outline-2">
+<h2 id="org299e4f5"><span class="section-number-2">3.</span> Modes</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org5bcc955" class="outline-3">
-<h3 id="org5bcc955"><span class="section-number-3">3.1.</span> <span class="todo TODO">TODO</span> Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></h3>
+<div id="outline-container-org29f4d08" class="outline-3">
+<h3 id="org29f4d08"><span class="section-number-3">3.1.</span> <span class="todo TODO">TODO</span> Pure Latex&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TeX">TeX</span></span></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We add a function for package load-time settings:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">latex-init-settings</span> ()
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> TeX-parse-self t)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">latex-init-settings</span> ()
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> TeX-parse-self t)
   (add-to-list 'TeX-command-list
-               '(<span style="color: #b8bb26;">"latexmk lualatex compile"</span> <span style="color: #b8bb26;">"latexmk -lualatex %s"</span> TeX-run-command nil t))
+               '(<span style="color: #f1fa8c;">"latexmk lualatex compile"</span> <span style="color: #f1fa8c;">"latexmk -lualatex %s"</span> TeX-run-command nil t))
   (add-to-list 'TeX-command-list
-               '(<span style="color: #b8bb26;">"latexmk lualatex preview"</span> <span style="color: #b8bb26;">"latexmk -lualatex -pvc -view=none %s"</span> TeX-run-command nil t))
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> TeX-view-program-selection '((output-pdf <span style="color: #b8bb26;">"Okular"</span>)))
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> cdlatex-math-modify-alist
-        '((98 <span style="color: #b8bb26;">"\\mathbb"</span> nil t nil nil)
-          (124 <span style="color: #b8bb26;">"\\abs*"</span> nil t nil nil)
-          (123 <span style="color: #b8bb26;">"\\set*"</span> nil t nil nil)
-          (102 <span style="color: #b8bb26;">"\\mathfrak"</span> nil t nil nil)))
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> cdlatex-math-symbol-alist
-        '((120 <span style="color: #b8bb26;">"\\chi"</span> <span style="color: #b8bb26;">"\\otimes"</span>)
-          (62 <span style="color: #b8bb26;">"\\geq"</span> <span style="color: #b8bb26;">"\\geqsim"</span> <span style="color: #b8bb26;">"\\rangle"</span>)
-          (60 <span style="color: #b8bb26;">"\\leq"</span> <span style="color: #b8bb26;">"\\lesssim"</span> <span style="color: #b8bb26;">"\\langle"</span>)
-          (40 <span style="color: #b8bb26;">"\\left("</span>)
-          (41 <span style="color: #b8bb26;">"\\right)"</span>)
-          (91 <span style="color: #b8bb26;">"\\left["</span>)
-          (93 <span style="color: #b8bb26;">"\\right]"</span>))))
+               '(<span style="color: #f1fa8c;">"latexmk lualatex preview"</span> <span style="color: #f1fa8c;">"latexmk -lualatex -pvc -view=none %s"</span> TeX-run-command nil t))
+  (add-to-list 'TeX-command-list
+               '(<span style="color: #f1fa8c;">"latexindent"</span> <span style="color: #f1fa8c;">"latexindent -w %s"</span> TeX-run-command nil t))
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> TeX-view-program-selection '((output-pdf <span style="color: #f1fa8c;">"Okular"</span>)))
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> cdlatex-math-modify-alist
+        '((98 <span style="color: #f1fa8c;">"\\mathbb"</span> nil t nil nil)
+          (124 <span style="color: #f1fa8c;">"\\abs*"</span> nil t nil nil)
+          (123 <span style="color: #f1fa8c;">"\\set*"</span> nil t nil nil)
+          (102 <span style="color: #f1fa8c;">"\\mathfrak"</span> nil t nil nil)))
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> cdlatex-math-symbol-alist
+        '((120 <span style="color: #f1fa8c;">"\\chi"</span> <span style="color: #f1fa8c;">"\\otimes"</span>)
+          (62 <span style="color: #f1fa8c;">"\\geq"</span> <span style="color: #f1fa8c;">"\\geqsim"</span> <span style="color: #f1fa8c;">"\\rangle"</span>)
+          (60 <span style="color: #f1fa8c;">"\\leq"</span> <span style="color: #f1fa8c;">"\\lesssim"</span> <span style="color: #f1fa8c;">"\\langle"</span>)
+          (40 <span style="color: #f1fa8c;">"\\left("</span>)
+          (41 <span style="color: #f1fa8c;">"\\right)"</span>)
+          (91 <span style="color: #f1fa8c;">"\\left["</span>)
+          (93 <span style="color: #f1fa8c;">"\\right]"</span>))))
 </pre>
 </div>
 
@@ -367,7 +371,7 @@ Let's set a mode hook function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">latex-hook</span> ()
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">latex-hook</span> ()
   (cdlatex-mode 1)
   (reftex-mode 1)
   (prettify-symbols-mode 1))
@@ -379,16 +383,16 @@ And then we delay loading the package:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">latex</span>
-  <span style="color: #fe8019; font-style: italic;">:defer</span> t
-  <span style="color: #fe8019; font-style: italic;">:ensure</span> auctex
-  <span style="color: #fe8019; font-style: italic;">:config</span> (latex-init-settings))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">latex</span>
+  <span style="color: #8be9fd; font-style: italic;">:defer</span> t
+  <span style="color: #8be9fd; font-style: italic;">:ensure</span> auctex
+  <span style="color: #8be9fd; font-style: italic;">:config</span> (latex-init-settings))
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org9c7d3a5" class="outline-4">
-<h4 id="org9c7d3a5"><span class="section-number-4">3.1.1.</span> <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</h4>
+<div id="outline-container-org4543f23" class="outline-4">
+<h4 id="org4543f23"><span class="section-number-4">3.1.1.</span> <span class="done CANCELLED">CANCELLED</span> make minor mode for wrapping text in LaTeX but not math mode text</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Decided I didn't mind&#x2026; probably not worth the effort.
@@ -396,40 +400,40 @@ Decided I didn't mind&#x2026; probably not worth the effort.
 </div>
 </div>
 
-<div id="outline-container-org0dea697" class="outline-4">
-<h4 id="org0dea697"><span class="section-number-4">3.1.2.</span> <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</h4>
+<div id="outline-container-orgbec24e6" class="outline-4">
+<h4 id="orgbec24e6"><span class="section-number-4">3.1.2.</span> <span class="done CANCELLED">CANCELLED</span> Jump to items and sections</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 Let's try to write a function that jumps to the previous thing&#x2026;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">latex-last-item</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (isearch-backward <span style="color: #b8bb26;">"\\item"</span>))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">latex-last-section</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (isearch-backward <span style="color: #b8bb26;">"\\.*section"</span>))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">latex-next-item</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (isearch <span style="color: #b8bb26;">"\\item"</span>))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">latex-next-section</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (isearch <span style="color: #b8bb26;">"\\.*section"</span>))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">latex-last-item</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (isearch-backward <span style="color: #f1fa8c;">"\\item"</span>))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">latex-last-section</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (isearch-backward <span style="color: #f1fa8c;">"\\.*section"</span>))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">latex-next-item</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (isearch <span style="color: #f1fa8c;">"\\item"</span>))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">latex-next-section</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (isearch <span style="color: #f1fa8c;">"\\.*section"</span>))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org56ea916" class="outline-3">
-<h3 id="org56ea916"><span class="section-number-3">3.2.</span> Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></h3>
+<div id="outline-container-orgd47257f" class="outline-3">
+<h3 id="orgd47257f"><span class="section-number-3">3.2.</span> Org Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Org">Org</span></span></h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">latex-in-org-settings</span> ()
-  (<span style="color: #fb4933; font-weight: bold;">progn</span>
-    (<span style="color: #fb4933; font-weight: bold;">require</span> '<span style="color: #d3869b;">ox-bibtex</span>)
-    (plist-put org-format-latex-options <span style="color: #fe8019; font-style: italic;">:scale</span> 2.0)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">latex-in-org-settings</span> ()
+  (<span style="color: #ff79c6; font-weight: bold;">progn</span>
+    (<span style="color: #ff79c6; font-weight: bold;">require</span> '<span style="color: #bd93f9;">ox-bibtex</span>)
+    (plist-put org-format-latex-options <span style="color: #8be9fd; font-style: italic;">:scale</span> 2.0)
     ))
 </pre>
 </div>
@@ -439,7 +443,7 @@ A small helper function
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">org-indent-paragraph</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">org-indent-paragraph</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
        (org-backward-paragraph)
        (push-mark)
        (org-forward-paragraph)
@@ -453,18 +457,18 @@ Let's add some keywords, keybindings, and such:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">org-init-settings</span> ()
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">org-init-settings</span> ()
   (latex-in-org-settings)
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> org-agenda-start-on-weekday 0)
-  (<span style="color: #fb4933; font-weight: bold;">require</span> '<span style="color: #d3869b;">org-ref-ivy</span>)
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> org-agenda-start-on-weekday 0)
+  (<span style="color: #ff79c6; font-weight: bold;">require</span> '<span style="color: #bd93f9;">org-ref-ivy</span>)
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> org-ref-insert-link-function 'org-ref-insert-link-hydra/body
  org-ref-insert-cite-function 'org-ref-cite-insert-ivy
  org-ref-insert-label-function 'org-ref-insert-label-link
  org-ref-insert-ref-function 'org-ref-insert-ref-link)
-  (<span style="color: #fb4933; font-weight: bold;">require</span> '<span style="color: #d3869b;">org-ref</span>)
-  (<span style="color: #fb4933; font-weight: bold;">require</span> '<span style="color: #d3869b;">org-noter</span>)
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> org-todo-keywords
-        '((sequence <span style="color: #b8bb26;">"TODO"</span> <span style="color: #b8bb26;">"IN PROGRESS"</span> <span style="color: #b8bb26;">"POSTPONED"</span> <span style="color: #b8bb26;">"|"</span> <span style="color: #b8bb26;">"DONE"</span> <span style="color: #b8bb26;">"CANCELLED"</span>))))
+  (<span style="color: #ff79c6; font-weight: bold;">require</span> '<span style="color: #bd93f9;">org-ref</span>)
+  (<span style="color: #ff79c6; font-weight: bold;">require</span> '<span style="color: #bd93f9;">org-noter</span>)
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> org-todo-keywords
+        '((sequence <span style="color: #f1fa8c;">"TODO"</span> <span style="color: #f1fa8c;">"IN PROGRESS"</span> <span style="color: #f1fa8c;">"POSTPONED"</span> <span style="color: #f1fa8c;">"|"</span> <span style="color: #f1fa8c;">"DONE"</span> <span style="color: #f1fa8c;">"CANCELLED"</span>))))
 </pre>
 </div>
 
@@ -473,9 +477,9 @@ Let's write an Org-mode-hook function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">org-hook</span> () ()
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">org-hook</span> () ()
        (visual-line-mode)
-       (local-set-key (kbd <span style="color: #b8bb26;">"C-c ]"</span>) 'org-ref-insert-link-hydra)
+       (local-set-key (kbd <span style="color: #f1fa8c;">"C-c ]"</span>) 'org-ref-insert-link-hydra)
        (org-cdlatex-mode))
 </pre>
 </div>
@@ -485,25 +489,25 @@ And we'll add a package load-time function
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">org</span>
-  <span style="color: #fe8019; font-style: italic;">:defer</span> t
-  <span style="color: #fe8019; font-style: italic;">:config</span> (org-init-settings))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">org</span>
+  <span style="color: #8be9fd; font-style: italic;">:defer</span> t
+  <span style="color: #8be9fd; font-style: italic;">:config</span> (org-init-settings))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org28cd540" class="outline-3">
-<h3 id="org28cd540"><span class="section-number-3">3.3.</span> Mu4e Settings</h3>
+<div id="outline-container-orgd5c93a3" class="outline-3">
+<h3 id="orgd5c93a3"><span class="section-number-3">3.3.</span> Mu4e Settings</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 First, update mail settings:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">init-mail-settings</span> () ()
-  (<span style="color: #fb4933; font-weight: bold;">setq</span>
-   mu4e-get-mail-command <span style="color: #b8bb26;">"offlineimap -q -o"</span>
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">init-mail-settings</span> () ()
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span>
+   mu4e-get-mail-command <span style="color: #f1fa8c;">"offlineimap -q -o"</span>
    mu4e-update-interval 30000))
 </pre>
 </div>
@@ -513,15 +517,15 @@ And then we load the package
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">mu4e</span>
-  <span style="color: #fe8019; font-style: italic;">:load-path</span>  <span style="color: #b8bb26;">"/usr/share/emacs/site-lisp/mu4e"</span>
-  <span style="color: #fe8019; font-style: italic;">:init</span> (init-mail-settings))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">mu4e</span>
+  <span style="color: #8be9fd; font-style: italic;">:load-path</span>  <span style="color: #f1fa8c;">"/usr/share/emacs/site-lisp/mu4e"</span>
+  <span style="color: #8be9fd; font-style: italic;">:init</span> (init-mail-settings))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5b46f1c" class="outline-3">
-<h3 id="org5b46f1c"><span class="section-number-3">3.4.</span> Hooks</h3>
+<div id="outline-container-orge05a2ef" class="outline-3">
+<h3 id="orge05a2ef"><span class="section-number-3">3.4.</span> Hooks</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Now we add some good default hooks:
@@ -537,28 +541,28 @@ Now we add some good default hooks:
 </div>
 </div>
 
-<div id="outline-container-org898e19e" class="outline-2">
-<h2 id="org898e19e"><span class="section-number-2">4.</span> Keybindings and Visuals</h2>
+<div id="outline-container-org7e07e38" class="outline-2">
+<h2 id="org7e07e38"><span class="section-number-2">4.</span> Keybindings and Visuals</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org8a08332" class="outline-3">
-<h3 id="org8a08332"><span class="section-number-3">4.1.</span> File Manipulation Settings</h3>
+<div id="outline-container-orgafbe628" class="outline-3">
+<h3 id="orgafbe628"><span class="section-number-3">4.1.</span> File Manipulation Settings</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Let's make the function for loading settings:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">file-manipulation-settings</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (<span style="color: #fb4933; font-weight: bold;">progn</span>
-         (<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">projectile</span>)
-         (<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">magit</span>)
-         (<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">dired-x</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">file-manipulation-settings</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (<span style="color: #ff79c6; font-weight: bold;">progn</span>
+         (<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">projectile</span>)
+         (<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">magit</span>)
+         (<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">dired-x</span>)
          (projectile-mode +1)
-         (<span style="color: #fb4933; font-weight: bold;">setq</span> dired-listing-switches <span style="color: #b8bb26;">"-ahl"</span>)
-         (define-key projectile-mode-map (kbd <span style="color: #b8bb26;">"C-x p"</span>) 'projectile-command-map)
-         (<span style="color: #fb4933; font-weight: bold;">setq</span> dired-guess-shell-alist-user
-               '((<span style="color: #b8bb26;">"\\.pdf$"</span> <span style="color: #b8bb26;">"okular *"</span>)))))
+         (<span style="color: #ff79c6; font-weight: bold;">setq</span> dired-listing-switches <span style="color: #f1fa8c;">"-ahl"</span>)
+         (define-key projectile-mode-map (kbd <span style="color: #f1fa8c;">"C-x p"</span>) 'projectile-command-map)
+         (<span style="color: #ff79c6; font-weight: bold;">setq</span> dired-guess-shell-alist-user
+               '((<span style="color: #f1fa8c;">"\\.pdf$"</span> <span style="color: #f1fa8c;">"okular *"</span>)))))
 </pre>
 </div>
 
@@ -567,22 +571,22 @@ Let's also add a command for listing Zotero-stored files for ease:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">zotero-store</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (find-dired <span style="color: #b8bb26;">"~/Zotero/storage"</span> <span style="color: #b8bb26;">"-name '*.pdf'"</span>))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">zotero-store</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (find-dired <span style="color: #f1fa8c;">"~/Zotero/storage"</span> <span style="color: #f1fa8c;">"-name '*.pdf'"</span>))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org25a7429" class="outline-3">
-<h3 id="org25a7429"><span class="section-number-3">4.2.</span> Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
+<div id="outline-container-org65dadfb" class="outline-3">
+<h3 id="org65dadfb"><span class="section-number-3">4.2.</span> Editing Settings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 First we'll add some extra editing commands of my own&#x2026;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">smart-kill-word</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">smart-kill-word</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
   (forward-word)
   (kill-word -1))
 </pre>
@@ -593,7 +597,7 @@ This makes conforms to how I do things:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">setq</span> sentence-end-double-space nil)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">setq</span> sentence-end-double-space nil)
 </pre>
 </div>
 
@@ -602,16 +606,16 @@ Let's load the packages and bind some keys&#x2026;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">editing-settings</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">counsel</span>)
-       (<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">crux</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">editing-settings</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">counsel</span>)
+       (<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">crux</span>)
        (ivy-mode +1)
        (counsel-mode +1)
        (counsel-projectile-mode +1)
-       (<span style="color: #fb4933; font-weight: bold;">setq</span> bibtex-completion-bibliography '(<span style="color: #b8bb26;">"~/zoterolib.bib"</span>))
-       (global-set-key (kbd <span style="color: #b8bb26;">"C-x s"</span>) 'swiper)
-       (global-set-key (kbd <span style="color: #b8bb26;">"C-k"</span>) 'crux-smart-kill-line)
-       (global-set-key (kbd <span style="color: #b8bb26;">"M-d"</span>) 'smart-kill-word))
+       (<span style="color: #ff79c6; font-weight: bold;">setq</span> bibtex-completion-bibliography '(<span style="color: #f1fa8c;">"~/zoterolib.bib"</span>))
+       (global-set-key (kbd <span style="color: #f1fa8c;">"C-x s"</span>) 'swiper)
+       (global-set-key (kbd <span style="color: #f1fa8c;">"C-k"</span>) 'crux-smart-kill-line)
+       (global-set-key (kbd <span style="color: #f1fa8c;">"M-d"</span>) 'smart-kill-word))
 </pre>
 </div>
 
@@ -620,39 +624,39 @@ Some useful keybindings&#x2026;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #b8bb26;">"C-c v v"</span>) 'view-mode)
-(global-set-key (kbd <span style="color: #b8bb26;">"C-c v f"</span>) 'follow-mode)
-(<span style="color: #fb4933; font-weight: bold;">unbind-key</span> <span style="color: #b8bb26;">"C-z"</span>)
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">machine-uptime</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>) (shell-command <span style="color: #b8bb26;">"uptime"</span>))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">pacman-update</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>) (async-shell-command <span style="color: #b8bb26;">"sudo pacman -Syu"</span>))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">get-weather</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (async-shell-command <span style="color: #b8bb26;">"curl -s 'https://wttr.in/chicago?0p'"</span> <span style="color: #b8bb26;">"*wttr.in*"</span> nil))
-(global-set-key (kbd <span style="color: #b8bb26;">"C-z p"</span>) 'ping)
-(global-set-key (kbd <span style="color: #b8bb26;">"C-z t"</span>) 'machine-uptime)
-(global-set-key (kbd <span style="color: #b8bb26;">"C-z b"</span>) 'battery)
-(global-set-key (kbd <span style="color: #b8bb26;">"C-z u"</span>) 'pacman-update)
-(global-set-key (kbd <span style="color: #b8bb26;">"C-z w"</span>) 'get-weather)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #f1fa8c;">"C-c v v"</span>) 'view-mode)
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-c v f"</span>) 'follow-mode)
+(<span style="color: #ff79c6; font-weight: bold;">unbind-key</span> <span style="color: #f1fa8c;">"C-z"</span>)
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">machine-uptime</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>) (shell-command <span style="color: #f1fa8c;">"uptime"</span>))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">pacman-update</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>) (async-shell-command <span style="color: #f1fa8c;">"sudo pacman -Syu"</span>))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">get-weather</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (async-shell-command <span style="color: #f1fa8c;">"curl -s 'https://wttr.in/chicago?0p'"</span> <span style="color: #f1fa8c;">"*wttr.in*"</span> nil))
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-z p"</span>) 'ping)
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-z t"</span>) 'machine-uptime)
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-z b"</span>) 'battery)
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-z u"</span>) 'pacman-update)
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-z w"</span>) 'get-weather)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8cb9c6a" class="outline-3">
-<h3 id="org8cb9c6a"><span class="section-number-3">4.3.</span> Visual/Window settings</h3>
+<div id="outline-container-org8e3d085" class="outline-3">
+<h3 id="org8e3d085"><span class="section-number-3">4.3.</span> Visual/Window settings</h3>
 <div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #b8bb26;">"M-o"</span>) 'ace-window)
-(global-set-key (kbd <span style="color: #b8bb26;">"C-x b"</span>) 'display-buffer)
-(<span style="color: #fb4933; font-weight: bold;">setq</span> aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-(global-set-key (kbd <span style="color: #b8bb26;">"M-s m"</span>) 'counsel-imenu)
-(global-set-key (kbd <span style="color: #b8bb26;">"M-s b"</span>) 'counsel-ibuffer)
-(global-set-key (kbd <span style="color: #b8bb26;">"M-z"</span>) 'counsel-linux-app)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #f1fa8c;">"M-o"</span>) 'ace-window)
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-x b"</span>) 'display-buffer)
+(<span style="color: #ff79c6; font-weight: bold;">setq</span> aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-s m"</span>) 'counsel-imenu)
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-s b"</span>) 'counsel-ibuffer)
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-z"</span>) 'counsel-linux-app)
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgc1d1b0b" class="outline-4">
-<h4 id="orgc1d1b0b"><span class="section-number-4">4.3.1.</span> <span class="todo IN_PROGRESS">IN PROGRESS</span> Try EXWM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span>&#xa0;<span class="wm">wm</span></span></h4>
+<div id="outline-container-org50725f6" class="outline-4">
+<h4 id="org50725f6"><span class="section-number-4">4.3.1.</span> <span class="todo IN_PROGRESS">IN PROGRESS</span> Try EXWM&#xa0;&#xa0;&#xa0;<span class="tag"><span class="bling">bling</span>&#xa0;<span class="wm">wm</span></span></h4>
 <div class="outline-text-4" id="text-4-3-1">
 <p>
 <del>Decided not to. A fully-afeatured window manager is <i>probably</i> better.</del>
@@ -667,48 +671,48 @@ Here we goooo&#x2026;.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">exwm-settings</span> ()
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> exwm-workspace-number 4)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">exwm-settings</span> ()
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> exwm-workspace-number 4)
   (add-hook 'exwm-update-class-hook
-        (<span style="color: #fb4933; font-weight: bold;">lambda</span> ()
-          (<span style="color: #fb4933; font-weight: bold;">unless</span> (<span style="color: #fb4933; font-weight: bold;">or</span> (string-prefix-p <span style="color: #b8bb26;">"sun-awt-X11-"</span> exwm-instance-name)
-                      (string= <span style="color: #b8bb26;">"gimp"</span> exwm-instance-name))
+        (<span style="color: #ff79c6; font-weight: bold;">lambda</span> ()
+          (<span style="color: #ff79c6; font-weight: bold;">unless</span> (<span style="color: #ff79c6; font-weight: bold;">or</span> (string-prefix-p <span style="color: #f1fa8c;">"sun-awt-X11-"</span> exwm-instance-name)
+                      (string= <span style="color: #f1fa8c;">"gimp"</span> exwm-instance-name))
             (exwm-workspace-rename-buffer exwm-class-name))))
   (add-hook 'exwm-update-title-hook
-            (<span style="color: #fb4933; font-weight: bold;">lambda</span> ()
-          (<span style="color: #fb4933; font-weight: bold;">when</span> (<span style="color: #fb4933; font-weight: bold;">or</span> (not exwm-instance-name)
-                    (string-prefix-p <span style="color: #b8bb26;">"sun-awt-X11-"</span> exwm-instance-name)
-                    (string= <span style="color: #b8bb26;">"gimp"</span> exwm-instance-name))
+            (<span style="color: #ff79c6; font-weight: bold;">lambda</span> ()
+          (<span style="color: #ff79c6; font-weight: bold;">when</span> (<span style="color: #ff79c6; font-weight: bold;">or</span> (not exwm-instance-name)
+                    (string-prefix-p <span style="color: #f1fa8c;">"sun-awt-X11-"</span> exwm-instance-name)
+                    (string= <span style="color: #f1fa8c;">"gimp"</span> exwm-instance-name))
             (exwm-workspace-rename-buffer exwm-title))))
-  (<span style="color: #fb4933; font-weight: bold;">setq</span> exwm-input-global-keys
-        `((,(kbd <span style="color: #b8bb26;">"s-SPC"</span>) . (<span style="color: #fb4933; font-weight: bold;">lambda</span> (command)
-                              (<span style="color: #fb4933; font-weight: bold;">interactive</span> (list (read-shell-command <span style="color: #b8bb26;">"$ "</span>)))
+  (<span style="color: #ff79c6; font-weight: bold;">setq</span> exwm-input-global-keys
+        `((,(kbd <span style="color: #f1fa8c;">"s-SPC"</span>) . (<span style="color: #ff79c6; font-weight: bold;">lambda</span> (command)
+                              (<span style="color: #ff79c6; font-weight: bold;">interactive</span> (list (read-shell-command <span style="color: #f1fa8c;">"$ "</span>)))
                               (start-process-shell-command command nil command)))
-          (,(kbd <span style="color: #b8bb26;">"s-r"</span>) . exwm-reset)
-          (,(kbd <span style="color: #b8bb26;">"s-o"</span>) . exwm-workspace-switch-to-buffer)
-          (,(kbd <span style="color: #b8bb26;">"s-g"</span>) . (<span style="color: #fb4933; font-weight: bold;">lambda</span> () ((<span style="color: #fb4933; font-weight: bold;">interactive</span> (start-process <span style="color: #b8bb26;">"slock"</span> nil <span style="color: #b8bb26;">"slock"</span>)))))
+          (,(kbd <span style="color: #f1fa8c;">"s-r"</span>) . exwm-reset)
+          (,(kbd <span style="color: #f1fa8c;">"s-o"</span>) . exwm-workspace-switch)
+          (,(kbd <span style="color: #f1fa8c;">"s-g"</span>) . (<span style="color: #ff79c6; font-weight: bold;">lambda</span> () (start-process <span style="color: #f1fa8c;">"slock"</span> nil <span style="color: #f1fa8c;">"slock"</span>)))
           )
         )
   (exwm-enable)
   )
-(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">exwm-randr</span>
-  <span style="color: #fe8019; font-style: italic;">:config</span> (<span style="color: #fb4933; font-weight: bold;">progn</span>
-            (<span style="color: #fb4933; font-weight: bold;">setq</span> exwm-randr-workspace-output-plist '(0 <span style="color: #b8bb26;">"eDP-1"</span> 1 <span style="color: #b8bb26;">"eDP-1"</span> 2 <span style="color: #b8bb26;">"HDMI-1"</span> 3 <span style="color: #b8bb26;">"HDMI-1"</span>))
+(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">exwm-randr</span>
+  <span style="color: #8be9fd; font-style: italic;">:config</span> (<span style="color: #ff79c6; font-weight: bold;">progn</span>
+            (<span style="color: #ff79c6; font-weight: bold;">setq</span> exwm-randr-workspace-output-plist '(0 <span style="color: #f1fa8c;">"eDP-1"</span> 1 <span style="color: #f1fa8c;">"eDP-1"</span> 2 <span style="color: #f1fa8c;">"HDMI-1"</span> 3 <span style="color: #f1fa8c;">"HDMI-1"</span> 4 <span style="color: #f1fa8c;">"DP-1"</span> 5 <span style="color: #f1fa8c;">"DP-1"</span>))
             (add-hook 'ewm-randr-screen-change-hook
-                      (<span style="color: #fb4933; font-weight: bold;">lambda</span> ()
+                      (<span style="color: #ff79c6; font-weight: bold;">lambda</span> ()
                         (start-process-shell-command
-                         <span style="color: #b8bb26;">"xrandr"</span> nil <span style="color: #b8bb26;">"xrandr --output HDMI-1 --right-of eDP-1 --auto"</span>)))
+                         <span style="color: #f1fa8c;">"xrandr"</span> nil <span style="color: #f1fa8c;">"xrandr --output HDMI-1 --right-of eDP-1 --auto"</span>)))
             (exwm-randr-enable)))
-(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">exwm</span>
-  <span style="color: #fe8019; font-style: italic;">:config</span> (exwm-settings))
+(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">exwm</span>
+  <span style="color: #8be9fd; font-style: italic;">:config</span> (exwm-settings))
 
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf84f853" class="outline-4">
-<h4 id="orgf84f853"><span class="section-number-4">4.3.2.</span> Dynamic Window Layouts</h4>
+<div id="outline-container-org0dc2834" class="outline-4">
+<h4 id="org0dc2834"><span class="section-number-4">4.3.2.</span> Dynamic Window Layouts</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
 Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
@@ -718,14 +722,14 @@ Here we look to implement two dynamic window layouts, inspired by tiling window 
 We first do an XMonad Tall layout:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">xmonad-tree-navigator</span> (tree)
-  (<span style="color: #fb4933; font-weight: bold;">if</span> (windowp tree) tree
-    (<span style="color: #fb4933; font-weight: bold;">if</span> (listp tree) (xmonad-tree-navigator (car (last tree)))
-        (<span style="color: #fb4933; background-color: #373844; font-weight: bold;">error</span> <span style="color: #b8bb26;">"Encountered a non-list or non window argument"</span>))))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">xmonad-tree-navigator</span> (tree)
+  (<span style="color: #ff79c6; font-weight: bold;">if</span> (windowp tree) tree
+    (<span style="color: #ff79c6; font-weight: bold;">if</span> (listp tree) (xmonad-tree-navigator (car (last tree)))
+        (<span style="color: #ffb86c; background-color: #373844;">error</span> <span style="color: #f1fa8c;">"Encountered a non-list or non window argument"</span>))))
 
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">xmonad-tall</span> (curr-win)
-       (<span style="color: #fb4933; font-weight: bold;">if</span> (one-window-p) (split-window-right)
-         (<span style="color: #fb4933; font-weight: bold;">progn</span>
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">xmonad-tall</span> (curr-win)
+       (<span style="color: #ff79c6; font-weight: bold;">if</span> (one-window-p) (split-window-right)
+         (<span style="color: #ff79c6; font-weight: bold;">progn</span>
            (select-window (xmonad-tree-navigator (car (window-tree))))
            (split-window-below))))
 </pre>
@@ -736,24 +740,24 @@ And we do a BSPWM one (or a vertical split version):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">bsp-tree-navigator</span> (tree)
-  (<span style="color: #fb4933; font-weight: bold;">if</span> (windowp tree) tree
-    (<span style="color: #fb4933; font-weight: bold;">if</span> (listp tree) (bsp-tree-navigator (car (last tree)))
-      (<span style="color: #fb4933; background-color: #373844; font-weight: bold;">error</span> <span style="color: #b8bb26;">"Encountered a non-list or non-window argument"</span>))))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">bsp-tree-navigator</span> (tree)
+  (<span style="color: #ff79c6; font-weight: bold;">if</span> (windowp tree) tree
+    (<span style="color: #ff79c6; font-weight: bold;">if</span> (listp tree) (bsp-tree-navigator (car (last tree)))
+      (<span style="color: #ffb86c; background-color: #373844;">error</span> <span style="color: #f1fa8c;">"Encountered a non-list or non-window argument"</span>))))
 
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">bspwm</span> (curr-win)
-       (<span style="color: #fb4933; font-weight: bold;">let</span> ((to-window (bsp-tree-navigator (car (window-tree)))))
-         (<span style="color: #fb4933; font-weight: bold;">progn</span>
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">bspwm</span> (curr-win)
+       (<span style="color: #ff79c6; font-weight: bold;">let</span> ((to-window (bsp-tree-navigator (car (window-tree)))))
+         (<span style="color: #ff79c6; font-weight: bold;">progn</span>
            (select-window to-window)
-           (<span style="color: #fb4933; font-weight: bold;">if</span> (window-combined-p to-window t)
+           (<span style="color: #ff79c6; font-weight: bold;">if</span> (window-combined-p to-window t)
                (split-window-below)
              (split-window-right)))))
 
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">bspwm-vert</span> (curr-win)
-       (<span style="color: #fb4933; font-weight: bold;">let</span> ((to-window (bsp-tree-navigator (car (window-tree)))))
-         (<span style="color: #fb4933; font-weight: bold;">progn</span>
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">bspwm-vert</span> (curr-win)
+       (<span style="color: #ff79c6; font-weight: bold;">let</span> ((to-window (bsp-tree-navigator (car (window-tree)))))
+         (<span style="color: #ff79c6; font-weight: bold;">progn</span>
            (select-window to-window)
-           (<span style="color: #fb4933; font-weight: bold;">if</span> (window-combined-p to-window t)
+           (<span style="color: #ff79c6; font-weight: bold;">if</span> (window-combined-p to-window t)
                (split-window-right)
              (split-window-below)))))
 </pre>
@@ -764,11 +768,11 @@ And now we add a function to switch between layouts:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">setq</span> layout-list '(split-window-sensibly xmonad-tall bspwm bspwm-vert))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">select-window-layout</span> (symbol) (<span style="color: #fb4933; font-weight: bold;">interactive</span> <span style="color: #b8bb26;">"Slayout: "</span>)
-       (<span style="color: #fb4933; font-weight: bold;">if</span> (member symbol layout-list) (<span style="color: #fb4933; font-weight: bold;">setq</span> split-window-preferred-function symbol)
-         (<span style="color: #fb4933; background-color: #373844; font-weight: bold;">error</span> <span style="color: #b8bb26;">"Not a layout in layout-list"</span>)))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">current-window-layout</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">setq</span> layout-list '(split-window-sensibly xmonad-tall bspwm bspwm-vert))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">select-window-layout</span> (symbol) (<span style="color: #ff79c6; font-weight: bold;">interactive</span> <span style="color: #f1fa8c;">"Slayout: "</span>)
+       (<span style="color: #ff79c6; font-weight: bold;">if</span> (member symbol layout-list) (<span style="color: #ff79c6; font-weight: bold;">setq</span> split-window-preferred-function symbol)
+         (<span style="color: #ffb86c; background-color: #373844;">error</span> <span style="color: #f1fa8c;">"Not a layout in layout-list"</span>)))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">current-window-layout</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
        (message split-window-preferred-function))
 </pre>
 </div>
@@ -776,18 +780,18 @@ And now we add a function to switch between layouts:
 </div>
 </div>
 
-<div id="outline-container-org04a48a5" class="outline-3">
-<h3 id="org04a48a5"><span class="section-number-3">4.4.</span> <span class="todo TODO">TODO</span> Minibuffer Frame</h3>
+<div id="outline-container-orgc9497de" class="outline-3">
+<h3 id="orgc9497de"><span class="section-number-3">4.4.</span> <span class="todo TODO">TODO</span> Minibuffer Frame</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 Here we create a pop-up minibuffer window to use where ever. The model is this: you should run <code>emacsclient --eval '(runner)'</code> and the minibuffer menu should appear.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">runner</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>)
-       (<span style="color: #fb4933; font-weight: bold;">setq</span> default-minibuffer-frame (make-frame
-                                       '((minibuffer . only) (title . <span style="color: #b8bb26;">"erunner"</span>) (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
-       (<span style="color: #fb4933; font-weight: bold;">setq</span> minibuffer-auto-raise t))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">runner</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>)
+       (<span style="color: #ff79c6; font-weight: bold;">setq</span> default-minibuffer-frame (make-frame
+                                       '((minibuffer . only) (title . <span style="color: #f1fa8c;">"erunner"</span>) (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
+       (<span style="color: #ff79c6; font-weight: bold;">setq</span> minibuffer-auto-raise t))
 </pre>
 </div>
 
@@ -801,53 +805,53 @@ Currently needs:
 </div>
 </div>
 
-<div id="outline-container-org6bfe2f4" class="outline-3">
-<h3 id="org6bfe2f4"><span class="section-number-3">4.5.</span> Avy</h3>
+<div id="outline-container-org128d46b" class="outline-3">
+<h3 id="org128d46b"><span class="section-number-3">4.5.</span> Avy</h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 Let's get warmed up with some simple keybindings for avy:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">avy</span>) 
-(global-set-key (kbd <span style="color: #b8bb26;">"M-g g"</span>) 'avy-goto-char-2)
-(global-set-key (kbd <span style="color: #b8bb26;">"M-g c"</span>) 'avy-goto-char)
-(global-set-key (kbd <span style="color: #b8bb26;">"M-g M-g"</span>) 'avy-goto-line)
-(global-set-key (kbd <span style="color: #b8bb26;">"M-g f"</span>) 'avy-goto-char-in-line)
-(global-set-key (kbd <span style="color: #b8bb26;">"M-g e"</span>) 'avy-goto-end-of-line)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">avy</span>) 
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-g g"</span>) 'avy-goto-char-2)
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-g c"</span>) 'avy-goto-char)
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-g M-g"</span>) 'avy-goto-line)
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-g f"</span>) 'avy-goto-char-in-line)
+(global-set-key (kbd <span style="color: #f1fa8c;">"M-g e"</span>) 'avy-goto-end-of-line)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7956fce" class="outline-3">
-<h3 id="org7956fce"><span class="section-number-3">4.6.</span> Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
+<div id="outline-container-org0510022" class="outline-3">
+<h3 id="org0510022"><span class="section-number-3">4.6.</span> Shortcut key&#xa0;&#xa0;&#xa0;<span class="tag"><span class="keys">keys</span></span></h3>
 <div class="outline-text-3" id="text-4-6">
 <p>
 We make a run key that gives a menu to different programs you might want a glance at.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">add-menu-item</span> (key command)
-       (global-set-key (kbd (concat <span style="color: #b8bb26;">"C-; "</span> key)) command))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">find-init-file</span> () (<span style="color: #fb4933; font-weight: bold;">interactive</span>) (find-file <span style="color: #b8bb26;">"~/.emacs.d/index.org"</span>))
-(add-menu-item <span style="color: #b8bb26;">"m"</span> 'mu4e)
-(add-menu-item <span style="color: #b8bb26;">"i"</span> 'find-init-file)
-(add-menu-item <span style="color: #b8bb26;">"a"</span> 'org-agenda)
-(add-menu-item <span style="color: #b8bb26;">"p"</span> 'proced)
-(add-menu-item <span style="color: #b8bb26;">"b"</span> 'ivy-bibtex)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">add-menu-item</span> (key command)
+       (global-set-key (kbd (concat <span style="color: #f1fa8c;">"C-; "</span> key)) command))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">find-init-file</span> () (<span style="color: #ff79c6; font-weight: bold;">interactive</span>) (find-file <span style="color: #f1fa8c;">"~/.emacs.d/index.org"</span>))
+(add-menu-item <span style="color: #f1fa8c;">"m"</span> 'mu4e)
+(add-menu-item <span style="color: #f1fa8c;">"i"</span> 'find-init-file)
+(add-menu-item <span style="color: #f1fa8c;">"a"</span> 'org-agenda)
+(add-menu-item <span style="color: #f1fa8c;">"p"</span> 'proced)
+(add-menu-item <span style="color: #f1fa8c;">"b"</span> 'ivy-bibtex)
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb64afbc" class="outline-2">
-<h2 id="orgb64afbc"><span class="section-number-2">5.</span> External Integrations</h2>
+<div id="outline-container-org4e3b51e" class="outline-2">
+<h2 id="org4e3b51e"><span class="section-number-2">5.</span> External Integrations</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgb33a8dd" class="outline-3">
-<h3 id="orgb33a8dd"><span class="section-number-3">5.1.</span> <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
+<div id="outline-container-org3ffee6d" class="outline-3">
+<h3 id="org3ffee6d"><span class="section-number-3">5.1.</span> <span class="done CANCELLED">CANCELLED</span> Nyxt Integration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Here we provide a couple of helper functions for interacting with <a href="https://nyxt.atlas.engineer">Nyxt</a>. I'll explain in a little more detail here.
@@ -858,8 +862,8 @@ We pass Lisp code to the running Nyxt process via shell commands. This requires 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">format-for-nyxt-eval</span> (list)  (shell-quote-argument (format <span style="color: #b8bb26;">"%S"</span> list))) <span style="color: #7c6f64;">;; </span><span style="color: #7c6f64;">prepare lisp code to be passed to the shell</span>
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">eval-in-nyxt</span> (s-exps)  (call-process <span style="color: #b8bb26;">"nyxt"</span> nil nil nil (concat <span style="color: #b8bb26;">"--remote --eval "</span> (format-for-nyxt-eval s-exps))))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">format-for-nyxt-eval</span> (list)  (shell-quote-argument (format <span style="color: #f1fa8c;">"%S"</span> list))) <span style="color: #6272a4;">;; </span><span style="color: #6272a4;">prepare lisp code to be passed to the shell</span>
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">eval-in-nyxt</span> (s-exps)  (call-process <span style="color: #f1fa8c;">"nyxt"</span> nil nil nil (concat <span style="color: #f1fa8c;">"--remote --eval "</span> (format-for-nyxt-eval s-exps))))
 </pre>
 </div>
 
@@ -868,8 +872,8 @@ Now we can only do so by elisp code, to prevent mistakes. Now we can use it!
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">set-in-nyxt</span> (variable elisp) (eval-in-nyxt `(<span style="color: #fb4933; font-weight: bold;">setq</span> ,variable (list ,@elisp))))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">eval-region-in-nyxt</span> (start end) (<span style="color: #fb4933; font-weight: bold;">interactive</span> <span style="color: #b8bb26;">"r"</span>) (eval-in-nyxt (read (buffer-substring start end))))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">set-in-nyxt</span> (variable elisp) (eval-in-nyxt `(<span style="color: #ff79c6; font-weight: bold;">setq</span> ,variable (list ,@elisp))))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">eval-region-in-nyxt</span> (start end) (<span style="color: #ff79c6; font-weight: bold;">interactive</span> <span style="color: #f1fa8c;">"r"</span>) (eval-in-nyxt (read (buffer-substring start end))))
 </pre>
 </div>
 
@@ -879,18 +883,18 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 
 <div class="org-src-container">
 <pre class="src src-lisp">
-(ql:quickload <span style="color: #fe8019; font-style: italic;">:cl-strings</span>)
+(ql:quickload <span style="color: #8be9fd; font-style: italic;">:cl-strings</span>)
 
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">eval-in-emacs</span> (<span style="color: #d3869b; font-style: italic;">&amp;rest</span> s-exps)
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">eval-in-emacs</span> (<span style="color: #8be9fd; font-style: italic;">&amp;rest</span> s-exps)
   <span style="color: #6272a4;">"Evaluate S-EXPS with emacsclient."</span>
-  (<span style="color: #fb4933; font-weight: bold;">let</span> ((s-exps-string (cl-strings:replace-all
+  (<span style="color: #ff79c6; font-weight: bold;">let</span> ((s-exps-string (cl-strings:replace-all
                         (write-to-string
-                         `(<span style="color: #fb4933; font-weight: bold;">progn</span> ,@s-exps) <span style="color: #fe8019; font-style: italic;">:case</span> <span style="color: #fe8019; font-style: italic;">:downcase</span>)
-                        <span style="color: #7c6f64;">;; </span><span style="color: #7c6f64;">Discard the package prefix.</span>
-                        <span style="color: #b8bb26;">"nyxt::"</span> <span style="color: #b8bb26;">""</span>)))
-    (format *error-output* <span style="color: #b8bb26;">"Sending to Emacs:~%~a~%"</span> s-exps-string)
+                         `(<span style="color: #ff79c6; font-weight: bold;">progn</span> ,@s-exps) <span style="color: #8be9fd; font-style: italic;">:case</span> <span style="color: #8be9fd; font-style: italic;">:downcase</span>)
+                        <span style="color: #6272a4;">;; </span><span style="color: #6272a4;">Discard the package prefix.</span>
+                        <span style="color: #f1fa8c;">"nyxt::"</span> <span style="color: #f1fa8c;">""</span>)))
+    (format *error-output* <span style="color: #f1fa8c;">"Sending to Emacs:~%~a~%"</span> s-exps-string)
     (uiop:run-program
-     (list <span style="color: #b8bb26;">"emacsclient"</span> <span style="color: #b8bb26;">"--eval"</span> s-exps-string))))
+     (list <span style="color: #f1fa8c;">"emacsclient"</span> <span style="color: #f1fa8c;">"--eval"</span> s-exps-string))))
 </pre>
 </div>
 
@@ -899,33 +903,33 @@ And if we happen to have the following in our init file for Nyxt (usually in <co
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">get-nyxt-buffers</span> () (eval-in-nyxt
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">get-nyxt-buffers</span> () (eval-in-nyxt
                             '(eval-in-emacs
-                              `(<span style="color: #fb4933; font-weight: bold;">setq</span> nyxt-buffer-list
+                              `(<span style="color: #ff79c6; font-weight: bold;">setq</span> nyxt-buffer-list
                                      (list ,@(mapcar #'title (buffer-list)))))))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">search-in-nyxt</span> (search-term) (<span style="color: #fb4933; font-weight: bold;">interactive</span> <span style="color: #b8bb26;">"sSeach in Nyxt:"</span>) (eval-in-nyxt
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">search-in-nyxt</span> (search-term) (<span style="color: #ff79c6; font-weight: bold;">interactive</span> <span style="color: #f1fa8c;">"sSeach in Nyxt:"</span>) (eval-in-nyxt
                                                                      `(buffer-load (make-instance 'new-url-query
-                                                                                                  <span style="color: #fe8019; font-style: italic;">:query</span> ,search-term
-                                                                                                  <span style="color: #fe8019; font-style: italic;">:engine</span> (first (last (search-engines (current-buffer))))))))
+                                                                                                  <span style="color: #8be9fd; font-style: italic;">:query</span> ,search-term
+                                                                                                  <span style="color: #8be9fd; font-style: italic;">:engine</span> (first (last (search-engines (current-buffer))))))))
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf13827" class="outline-3">
-<h3 id="orgaf13827"><span class="section-number-3">5.2.</span> <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></h3>
+<div id="outline-container-orge5277a4" class="outline-3">
+<h3 id="orge5277a4"><span class="section-number-3">5.2.</span> <span class="done CANCELLED">CANCELLED</span> Stumpwm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wm">wm</span></span></h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 Let's be able to give commands to Stumpwm. Instead of doing this through slime or Sly, we can do it through <code>stumpish</code>, a command shell for stumpwm. It's in the stumpwm contrib module. We save the path to it and make a function to run Lisp code in Stumpwm:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">setq</span> stumpish-path <span style="color: #b8bb26;">"~/.stumpwm.d/modules/util/stumpish/stumpish"</span>)
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">eval-in-stumpwm</span> (s-exps) (call-process stumpish-path nil nil nil (format <span style="color: #b8bb26;">"eval %S"</span> s-exps)))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">eval-in-stumpwm-and-return</span> (s-exps) (read (shell-command-to-string (concat
-                                                                           stumpish-path <span style="color: #b8bb26;">" eval "</span>
-                                                                           (shell-quote-argument (format <span style="color: #b8bb26;">"%S"</span> s-exps))))))
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">eval-region-in-stumpwm</span> (start end) (<span style="color: #fb4933; font-weight: bold;">interactive</span> <span style="color: #b8bb26;">"r"</span>) (eval-in-stumpwm (read (buffer-substring start end))))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">setq</span> stumpish-path <span style="color: #f1fa8c;">"~/.stumpwm.d/modules/util/stumpish/stumpish"</span>)
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">eval-in-stumpwm</span> (s-exps) (call-process stumpish-path nil nil nil (format <span style="color: #f1fa8c;">"eval %S"</span> s-exps)))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">eval-in-stumpwm-and-return</span> (s-exps) (read (shell-command-to-string (concat
+                                                                           stumpish-path <span style="color: #f1fa8c;">" eval "</span>
+                                                                           (shell-quote-argument (format <span style="color: #f1fa8c;">"%S"</span> s-exps))))))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">eval-region-in-stumpwm</span> (start end) (<span style="color: #ff79c6; font-weight: bold;">interactive</span> <span style="color: #f1fa8c;">"r"</span>) (eval-in-stumpwm (read (buffer-substring start end))))
 </pre>
 </div>
 
@@ -934,8 +938,8 @@ We would also like to be able to pass ELisp to Emacs from Stumpwm:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">stumpwm-eval-in-emacs</span> (s-exps)
-  (run-shell-command (concatenate 'string <span style="color: #b8bb26;">"emacsclient --eval '"</span> (write-to-string s-exps <span style="color: #fe8019; font-style: italic;">:case</span> <span style="color: #fe8019; font-style: italic;">:downcase</span>) <span style="color: #b8bb26;">"'"</span>)))
+<pre class="src src-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">stumpwm-eval-in-emacs</span> (s-exps)
+  (run-shell-command (concatenate 'string <span style="color: #f1fa8c;">"emacsclient --eval '"</span> (write-to-string s-exps <span style="color: #8be9fd; font-style: italic;">:case</span> <span style="color: #8be9fd; font-style: italic;">:downcase</span>) <span style="color: #f1fa8c;">"'"</span>)))
 </pre>
 </div>
 
@@ -946,8 +950,8 @@ And now we're ready to write some helpful interaction commands!
 </p>
 </div>
 
-<div id="outline-container-orgae881b5" class="outline-4">
-<h4 id="orgae881b5"><span class="section-number-4">5.2.1.</span> <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</h4>
+<div id="outline-container-org507a7c2" class="outline-4">
+<h4 id="org507a7c2"><span class="section-number-4">5.2.1.</span> <span class="done CANCELLED">CANCELLED</span> Write major mode for editing a buffer for window manager interaction (dired/org-style)</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <p>
 First we collect the window tree from stumpwm:
@@ -955,17 +959,17 @@ First we collect the window tree from stumpwm:
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">get-stumpwm-desktop</span> () (eval-in-stumpwm-and-return
-                               '(<span style="color: #fb4933; font-weight: bold;">progn</span>
-                                  (dump-desktop-to-file <span style="color: #b8bb26;">"~/.stumpwm.d/.desktop"</span>)
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">get-stumpwm-desktop</span> () (eval-in-stumpwm-and-return
+                               '(<span style="color: #ff79c6; font-weight: bold;">progn</span>
+                                  (dump-desktop-to-file <span style="color: #f1fa8c;">"~/.stumpwm.d/.desktop"</span>)
                                   ())))
 
 
 
-(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">make-desktop-to-buffer</span> ()
-  (<span style="color: #fb4933; font-weight: bold;">let</span> (( window-tree (get-stumpwm-desktop)))
+(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">make-desktop-to-buffer</span> ()
+  (<span style="color: #ff79c6; font-weight: bold;">let</span> (( window-tree (get-stumpwm-desktop)))
     '()
-    )) <span style="color: #7c6f64;">;;</span><span style="color: #7c6f64;">finish</span>
+    )) <span style="color: #6272a4;">;;</span><span style="color: #6272a4;">finish</span>
 </pre>
 </div>
 
@@ -980,62 +984,62 @@ I am running into some problems with this&#x2026; Stumpwm doesn't expose enough 
 </div>
 </div>
 
-<div id="outline-container-org3e79418" class="outline-3">
-<h3 id="org3e79418"><span class="section-number-3">5.3.</span> Elfeed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
+<div id="outline-container-orge16eb56" class="outline-3">
+<h3 id="orge16eb56"><span class="section-number-3">5.3.</span> Elfeed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 Let's set up <a href="https://github.com/skeeto/elfeed">Elfeed</a>!
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">elfeed</span>
-  <span style="color: #fe8019; font-style: italic;">:ensure</span> t)
-(global-set-key (kbd <span style="color: #b8bb26;">"C-; e"</span>) 'elfeed)
-(<span style="color: #fb4933; font-weight: bold;">setq</span> elfeed-feeds
-      '((<span style="color: #b8bb26;">"http://arxiv.org/rss/math.AP"</span> preprint)
-        (<span style="color: #b8bb26;">"https://cvgmt.sns.it/papers/rss.xml"</span> preprint)
-        (<span style="color: #b8bb26;">"http://arxiv.org/rss/cond-mat.soft"</span> preprint)
-        (<span style="color: #b8bb26;">"https://planet.emacslife.com/atom.xml"</span> emacs)
-        (<span style="color: #b8bb26;">"https://kbd.news/rss2.php"</span> keyboard)
-        (<span style="color: #b8bb26;">"https://sachachua.com/blog/feed/"</span> emacs)
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">elfeed</span>
+  <span style="color: #8be9fd; font-style: italic;">:ensure</span> t)
+(global-set-key (kbd <span style="color: #f1fa8c;">"C-; e"</span>) 'elfeed)
+(<span style="color: #ff79c6; font-weight: bold;">setq</span> elfeed-feeds
+      '((<span style="color: #f1fa8c;">"http://arxiv.org/rss/math.AP"</span> preprint)
+        (<span style="color: #f1fa8c;">"https://cvgmt.sns.it/papers/rss.xml"</span> preprint)
+        (<span style="color: #f1fa8c;">"http://arxiv.org/rss/cond-mat.soft"</span> preprint)
+        (<span style="color: #f1fa8c;">"https://planet.emacslife.com/atom.xml"</span> emacs)
+        (<span style="color: #f1fa8c;">"https://kbd.news/rss2.php"</span> keyboard)
+        (<span style="color: #f1fa8c;">"https://sachachua.com/blog/feed/"</span> emacs)
         ))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org948f59b" class="outline-3">
-<h3 id="org948f59b"><span class="section-number-3">5.4.</span> Wikipedia Search&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
+<div id="outline-container-orgd346ab4" class="outline-3">
+<h3 id="orgd346ab4"><span class="section-number-3">5.4.</span> Wikipedia Search&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
 Let's search Wikipedia&#x2026;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">defun</span> <span style="color: #fabd2f; font-weight: bold;">wiki-search</span> (search-term) (<span style="color: #fb4933; font-weight: bold;">interactive</span> <span style="color: #b8bb26;">"sSearch Wikipedia: "</span>) (browse-url (concat <span style="color: #b8bb26;">"https://en.wikipedia.org/w/index.php?title=Special%3ASearch&amp;search="</span> search-term)))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">defun</span> <span style="color: #50fa7b; font-weight: bold;">wiki-search</span> (search-term) (<span style="color: #ff79c6; font-weight: bold;">interactive</span> <span style="color: #f1fa8c;">"sSearch Wikipedia: "</span>) (browse-url (concat <span style="color: #f1fa8c;">"https://en.wikipedia.org/w/index.php?title=Special%3ASearch&amp;search="</span> search-term)))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgde7c2bd" class="outline-3">
-<h3 id="orgde7c2bd"><span class="section-number-3">5.5.</span> PDF tools</h3>
+<div id="outline-container-org9c8f097" class="outline-3">
+<h3 id="org9c8f097"><span class="section-number-3">5.5.</span> PDF tools</h3>
 <div class="outline-text-3" id="text-5-5">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #fb4933; font-weight: bold;">use-package</span> <span style="color: #d3869b;">pdf-tools</span>
-  <span style="color: #fe8019; font-style: italic;">:config</span> (pdf-tools-install))
+<pre class="src src-emacs-lisp">(<span style="color: #ff79c6; font-weight: bold;">use-package</span> <span style="color: #bd93f9;">pdf-tools</span>
+  <span style="color: #8be9fd; font-style: italic;">:config</span> (pdf-tools-install))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgeb4bd62" class="outline-2">
-<h2 id="orgeb4bd62"><span class="section-number-2">6.</span> Resources</h2>
+<div id="outline-container-orgbae314e" class="outline-2">
+<h2 id="orgbae314e"><span class="section-number-2">6.</span> Resources</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgc6eda8f" class="outline-3">
-<h3 id="orgc6eda8f"><span class="section-number-3">6.1.</span> Beginner and General Resources</h3>
+<div id="outline-container-orge1f3c4c" class="outline-3">
+<h3 id="orge1f3c4c"><span class="section-number-3">6.1.</span> Beginner and General Resources</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 Here's a brief list of resources for reading on Emacs&#x2026;
@@ -1053,8 +1057,8 @@ Here's a brief list of resources for reading on Emacs&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org0dccfe8" class="outline-3">
-<h3 id="org0dccfe8"><span class="section-number-3">6.2.</span> Other's Configs</h3>
+<div id="outline-container-orgae5ff70" class="outline-3">
+<h3 id="orgae5ff70"><span class="section-number-3">6.2.</span> Other's Configs</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 Here are some other well-developed configs I've found:
@@ -1072,7 +1076,7 @@ Here are some other well-developed configs I've found:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Samuel Wallace</p>
-<p class="date">Created: 2022-04-01 Fri 08:30</p>
+<p class="date">Created: 2022-04-01 Fri 10:02</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
