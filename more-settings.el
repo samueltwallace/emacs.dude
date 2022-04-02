@@ -231,6 +231,7 @@
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "p" 'proced)
 (add-menu-item "b" 'ivy-bibtex)
+(add-menu-item "e" 'exwm-workspace-switch-to-buffer)
 
 (use-package elfeed
   :ensure t)
