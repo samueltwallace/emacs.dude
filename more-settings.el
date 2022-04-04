@@ -201,7 +201,7 @@
        (let ((to-window (bsp-tree-navigator (car (window-tree)))))
 	 (progn
 	   (select-window to-window)
-	   (if (window-combined-p to-window t)
+	   (if (window-combined-p to-window)
 	       (split-window-right)
 	     (split-window-below)))))
 
