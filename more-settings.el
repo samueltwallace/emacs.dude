@@ -156,6 +156,7 @@
 			      (start-process-shell-command command nil command)))
 	  (,(kbd "s-r") . exwm-reset)
 	  (,(kbd "s-o") . exwm-workspace-switch-to-buffer)
+	  (,(kbd "s-M-o") . exwm-workspace-switch)
 	  (,(kbd "s-g") . (lambda () ((interactive (start-process "slock" nil "slock")))))
 	  )
 	)
@@ -231,7 +232,6 @@
 (add-menu-item "a" 'org-agenda)
 (add-menu-item "p" 'proced)
 (add-menu-item "b" 'ivy-bibtex)
-(add-menu-item "s" 'exwm-workspace-switch-to-buffer)
 
 (use-package elfeed
   :ensure t)
