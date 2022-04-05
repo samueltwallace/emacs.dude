@@ -394,7 +394,7 @@ Currently needs:
      (global-set-key (kbd "M-g e") 'avy-goto-end-of-line)
    #+END_SRC
 
-** Shortcut key :keys:
+** Shortcut key                                                        :keys:
 
    We make a run key that gives a menu to different programs you might want a glance at.
 
@@ -408,6 +408,27 @@ Currently needs:
      (add-menu-item "p" 'proced)
      (add-menu-item "b" 'ivy-bibtex)
    #+END_SRC
+
+** Repeat Keymaps
+
+Repeat keymaps that are useful to me:
+
+#+BEGIN_SRC emacs-lisp
+  (defvar make-window-repeat-map
+    (let ((map (make-sparse-keymap)))
+	  (define-key map "2" 'split-window-below)
+	  (define-key map "3" 'split-window-right)
+	  (define-key map "0" 'delete-window)
+	  (define-key map "=" 'balance-windows)
+	  (define-key map "b" 'switch-to-buffer) map)
+      "making, breaking, and switching window. for use in repeat-mode")
+
+  (put 'split-window-below 'repeat-map 'make-window-repeat-map)
+  (put 'split-window-right 'repeat-map 'make-window-repeat-map)
+  (put 'delete-window 'repeat-map 'make-window-repeat-map)
+  (put 'balance-windows 'repeat-map 'make-window-repeat-map)
+  (put 'switch-to-buffer 'repeat-map 'make-window-repeat-map)
+#+END_SRC
 
 * External Integrations
 ** CANCELLED Nyxt Integration                                           :web:
