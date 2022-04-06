@@ -414,6 +414,9 @@ Currently needs:
 Repeat keymaps that are useful to me:
 
 #+BEGIN_SRC emacs-lisp
+
+  (repeat-mode)
+
   (defvar make-window-repeat-map
     (let ((map (make-sparse-keymap)))
 	  (define-key map "2" 'split-window-below)
@@ -428,6 +431,32 @@ Repeat keymaps that are useful to me:
   (put 'delete-window 'repeat-map 'make-window-repeat-map)
   (put 'balance-windows 'repeat-map 'make-window-repeat-map)
   (put 'switch-to-buffer 'repeat-map 'make-window-repeat-map)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (defvar move-map
+    (let ((map (make-sparse-keymap)))
+      (define-key map "n" 'next-line)
+      (define-key map "p" 'previous-line)
+      (define-key map "a" 'beginning-of-line-text)
+      (define-key map "e" 'end-of-line)
+      (define-key map "f" 'forward-word)
+      (define-key map "b" 'backward-word)
+      (define-key map (kbd "SPC") 'set-mark-command)
+      (define-key map "w" 'cut-region)
+      (define-key map "y" 'yank) map)
+    "movement and editing commands. tiny vim normal mode.")
+
+  (put 'next-line 'repeat-map 'move-map)
+  (put 'previous-line 'repeat-map 'move-map)
+  (put 'beginning-of-line-text 'repeat-map 'move-map)
+  (put 'end-of-line 'repeat-map 'move-map)
+  (put 'set-mark-command 'repeat-map 'move-map)
+  (put 'cut-region 'repeat-map 'move-map)
+  (put 'yank 'repeat-map 'move-map)
+  (put 'forward-word 'repeat-map 'move-map)
+  (put 'backward-word 'repeat-map 'move-map)
+
 #+END_SRC
 
 * External Integrations

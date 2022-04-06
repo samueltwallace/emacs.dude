@@ -233,6 +233,46 @@
 (add-menu-item "p" 'proced)
 (add-menu-item "b" 'ivy-bibtex)
 
+(repeat-mode)
+
+(defvar make-window-repeat-map
+  (let ((map (make-sparse-keymap)))
+	(define-key map "2" 'split-window-below)
+	(define-key map "3" 'split-window-right)
+	(define-key map "0" 'delete-window)
+	(define-key map "=" 'balance-windows)
+	(define-key map "b" 'switch-to-buffer) map)
+    "making, breaking, and switching window. for use in repeat-mode")
+
+(put 'split-window-below 'repeat-map 'make-window-repeat-map)
+(put 'split-window-right 'repeat-map 'make-window-repeat-map)
+(put 'delete-window 'repeat-map 'make-window-repeat-map)
+(put 'balance-windows 'repeat-map 'make-window-repeat-map)
+(put 'switch-to-buffer 'repeat-map 'make-window-repeat-map)
+
+(defvar move-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map "n" 'next-line)
+    (define-key map "p" 'previous-line)
+    (define-key map "a" 'beginning-of-line-text)
+    (define-key map "e" 'end-of-line)
+    (define-key map "f" 'forward-word)
+    (define-key map "b" 'backward-word)
+    (define-key map (kbd "SPC") 'set-mark-command)
+    (define-key map "w" 'cut-region)
+    (define-key map "y" 'yank) map)
+  "movement and editing commands. tiny vim normal mode.")
+
+(put 'next-line 'repeat-map 'move-map)
+(put 'previous-line 'repeat-map 'move-map)
+(put 'beginning-of-line-text 'repeat-map 'move-map)
+(put 'end-of-line 'repeat-map 'move-map)
+(put 'set-mark-command 'repeat-map 'move-map)
+(put 'cut-region 'repeat-map 'move-map)
+(put 'yank 'repeat-map 'move-map)
+(put 'forward-word 'repeat-map 'move-map)
+(put 'backward-word 'repeat-map 'move-map)
+
 (use-package elfeed
   :ensure t)
 (global-set-key (kbd "C-; e") 'elfeed)
