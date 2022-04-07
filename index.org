@@ -491,14 +491,14 @@ Here are some quick-use functions:
   (defun cumulative-push-file (fil) (interactive "FCumulative File:") (push buf cumulative-object-ring))
   (defun cumulative-push-region (beg end) (interactive "r") (push (list beg end) cumulative-object-ring))
 
-  (defun cumulative-push-save-and-kill (interactive) (cumulative-push-action 'save-buffer) (cumulative-push-action 'kill-buffer))
-  (defun cumulative-push-find-other-window (interactive) (cumulative-push-action 'find-file-other-window))
-  (defun cumulative-push-kill (interactive) (cumulative-push-action 'kill-region))
+  (defun cumulative-push-save-and-kill () (interactive) (cumulative-push-action 'save-buffer) (cumulative-push-action 'kill-buffer))
+  (defun cumulative-push-find-other-window () (interactive) (cumulative-push-action 'find-file-other-window))
+  (defun cumulative-push-kill () (interactive) (cumulative-push-action 'kill-region))
 
   (defvar cumulative-map
     (let ((map (make-sparse-keymap)))
       (define-key map (kbd "M-c o") 'cumulative-push-object)
-      (define-key map (kbd "M-c a") 'cumulative-push-actions)
+      (define-key map (kbd "M-c a") 'cumulative-push-action)
       (define-key map (kbd "M-c x") 'cumulative-exec)
       (define-key map (kbd "M-c b") 'cumulative-push-buffer)
       (define-key map (kbd "M-c f") 'cumulative-push-file)
