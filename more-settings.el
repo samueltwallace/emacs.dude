@@ -297,6 +297,9 @@
 (defun cumulative-push-find-other-window () (interactive) (cumulative-push-action 'find-file-other-window))
 (defun cumulative-push-kill () (interactive) (cumulative-push-action 'kill-region))
 
+(defun cumulative-clear-actions () (interactive) (setq cumulative-action-ring nil))
+(defun cumulative-clear-objects () (interactive) (setq cumulative-object-ring nil))
+
 (defvar cumulative-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-c o") 'cumulative-push-object)
@@ -314,7 +317,7 @@
   "collect functions and targets for cumulative actions that can be executed."
   :global t
   :init-value nil
-  :lighter cum
+  :lighter " cum"
   :keymap cumulative-map)
 
 (use-package elfeed
