@@ -259,7 +259,7 @@
     (define-key map "f" 'forward-word)
     (define-key map "b" 'backward-word)
     (define-key map (kbd "SPC") 'set-mark-command)
-    (define-key map "w" 'cut-region)
+    (define-key map "w" 'kill-region)
     (define-key map "y" 'yank) map)
   "movement and editing commands. tiny vim normal mode.")
 
@@ -268,10 +268,54 @@
 (put 'beginning-of-line-text 'repeat-map 'move-map)
 (put 'end-of-line 'repeat-map 'move-map)
 (put 'set-mark-command 'repeat-map 'move-map)
-(put 'cut-region 'repeat-map 'move-map)
+(put 'kill-region 'repeat-map 'move-map)
 (put 'yank 'repeat-map 'move-map)
 (put 'forward-word 'repeat-map 'move-map)
 (put 'backward-word 'repeat-map 'move-map)
+
+(defvar cumulative-object-ring nil "An object to be repeatedly acted on by stick-cmd")
+
+(defun cumulative-push-object (lisp-object) (interactive "XLisp Object:") (push lisp-object cumulative-object-ring))
+
+(defvar cumulative-action-ring nil  "A list of symbols to act on cumulative-object")
+
+(defun cumulative-push-action (command) (interactive "CCumulative Action:") (push command cumulative-actions))
+
+(defun cumulative-exec ()
+  (interactive)
+  (dolist (cmd cumulative-actions)
+    (dolist (cumulative-object cumulative-object-ring)
+    (eval `(,cmd ,cumulative-object))))
+  (setq cumulative-object nil)
+  (setq cumulative-actions nil))
+
+(defun cumulative-push-buffer (buf) (interactive "bCumulative Buffer:") (push buf cumulative-object-ring))
+(defun cumulative-push-file (fil) (interactive "FCumulative File:") (push buf cumulative-object-ring))
+(defun cumulative-push-region (beg end) (interactive "r") (push (list beg end) cumulative-object-ring))
+
+(defun cumulative-push-save-and-kill (interactive) (cumulative-push-action 'save-buffer) (cumulative-push-action 'kill-buffer))
+(defun cumulative-push-find-other-window (interactive) (cumulative-push-action 'find-file-other-window))
+(defun cumulative-push-kill (interactive) (cumulative-push-action 'kill-region))
+
+(defvar cumulative-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "M-c o") 'cumulative-push-object)
+    (define-key map (kbd "M-c a") 'cumulative-push-actions)
+    (define-key map (kbd "M-c x") 'cumulative-exec)
+    (define-key map (kbd "M-c b") 'cumulative-push-buffer)
+    (define-key map (kbd "M-c f") 'cumulative-push-file)
+    (define-key map (kbd "M-c r") 'cumulative-push-region)
+    (define-key map (kbd "M-c s") 'cumulative-push-save-and-kill)
+    (define-key map (kbd "M-c 4 f") 'cumulative-push-find-other-window)
+    (define-key map (kbd "M-c k") 'cumulative-push-kill) map)
+  "keymap for some common cumulative commands")
+
+(define-minor-mode cumulative-mode
+  "collect functions and targets for cumulative actions that can be executed."
+  :global t
+  :init-value nil
+  :lighter cum
+  :keymap cumulative-map)
 
 (use-package elfeed
   :ensure t)
