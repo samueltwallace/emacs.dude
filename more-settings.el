@@ -103,6 +103,10 @@
 (defun doc-store () (interactive)
        (find-dired "~/Documents/Textbooks" "name '*.pdf'"))
 
+(defun smart-kill-word () (interactive)
+  (forward-word)
+  (kill-word -1))
+
 (setq sentence-end-double-space nil)
 
 (defun editing-settings () (interactive)

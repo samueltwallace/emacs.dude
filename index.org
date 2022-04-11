@@ -30,7 +30,7 @@
    #+END_SRC
 
 * Modes
-** TODO Pure Latex                                                      :TeX:
+** IN PROGRESS Pure Latex                                               :TeX:
 
    We add a function for package load-time settings:
    #+BEGIN_SRC emacs-lisp
@@ -210,7 +210,15 @@ Decided I didn't mind... probably not worth the effort.
 
 ** Editing Settings :keys:
 
-   This makes Emacs conform to how I do things:
+   First we'll add some extra editing commands of my own...
+
+   #+BEGIN_SRC emacs-lisp
+     (defun smart-kill-word () (interactive)
+       (forward-word)
+       (kill-word -1))
+   #+END_SRC
+
+   This makes conforms to how I do things:
 
    #+BEGIN_SRC emacs-lisp
      (setq sentence-end-double-space nil)
