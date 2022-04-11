@@ -95,14 +95,13 @@
 	 (setq dired-listing-switches "-ahl")
 	 (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
 	 (setq dired-guess-shell-alist-user
-	       '(("\\.pdf$" "okular *")))))
+	       '(("\\.bib$" "/home/samueltwallace/.local/bin/bibly")
+		 ("\\.pdf$" "okular *")))))
 
 (defun zotero-store () (interactive)
        (find-dired "~/Zotero/storage" "-name '*.pdf'"))
-
-(defun smart-kill-word () (interactive)
-  (forward-word)
-  (kill-word -1))
+(defun doc-store () (interactive)
+       (find-dired "~/Documents/Textbooks" "name '*.pdf'"))
 
 (setq sentence-end-double-space nil)
 

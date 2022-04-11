@@ -195,27 +195,22 @@ Decided I didn't mind... probably not worth the effort.
 	      (setq dired-listing-switches "-ahl")
 	      (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
 	      (setq dired-guess-shell-alist-user
-		    '(("\\.pdf$" "okular *")))))
+		    '(("\\.bib$" "/home/samueltwallace/.local/bin/bibly")
+		      ("\\.pdf$" "okular *")))))
    #+END_SRC
 
-   Let's also add a command for listing Zotero-stored files for ease:
+   Let's also add a command for listing PDFs from my folers for ease:
 
    #+BEGIN_SRC emacs-lisp
      (defun zotero-store () (interactive)
 	    (find-dired "~/Zotero/storage" "-name '*.pdf'"))
+     (defun doc-store () (interactive)
+	    (find-dired "~/Documents/Textbooks" "name '*.pdf'"))
    #+END_SRC
 
 ** Editing Settings :keys:
 
-   First we'll add some extra editing commands of my own...
-
-   #+BEGIN_SRC emacs-lisp
-     (defun smart-kill-word () (interactive)
-       (forward-word)
-       (kill-word -1))
-   #+END_SRC
-
-   This makes conforms to how I do things:
+   This makes Emacs conform to how I do things:
 
    #+BEGIN_SRC emacs-lisp
      (setq sentence-end-double-space nil)
