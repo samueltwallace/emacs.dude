@@ -41,6 +41,7 @@
 (defun latex-in-org-settings ()
   (progn
     (require 'ox-bibtex)
+    (setq org-highlight-latex-and-related '(latex script entities))
     (plist-put org-format-latex-options :scale 2.0)
     ))
 
