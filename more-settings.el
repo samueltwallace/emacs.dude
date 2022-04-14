@@ -257,6 +257,7 @@
     (define-key map "a" 'beginning-of-line-text)
     (define-key map "e" 'end-of-line)
     (define-key map "f" 'forward-word)
+    (define-key map "g" 'keyboard-quit)
     (define-key map "b" 'backward-word)
     (define-key map (kbd "SPC") 'set-mark-command)
     (define-key map "w" 'kill-region)
