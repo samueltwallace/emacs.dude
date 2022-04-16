@@ -274,7 +274,7 @@ Here we goooo....
 
 #+BEGIN_src emacs-lisp
 
-  (defun lock-screen-with-slock () (interactive) (call-process "slock" nil "slock"))
+  (defun lock-screen-with-slock () (interactive) (call-process "slock"))
 
   (defun exwm-settings ()
       (setq exwm-workspace-number 4)
