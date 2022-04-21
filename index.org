@@ -372,7 +372,7 @@ Here we goooo....
 
 Here we create a pop-up minibuffer window to use where ever. The model is this: you should run ~emacsclient --eval '(runner)'~ and the minibuffer menu should appear.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
   (defun runner () (interactive)
 	 (setq default-minibuffer-frame (make-frame
 					 '((minibuffer . only) (title . "erunner") (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
@@ -382,6 +382,10 @@ Here we create a pop-up minibuffer window to use where ever. The model is this: 
 Currently needs:
  - [ ] raise frame if already created
  - [X] put windows in main frame (just use ~C-x C-f~ or regular keybindings; just not the usual keybinds)
+
+
+
+ <2022-04-21 Thu> With the addition of [[Try EXWM]], I have no big use for this.
 
 ** Avy
 

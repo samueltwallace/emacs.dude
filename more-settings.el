@@ -136,7 +136,7 @@
 (global-set-key (kbd "M-s b") 'counsel-ibuffer)
 (global-set-key (kbd "M-z") 'counsel-linux-app)
 
-(defun lock-screen-with-slock () (interactive) (call-process "slock" nil "slock"))
+(defun lock-screen-with-slock () (interactive) (call-process "slock"))
 
 (defun exwm-settings ()
     (setq exwm-workspace-number 4)
@@ -212,11 +212,6 @@
 	 (error "Not a layout in layout-list")))
 (defun current-window-layout () (interactive)
        (message split-window-preferred-function))
-
-(defun runner () (interactive)
-       (setq default-minibuffer-frame (make-frame
-				       '((minibuffer . only) (title . "erunner") (left . 0.25) (top . 0.25) (height . 0.5) (width . 0.5))))
-       (setq minibuffer-auto-raise t))
 
 (use-package avy) 
 (global-set-key (kbd "M-g g") 'avy-goto-char-2)
