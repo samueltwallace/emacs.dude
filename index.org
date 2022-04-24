@@ -29,7 +29,7 @@
      (neofetch)
    #+END_SRC
 
-* Modes
+* Document Preparation
 ** IN PROGRESS Pure Latex                                               :TeX:
 
    We add a function for package load-time settings:
@@ -62,16 +62,7 @@
        (reftex-mode 1)
        (prettify-symbols-mode 1))
  #+END_SRC
-  
-   And then we delay loading the package:
 
-   #+BEGIN_SRC emacs-lisp
-     (use-package latex
-       :defer t
-       :ensure auctex
-       :config (latex-init-settings))
-   #+END_SRC
-  
 *** CANCELLED make minor mode for wrapping text in LaTeX but not math mode text
 
 Decided I didn't mind... probably not worth the effort.
@@ -91,7 +82,7 @@ Decided I didn't mind... probably not worth the effort.
 	     (isearch "\\.*section"))
     #+END_SRC
    
-** Org Settings :Org:
+** Org Settings                                                         :Org:
 
    Several things go on here: we use some minor modes, we set scaling on Latex preview, and then we add CDLaTeX math symbols and commands.
    
@@ -141,128 +132,62 @@ Decided I didn't mind... probably not worth the effort.
 	    (org-cdlatex-mode))
    #+END_SRC
     
-     And we'll add a package load-time function
-    
-     #+BEGIN_SRC emacs-lisp
-       (use-package org
-	 :defer t
-	 :config (org-init-settings))
-   #+END_SRC
+** Bibliography Management
 
-** Mu4e Settings
 
-   First, update mail settings:
+#+BEGIN_SRC emacs-lisp
+  (defun add-link-to-bib (file-location) (interactive "fFile:")
+	(let (file-new-name (concat
+				   (file-name-directory file-location)
+				   (bibtex-key-in-head (bibtex-generate-autokey))))
+       (bibtex-set-field "file" file-new-name)
+       (rename-file file-location file-new-name)))
+#+END_SRC
 
-   #+BEGIN_SRC emacs-lisp
-     (defun init-mail-settings () ()
-       (setq
-	mu4e-get-mail-command "offlineimap -q -o"
-	mu4e-update-interval 30000))
-   #+END_SRC
 
-   And then we load the package
-  
-   #+BEGIN_SRC emacs-lisp
-     (use-package mu4e
-       :load-path  "/usr/share/emacs/site-lisp/mu4e"
-       :init (init-mail-settings))
-   #+END_SRC
-** Hooks
 
-   Now we add some good default hooks:
-
-   #+BEGIN_SRC emacs-lisp
-     (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
-     (add-hook 'LaTeX-mode-hook 'latex-hook)
-     (add-hook 'org-mode-hook 'org-hook)
-   #+END_SRC 
-  
-* Keybindings and Visuals
-** File Manipulation Settings
-
-   Let's make the function for loading settings:
-
-   #+BEGIN_SRC emacs-lisp
-     (defun file-manipulation-settings () (interactive)
-	    (progn
-	      (use-package projectile)
-	      (use-package magit)
-	      (use-package dired-x)
-	      (projectile-mode +1)
-	      (setq dired-listing-switches "-ahl")
-	      (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
-	      (setq dired-guess-shell-alist-user
-		    '(("\\.bib$" "/home/samueltwallace/.local/bin/bibly")
-		      ("\\.pdf$" "okular *")))))
-   #+END_SRC
-
-   Let's also add a command for listing PDFs from my folers for ease:
-
-   #+BEGIN_SRC emacs-lisp
-     (defun zotero-store () (interactive)
-	    (find-dired "~/Zotero/storage" "-name '*.pdf'"))
-     (defun doc-store () (interactive)
-	    (find-dired "~/Documents/Textbooks" "name '*.pdf'"))
-   #+END_SRC
-
+* Keybindings and Emacs Management
 ** Editing Settings :keys:
 
    First we'll add some extra editing commands of my own...
 
-   #+BEGIN_SRC emacs-lisp
-     (defun smart-kill-word () (interactive)
-       (forward-word)
-       (kill-word -1))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defun machine-uptime () (interactive) (shell-command "uptime"))
+  (defun pacman-update () (interactive) (async-shell-command "sudo pacman -Syu"))
+  (defun get-weather () (interactive)
+	 (async-shell-command "curl -s 'https://wttr.in/chicago?0p'" "*wttr.in*" nil))
+#+END_SRC
 
-   This makes conforms to how I do things:
+#+BEGIN_SRC emacs-lisp
+  (defun smart-kill-word () (interactive)
+	 (foward-word)
+	 (kill-word -1))
 
-   #+BEGIN_SRC emacs-lisp
-     (setq sentence-end-double-space nil)
-   #+END_SRC
-
-   Let's load the packages and bind some keys...
-
-   #+BEGIN_SRC emacs-lisp
-     (defun editing-settings () (interactive)
-	    (use-package counsel)
-	    (use-package crux)
-	    (ivy-mode +1)
-	    (counsel-mode +1)
-	    (counsel-projectile-mode +1)
-	    (setq bibtex-completion-bibliography '("~/zoterolib.bib"))
-	    (global-set-key (kbd "C-x s") 'swiper)
-	    (global-set-key (kbd "C-k") 'crux-smart-kill-line)
-	    (global-set-key (kbd "M-d") 'smart-kill-word))
-   #+END_SRC
-
-   Some useful keybindings...
-
-   #+BEGIN_SRC emacs-lisp
-	  (global-set-key (kbd "C-c v v") 'view-mode)
-	  (global-set-key (kbd "C-c v f") 'follow-mode)
-	  (unbind-key "C-z")
-	  (defun machine-uptime () (interactive) (shell-command "uptime"))
-	  (defun pacman-update () (interactive) (async-shell-command "sudo pacman -Syu"))
-	  (defun get-weather () (interactive)
-		 (async-shell-command "curl -s 'https://wttr.in/chicago?0p'" "*wttr.in*" nil))
-	  (global-set-key (kbd "C-z p") 'ping)
-	  (global-set-key (kbd "C-z t") 'machine-uptime)
-	  (global-set-key (kbd "C-z b") 'battery)
-	  (global-set-key (kbd "C-z u") 'pacman-update)
-	  (global-set-key (kbd "C-z w") 'get-weather)
-   #+END_SRC
+  (defun my-editing-keybindings () (interactive)
+	 (setq sentence-end-double-space nil)
+	 (global-set-key (kbd "C-x s") 'swiper)
+	 (global-set-key (kbd "C-k") 'crux-smart-kill-line)
+	 (global-set-key (kbd "M-d") 'smart-kill-word)
+	 (unbind-key "C-z")
+	 (global-set-key (kbd "C-z p") 'ping)
+	 (global-set-key (kbd "C-z t") 'machine-uptime)
+	 (global-set-key (kbd "C-z b") 'battery)
+	 (global-set-key (kbd "C-z u") 'pacman-update)
+	 (global-set-key (kbd "C-z w") 'get-weather)
+	    )
+#+END_SRC
 
 ** Visual/Window settings
 
 
-   #+BEGIN_SRC emacs-lisp
-     (global-set-key (kbd "M-o") 'ace-window)
-     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-     (global-set-key (kbd "M-s m") 'counsel-imenu)
-     (global-set-key (kbd "M-s b") 'counsel-ibuffer)
-     (global-set-key (kbd "M-z") 'counsel-linux-app)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defun counsel-keybindings () (interactive)
+	 (global-set-key (kbd "M-o") 'ace-window)
+	 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+	 (global-set-key (kbd "M-s m") 'counsel-imenu)
+	 (global-set-key (kbd "M-s b") 'counsel-ibuffer)
+	 (global-set-key (kbd "M-z") 'counsel-linux-app))
+#+END_SRC
   
 *** IN PROGRESS Try EXWM                                           :bling:wm:
 
@@ -391,37 +316,30 @@ Currently needs:
 
    Let's get warmed up with some simple keybindings for avy:
 
-   #+BEGIN_SRC emacs-lisp
-     (use-package avy) 
-     (global-set-key (kbd "M-g g") 'avy-goto-char-2)
-     (global-set-key (kbd "M-g c") 'avy-goto-char)
-     (global-set-key (kbd "M-g M-g") 'avy-goto-line)
-     (global-set-key (kbd "M-g f") 'avy-goto-char-in-line)
-     (global-set-key (kbd "M-g e") 'avy-goto-end-of-line)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defun my-avy-keybindings () (interactive)
+  (global-set-key (kbd "M-g g") 'avy-goto-char-2)
+  (global-set-key (kbd "M-g c") 'avy-goto-char)
+  (global-set-key (kbd "M-g M-g") 'avy-goto-line)
+  (global-set-key (kbd "M-g f") 'avy-goto-char-in-line)
+  (global-set-key (kbd "M-g e") 'avy-goto-end-of-line))
+#+END_SRC
 
 ** Shortcut key                                                        :keys:
 
    We make a run key that gives a menu to different programs you might want a glance at.
 
-   #+BEGIN_SRC emacs-lisp
-     (defun add-menu-item (key command)
-	    (global-set-key (kbd (concat "C-; " key)) command))
-     (defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
-     (add-menu-item "m" 'mu4e)
-     (add-menu-item "i" 'find-init-file)
-     (add-menu-item "a" 'org-agenda)
-     (add-menu-item "p" 'proced)
-     (add-menu-item "b" 'ivy-bibtex)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defun add-menu-item (key command)
+	 (global-set-key (kbd (concat "C-; " key)) command))
+  (defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
+#+END_SRC
 
 ** Repeat Keymaps
 
 Repeat keymaps that are useful to me:
 
 #+BEGIN_SRC emacs-lisp
-
-  (repeat-mode)
 
   (defvar make-window-repeat-map
     (let ((map (make-sparse-keymap)))
@@ -634,8 +552,7 @@ And we make a minor mode with key-bindings:
 Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 
 #+BEGIN_src emacs-lisp
-  (use-package elfeed
-    :ensure t)
+  (defun my-elfeed-settings () (interactive)
   (global-set-key (kbd "C-; e") 'elfeed)
   (setq elfeed-feeds
 	'(("http://arxiv.org/rss/math.AP" preprint)
@@ -644,7 +561,7 @@ Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 	  ("https://planet.emacslife.com/atom.xml" emacs)
 	  ("https://kbd.news/rss2.php" keyboard)
 	  ("https://sachachua.com/blog/feed/" emacs)
-	  ))
+	  )))
 #+END_src
 
 ** Wikipedia Search                                                     :web:
@@ -655,13 +572,114 @@ Let's search Wikipedia...
   (defun wiki-search (search-term) (interactive "sSearch Wikipedia: ") (browse-url (concat "https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" search-term)))
 #+END_src
 
-** PDF tools
+** Mu4e Settings
+
+   First, update mail settings:
+
+   #+BEGIN_SRC emacs-lisp
+     (defun init-mail-settings () ()
+       (setq
+	mu4e-get-mail-command "offlineimap -q -o"
+	mu4e-update-interval 30000))
+   #+END_SRC
+
+* Loading Packages and Setting Settings
+
+** Use-Package Statements
+
+#+BEGIN_SRC emacs-lisp
+(use-package magit)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+      (use-package projectile
+      :config (progn
+		(projectile-mode 1)
+		(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package dired-x
+  :config (progn
+	    (setq dired-listing-switches "-ahl")
+	    (setq dired-guess-shell-alist-user
+		  '(("\\.bib$" "~/.local/bin/bibly")
+		    ("\\.pdf$" "okular *")))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package latex
+    :defer t
+    :ensure auctex
+    :config (latex-init-settings))
+#+END_SRC
+    
+#+BEGIN_SRC emacs-lisp
+  (use-package org
+    :defer t
+    :config (org-init-settings))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+    (use-package counsel
+    :config (progn
+	      (counsel-mode 1)
+	      (counsel-projectile-mode 1)
+	      (ivy-mode 1)
+	      (counsel-keybindings)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package crux
+  :config (my-editing-keybindings))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+  :config (my-avy-keybindings))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (add-menu-item "m" 'mu4e)
+  (add-menu-item "i" 'find-init-file)
+  (add-menu-item "a" 'org-agenda)
+  (add-menu-item "p" 'proced)
+  (add-menu-item "b" 'ivy-bibtex)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (repeat-mode)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package elfeed
+  :config (my-elfeed-settings))
+#+END_SRC
+
 
 #+BEGIN_SRC emacs-lisp
   (use-package pdf-tools
     :config (pdf-tools-install))
 #+END_SRC
 
+
+#+BEGIN_SRC emacs-lisp
+     (use-package mu4e
+       :load-path  "/usr/share/emacs/site-lisp/mu4e"
+       :init (init-mail-settings))
+#+END_SRC
+
+
+** Hooks
+
+   Now we add some good default hooks:
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+     (add-hook 'LaTeX-mode-hook 'latex-hook)
+     (add-hook 'org-mode-hook 'org-hook)
+   #+END_SRC 
+  
 * Resources
 ** Beginner and General Resources
 
