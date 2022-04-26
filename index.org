@@ -77,6 +77,8 @@ Let's do a different custom-settings file:
     :defer t
     :ensure auctex
     :config (latex-init-settings))
+
+  (add-hook 'LaTeX-mode-hook 'latex-hook)
 #+END_SRC
 
 *** CANCELLED make minor mode for wrapping text in LaTeX but not math mode text
@@ -156,6 +158,7 @@ Decided I didn't mind... probably not worth the effort.
 
 #+BEGIN_SRC emacs-lisp
   (add-menu-item "a" 'org-agenda)
+  (add-hook 'org-mode-hook 'org-hook)
 #+END_SRC
     
 ** Bibliography Management
@@ -662,28 +665,8 @@ Let's search Wikipedia...
 
 #+BEGIN_SRC emacs-lisp
   (add-menu-item "m" 'mu4e)
+  (add-hook 'mu4e-compose-hook 'turn-off-autofill)
 #+END_SRC
-
-* Loading Packages and Setting Settings
-
-** Use-Package Statements
-
-#+BEGIN_SRC emacs-lisp
-  (add-menu-item "m" 'mu4e)
-  (add-menu-item "a" 'org-agenda)
-  (add-menu-item "p" 'proced)
-  (add-menu-item "b" 'ivy-bibtex)
-#+END_SRC
-
-** Hooks
-
-   Now we add some good default hooks:
-
-   #+BEGIN_SRC emacs-lisp
-     (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
-     (add-hook 'LaTeX-mode-hook 'latex-hook)
-     (add-hook 'org-mode-hook 'org-hook)
-   #+END_SRC 
   
 * Resources
 ** Beginner and General Resources

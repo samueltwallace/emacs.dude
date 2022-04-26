@@ -38,6 +38,8 @@
   :ensure auctex
   :config (latex-init-settings))
 
+(add-hook 'LaTeX-mode-hook 'latex-hook)
+
 (defun latex-in-org-settings ()
   (progn
     (require 'ox-bibtex)
@@ -75,6 +77,7 @@
   :config (org-init-settings))
 
 (add-menu-item "a" 'org-agenda)
+(add-hook 'org-mode-hook 'org-hook)
 
 (setq bibtex-completion-pdf-field "file"
       bibtex-completion-library-path '("~/pdfs"))
@@ -338,12 +341,4 @@
   :init (init-mail-settings))
 
 (add-menu-item "m" 'mu4e)
-
-(add-menu-item "m" 'mu4e)
-(add-menu-item "a" 'org-agenda)
-(add-menu-item "p" 'proced)
-(add-menu-item "b" 'ivy-bibtex)
-
-(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
-(add-hook 'LaTeX-mode-hook 'latex-hook)
-(add-hook 'org-mode-hook 'org-hook)
+(add-hook 'mu4e-compose-hook 'turn-off-autofill)
