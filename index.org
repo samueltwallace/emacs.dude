@@ -9,10 +9,19 @@
 
   Note that this creates a /separate/ file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. ~M-x init-mail-settings~) or in a standard init file (e.g. ~(init-mail-settings)~). This is meant to be used in combination with other settings in a standard ~init.el~, allowing for optional settings or delayed settings.
   
-* Startup
-** Loading Initial Packages
+* General
+
+
+   We make a run key that gives a menu to different programs you might want a glance at.
+
+#+BEGIN_SRC emacs-lisp
+  (defun add-menu-item (key command)
+	 (global-set-key (kbd (concat "C-; " key)) command))
+  (defun find-init-file () (interactive) (find-file (user-init-file))
+#+END_SRC
+
   
-   There are some packages we need to load initially to use throughout:
+Let's do a different custom-settings file:
 
    #+BEGIN_SRC emacs-lisp
      (setq custom-file "~/.emacs.d/custom.el")
@@ -62,6 +71,13 @@
        (reftex-mode 1)
        (prettify-symbols-mode 1))
  #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package latex
+    :defer t
+    :ensure auctex
+    :config (latex-init-settings))
+#+END_SRC
 
 *** CANCELLED make minor mode for wrapping text in LaTeX but not math mode text
 
@@ -114,9 +130,9 @@ Decided I didn't mind... probably not worth the effort.
        (setq org-agenda-start-on-weekday 0)
        (require 'org-ref-ivy)
        (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
-      org-ref-insert-cite-function 'org-ref-cite-insert-ivy
-      org-ref-insert-label-function 'org-ref-insert-label-link
-      org-ref-insert-ref-function 'org-ref-insert-ref-link)
+	     org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+	     org-ref-insert-label-function 'org-ref-insert-label-link
+	     org-ref-insert-ref-function 'org-ref-insert-ref-link)
        (require 'org-ref)
        (require 'org-noter)
        (setq org-todo-keywords
@@ -132,16 +148,26 @@ Decided I didn't mind... probably not worth the effort.
 	    (org-cdlatex-mode))
    #+END_SRC
     
+#+BEGIN_SRC emacs-lisp
+  (use-package org
+    :defer t
+    :config (org-init-settings))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (add-menu-item "a" 'org-agenda)
+#+END_SRC
+    
 ** Bibliography Management
 
 
 #+BEGIN_SRC emacs-lisp
-  (defun add-link-to-bib (file-location) (interactive "fFile:")
-	(let (file-new-name (concat
-				   (file-name-directory file-location)
-				   (bibtex-key-in-head (bibtex-generate-autokey))))
-       (bibtex-set-field "file" file-new-name)
-       (rename-file file-location file-new-name)))
+    (setq bibtex-completion-pdf-field "file"
+	  bibtex-completion-library-path '("~/pdfs"))
+#+END_SRc
+
+#+BEGIN_SRC emacs-lisp
+  (add-menu-item "b" 'ivy-bibtex)
 #+END_SRC
 
 
@@ -177,6 +203,47 @@ Decided I didn't mind... probably not worth the effort.
 	    )
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(use-package magit)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+      (use-package projectile
+      :config (progn
+		(projectile-mode 1)
+		(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package dired-x
+  :config (progn
+	    (setq dired-listing-switches "-ahl")
+	    (setq dired-guess-shell-alist-user
+		  '(("\\.bib$" "~/.local/bin/bibly")
+		    ("\\.pdf$" "okular *")))
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+    (use-package counsel
+    :config (progn
+	      (counsel-mode 1)
+	      (counsel-projectile-mode 1)
+	      (ivy-mode 1)
+	      (counsel-keybindings)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package crux
+  :config (my-editing-keybindings))
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+  (repeat-mode)
+#+END_SRC
+
+
 ** Visual/Window settings
 
 
@@ -187,6 +254,11 @@ Decided I didn't mind... probably not worth the effort.
 	 (global-set-key (kbd "M-s m") 'counsel-imenu)
 	 (global-set-key (kbd "M-s b") 'counsel-ibuffer)
 	 (global-set-key (kbd "M-z") 'counsel-linux-app))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+  :config (my-avy-keybindings))
 #+END_SRC
   
 *** IN PROGRESS Try EXWM                                           :bling:wm:
@@ -239,7 +311,7 @@ Here we goooo....
 
 #+END_src
 
-*** Dynamic Window Layouts
+*** Dynamic Window Layouts                                               :wm:
 
     Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
 
@@ -326,14 +398,6 @@ Currently needs:
 #+END_SRC
 
 ** Shortcut key                                                        :keys:
-
-   We make a run key that gives a menu to different programs you might want a glance at.
-
-#+BEGIN_SRC emacs-lisp
-  (defun add-menu-item (key command)
-	 (global-set-key (kbd (concat "C-; " key)) command))
-  (defun find-init-file () (interactive) (find-file "~/.emacs.d/index.org"))
-#+END_SRC
 
 ** Repeat Keymaps
 
@@ -564,6 +628,18 @@ Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 	  )))
 #+END_src
 
+#+BEGIN_SRC emacs-lisp
+  (use-package elfeed
+  :config (my-elfeed-settings))
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+  (use-package pdf-tools
+    :config (pdf-tools-install))
+#+END_SRC
+
+
 ** Wikipedia Search                                                     :web:
 
 Let's search Wikipedia...
@@ -583,92 +659,26 @@ Let's search Wikipedia...
 	mu4e-update-interval 30000))
    #+END_SRC
 
-* Loading Packages and Setting Settings
-
-** Use-Package Statements
-
-#+BEGIN_SRC emacs-lisp
-(use-package magit)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-      (use-package projectile
-      :config (progn
-		(projectile-mode 1)
-		(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (use-package dired-x
-  :config (progn
-	    (setq dired-listing-switches "-ahl")
-	    (setq dired-guess-shell-alist-user
-		  '(("\\.bib$" "~/.local/bin/bibly")
-		    ("\\.pdf$" "okular *")))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (use-package latex
-    :defer t
-    :ensure auctex
-    :config (latex-init-settings))
-#+END_SRC
-    
-#+BEGIN_SRC emacs-lisp
-  (use-package org
-    :defer t
-    :config (org-init-settings))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-    (use-package counsel
-    :config (progn
-	      (counsel-mode 1)
-	      (counsel-projectile-mode 1)
-	      (ivy-mode 1)
-	      (counsel-keybindings)))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (use-package crux
-  :config (my-editing-keybindings))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (use-package avy
-  :config (my-avy-keybindings))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (add-menu-item "m" 'mu4e)
-  (add-menu-item "i" 'find-init-file)
-  (add-menu-item "a" 'org-agenda)
-  (add-menu-item "p" 'proced)
-  (add-menu-item "b" 'ivy-bibtex)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (repeat-mode)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (use-package elfeed
-  :config (my-elfeed-settings))
-#+END_SRC
-
-
-#+BEGIN_SRC emacs-lisp
-  (use-package pdf-tools
-    :config (pdf-tools-install))
-#+END_SRC
-
-
 #+BEGIN_SRC emacs-lisp
      (use-package mu4e
        :load-path  "/usr/share/emacs/site-lisp/mu4e"
        :init (init-mail-settings))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+  (add-menu-item "m" 'mu4e)
+#+END_SRC
+
+* Loading Packages and Setting Settings
+
+** Use-Package Statements
+
+#+BEGIN_SRC emacs-lisp
+  (add-menu-item "m" 'mu4e)
+  (add-menu-item "a" 'org-agenda)
+  (add-menu-item "p" 'proced)
+  (add-menu-item "b" 'ivy-bibtex)
+#+END_SRC
 
 ** Hooks
 
