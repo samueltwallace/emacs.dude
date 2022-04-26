@@ -170,8 +170,6 @@ Decided I didn't mind... probably not worth the effort.
   (add-menu-item "b" 'ivy-bibtex)
 #+END_SRC
 
-
-
 * Keybindings and Emacs Management
 ** Editing Settings :keys:
 
@@ -242,7 +240,6 @@ Decided I didn't mind... probably not worth the effort.
 #+BEGIN_SRC emacs-lisp
   (repeat-mode)
 #+END_SRC
-
 
 ** Visual/Window settings
 
@@ -638,7 +635,6 @@ Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
   (use-package pdf-tools
     :config (pdf-tools-install))
 #+END_SRC
-
 
 ** Wikipedia Search                                                     :web:
 
