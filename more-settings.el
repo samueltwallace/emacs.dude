@@ -1,6 +1,6 @@
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
-(defun find-init-file () (interactive) (find-file (user-init-file))
+(defun find-init-file () (interactive) (find-file (user-init-file)))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
@@ -108,14 +108,21 @@
 (use-package projectile
 :config (progn
 	  (projectile-mode 1)
-	  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
+	  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)))
 
 (use-package dired-x
 :config (progn
 	  (setq dired-listing-switches "-ahl")
 	  (setq dired-guess-shell-alist-user
 		'(("\\.bib$" "~/.local/bin/bibly")
-		  ("\\.pdf$" "okular *")))
+		  ("\\.pdf$" "okular *")))))
+
+(defun counsel-keybindings () (interactive)
+       (global-set-key (kbd "M-o") 'ace-window)
+       (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+       (global-set-key (kbd "M-s m") 'counsel-imenu)
+       (global-set-key (kbd "M-s b") 'counsel-ibuffer)
+       (global-set-key (kbd "M-z") 'counsel-linux-app))
 
 (use-package counsel
 :config (progn
@@ -128,16 +135,6 @@
 :config (my-editing-keybindings))
 
 (repeat-mode)
-
-(defun counsel-keybindings () (interactive)
-       (global-set-key (kbd "M-o") 'ace-window)
-       (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-       (global-set-key (kbd "M-s m") 'counsel-imenu)
-       (global-set-key (kbd "M-s b") 'counsel-ibuffer)
-       (global-set-key (kbd "M-z") 'counsel-linux-app))
-
-(use-package avy
-:config (my-avy-keybindings))
 
 (defun lock-screen-with-slock () (interactive) (call-process "slock"))
 
@@ -222,6 +219,9 @@
 (global-set-key (kbd "M-g M-g") 'avy-goto-line)
 (global-set-key (kbd "M-g f") 'avy-goto-char-in-line)
 (global-set-key (kbd "M-g e") 'avy-goto-end-of-line))
+
+(use-package avy
+:config (my-avy-keybindings))
 
 (defvar make-window-repeat-map
   (let ((map (make-sparse-keymap)))
