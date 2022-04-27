@@ -1,6 +1,6 @@
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
-(defun find-init-file () (interactive) (find-file (user-init-file)))
+(defun find-init-file () (interactive) (find-file user-init-file))
 (add-menu-item "i" 'find-init-file)
 (add-menu-item "p" 'proced)
 

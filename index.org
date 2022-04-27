@@ -17,7 +17,7 @@
 #+BEGIN_SRC emacs-lisp
   (defun add-menu-item (key command)
 	 (global-set-key (kbd (concat "C-; " key)) command))
-  (defun find-init-file () (interactive) (find-file (user-init-file)))
+  (defun find-init-file () (interactive) (find-file user-init-file))
   (add-menu-item "i" 'find-init-file)
   (add-menu-item "p" 'proced)
 #+END_SRC
@@ -117,18 +117,23 @@ Decided I didn't mind... probably not worth the effort.
 
    A small helper function
 
-   #+BEGIN_SRC emacs-lisp
-     (defun org-indent-paragraph () (interactive)
-	    (org-backward-paragraph)
-	    (push-mark)
-	    (org-forward-paragraph)
-	    (org-indent-region
-	     (mark) (point)))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defun org-indent-paragraph () (interactive)
+	 (org-backward-paragraph)
+	 (push-mark)
+	 (org-forward-paragraph)
+	 (org-indent-region
+	  (mark) (point)))
+
+  (defun org-insert-block (type header-args) (interactive "sBlock Type: \nsHeader Arguments: ")
+	   (insert "\n#+BEGIN_" type " " header-args "\n\n#+END_" type)
+	   (previous-line))
+#+END_SRC
+
 
    Let's add some keywords, keybindings, and such:
 
-   #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
      (defun org-init-settings ()
        (latex-in-org-settings)
        (setq org-agenda-start-on-weekday 0)
@@ -141,16 +146,17 @@ Decided I didn't mind... probably not worth the effort.
        (require 'org-noter)
        (setq org-todo-keywords
 	     '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
-   #+END_SRC
+#+END_SRC
 
    Let's write an Org-mode-hook function:
 
-   #+BEGIN_SRC emacs-lisp
-     (defun org-hook () ()
-	    (visual-line-mode)
-	    (local-set-key (kbd "C-c ]") 'org-ref-insert-link-hydra)
-	    (org-cdlatex-mode))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defun org-hook () ()
+	 (visual-line-mode)
+	 (local-set-key (kbd "C-c ]") 'org-ref-insert-link-hydra)
+	 (local-set-key (kbd "C-c b") 'org-insert-block)
+	 (org-cdlatex-mode))
+#+END_SRC
     
 #+BEGIN_SRC emacs-lisp
   (use-package org
