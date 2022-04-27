@@ -7,8 +7,8 @@
 
   This config is mainly for writing a mixture of Org and $\LaTeX$ documents. Version controlling is done through Git.
 
-  Note that this creates a /separate/ file for these extra settings; some are loaded with packages, and some are loaded interactively (e.g. ~M-x init-mail-settings~) or in a standard init file (e.g. ~(init-mail-settings)~). This is meant to be used in combination with other settings in a standard ~init.el~, allowing for optional settings or delayed settings.
-  
+  This is organized as an Org document for several reasons: One is for readability, another for easy publishing as a webpage, but the main one is to allow other users to build their own configs from. How? Filtering by =TODO= keywords and tags. Want all my keybindings, but none of my LaTeX stuff? You can =org-sparse-tree= or =C-c /= to apply filters and select what you want. At the end of the day, tangle the filtered results.
+
 * General
 
 
@@ -252,8 +252,7 @@ Decided I didn't mind... probably not worth the effort.
 
 ** Visual/Window settings
 
-  
-*** IN PROGRESS Try EXWM                                           :bling:wm:
+*** Try EXWM                                                       :bling:wm:
 
 +Decided not to. A fully-afeatured window manager is /probably/ better.+
 
