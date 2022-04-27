@@ -1,6 +1,8 @@
 (defun add-menu-item (key command)
        (global-set-key (kbd (concat "C-; " key)) command))
 (defun find-init-file () (interactive) (find-file (user-init-file)))
+(add-menu-item "i" 'find-init-file)
+(add-menu-item "p" 'proced)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
@@ -90,7 +92,7 @@
        (async-shell-command "curl -s 'https://wttr.in/chicago?0p'" "*wttr.in*" nil))
 
 (defun smart-kill-word () (interactive)
-       (foward-word)
+       (forward-word)
        (kill-word -1))
 
 (defun my-editing-keybindings () (interactive)
