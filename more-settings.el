@@ -157,9 +157,7 @@
 		      (string= "gimp" exwm-instance-name))
 	      (exwm-workspace-rename-buffer exwm-title))))
     (setq exwm-input-global-keys
-	  `((,(kbd "s-SPC") . (lambda (command)
-				(interactive (list (read-shell-command "$ ")))
-				(start-process-shell-command command nil command)))
+	  `((,(kbd "s-SPC") . counsel-linux-app)
 	    (,(kbd "s-r") . exwm-reset)
 	    (,(kbd "s-M-o") . exwm-workspace-switch-to-buffer)
 	    (,(kbd "s-o") . exwm-workspace-switch)
