@@ -313,6 +313,21 @@
   :lighter " cum"
   :keymap cumulative-map)
 
+(setq my-dark-themes [dracula
+		      modus-vivendi
+		      alect-black
+		      alect-black-alt
+		      alect-dark
+		      alect-dark-alt
+		      gruvbox-dark-hard
+		      gruvbox-dark-medium
+		      gruvbox-dark-medium])
+
+(defun load-random-theme (theme-list) (interactive "XTheme List: ")
+       (load-theme (seq-random-elt theme-list) t))
+
+(load-random-theme my-dark-themes)
+
 (defun my-elfeed-settings () (interactive)
 (global-set-key (kbd "C-; e") 'elfeed)
 (setq elfeed-feeds

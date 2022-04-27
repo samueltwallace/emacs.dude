@@ -512,6 +512,28 @@ And we make a minor mode with key-bindings:
     :keymap cumulative-map)
 #+END_SRC
 
+** Random Theme
+
+Switch to a random dark theme, because why not?
+
+#+BEGIN_SRC emacs-lisp
+
+  (setq my-dark-themes [dracula
+			modus-vivendi
+			alect-black
+			alect-black-alt
+			alect-dark
+			alect-dark-alt
+			gruvbox-dark-hard
+			gruvbox-dark-medium
+			gruvbox-dark-medium])
+
+  (defun load-random-theme (theme-list) (interactive "XTheme List: ")
+	 (load-theme (seq-random-elt theme-list) t))
+
+  (load-random-theme my-dark-themes)
+#+END_SRC
+
 * External Integrations
 ** CANCELLED Nyxt Integration                                           :web:
 
