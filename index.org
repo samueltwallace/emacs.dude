@@ -18,6 +18,7 @@
   (defun add-menu-item (key command)
 	 (global-set-key (kbd (concat "C-; " key)) command))
   (defun find-init-file () (interactive) (find-file (user-init-file)))
+  (add-menu-item "i" 'find-init-file)
 #+END_SRC
 
   
@@ -161,7 +162,7 @@ Decided I didn't mind... probably not worth the effort.
   (add-hook 'org-mode-hook 'org-hook)
 #+END_SRC
     
-** Bibliography Management
+** Bibliography Management                                           :bibtex:
 
 
 #+BEGIN_SRC emacs-lisp
@@ -174,9 +175,9 @@ Decided I didn't mind... probably not worth the effort.
 #+END_SRC
 
 * Keybindings and Emacs Management
-** Editing Settings :keys:
+** Editing Settings                                                    :keys:
 
-   First we'll add some extra editing commands of my own...
+   First we'll add some extra commands of my own...
 
 #+BEGIN_SRC emacs-lisp
   (defun machine-uptime () (interactive) (shell-command "uptime"))
@@ -187,7 +188,7 @@ Decided I didn't mind... probably not worth the effort.
 
 #+BEGIN_SRC emacs-lisp
   (defun smart-kill-word () (interactive)
-	 (foward-word)
+	 (forward-word)
 	 (kill-word -1))
 
   (defun my-editing-keybindings () (interactive)
@@ -378,7 +379,7 @@ Currently needs:
 
  <2022-04-21 Thu> With the addition of [[Try EXWM]], I have no big use for this.
 
-** Avy
+** Avy                                                                 :keys:
 
    Let's get warmed up with some simple keybindings for avy:
 
@@ -396,9 +397,7 @@ Currently needs:
   :config (my-avy-keybindings))
 #+END_SRC
 
-** Shortcut key                                                        :keys:
-
-** Repeat Keymaps
+** Repeat Keymaps                                                      :keys:
 
 Repeat keymaps that are useful to me:
 
@@ -646,7 +645,7 @@ Let's search Wikipedia...
   (defun wiki-search (search-term) (interactive "sSearch Wikipedia: ") (browse-url (concat "https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" search-term)))
 #+END_src
 
-** Mu4e Settings
+** Mu4e Settings                                                       :mail:
 
    First, update mail settings:
 
