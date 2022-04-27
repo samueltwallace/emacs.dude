@@ -167,8 +167,9 @@ Decided I didn't mind... probably not worth the effort.
 
 
 #+BEGIN_SRC emacs-lisp
-    (setq bibtex-completion-pdf-field "file"
-	  bibtex-completion-library-path '("~/pdfs"))
+  (setq bibtex-completion-pdf-field "file"
+	bibtex-completion-bibliography "~/zoterolib.bib"
+	bibtex-completion-library-path '("~/pdfs"))
 #+END_SRc
 
 #+BEGIN_SRC emacs-lisp

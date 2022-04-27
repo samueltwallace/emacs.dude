@@ -82,6 +82,7 @@
 (add-hook 'org-mode-hook 'org-hook)
 
 (setq bibtex-completion-pdf-field "file"
+      bibtex-completion-bibliography "~/zoterolib.bib"
       bibtex-completion-library-path '("~/pdfs"))
 
 (add-menu-item "b" 'ivy-bibtex)
