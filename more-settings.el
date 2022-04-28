@@ -25,10 +25,8 @@
 	  (102 "\\mathfrak" nil t nil nil)))
   (setq cdlatex-math-symbol-alist
 	'((120 "\\chi" "\\otimes")
-	  (62 "\\geq" "\\geqsim" "\\rangle")
-	  (60 "\\leq" "\\lesssim" "\\langle")
-	  (91 "\\left[")
-	  (93 "\\right]"))))
+	  (62 "\\geq" "\\geqsim")
+	  (60 "\\leq" "\\lesssim"))))
 
 (defun latex-hook ()
   (cdlatex-mode 1)
@@ -56,6 +54,10 @@
        (org-indent-region
 	(mark) (point)))
 
+(defun org-insert-block (type header-args) (interactive "sBlock Type: \nsHeader Arguments: ")
+	 (insert "\n#+BEGIN_" type " " header-args "\n\n#+END_" type)
+	 (previous-line))
+
 (defun org-init-settings ()
   (latex-in-org-settings)
   (setq org-agenda-start-on-weekday 0)
@@ -72,6 +74,7 @@
 (defun org-hook () ()
        (visual-line-mode)
        (local-set-key (kbd "C-c ]") 'org-ref-insert-link-hydra)
+       (local-set-key (kbd "C-c b") 'org-insert-block)
        (org-cdlatex-mode))
 
 (use-package org

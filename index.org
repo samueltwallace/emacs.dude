@@ -59,15 +59,13 @@ Let's do a different custom-settings file:
 	       (102 "\\mathfrak" nil t nil nil)))
        (setq cdlatex-math-symbol-alist
 	     '((120 "\\chi" "\\otimes")
-	       (62 "\\geq" "\\geqsim" "\\rangle")
-	       (60 "\\leq" "\\lesssim" "\\langle")
-	       (91 "\\left[")
-	       (93 "\\right]"))))
+	       (62 "\\geq" "\\geqsim")
+	       (60 "\\leq" "\\lesssim"))))
    #+END_SRC
 
    Let's set a mode hook function:
 
-   #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
      (defun latex-hook ()
        (cdlatex-mode 1)
        (reftex-mode 1)
