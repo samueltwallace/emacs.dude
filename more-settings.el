@@ -42,10 +42,10 @@
 
 (defun latex-in-org-settings ()
   (progn
-    (require 'ox-bibtex)
-    (setq org-highlight-latex-and-related '(latex script entities))
-    (plist-put org-format-latex-options :scale 2.0)
-    ))
+       (require 'ox-bibtex)
+       (setq org-highlight-latex-and-related '(latex script entities))
+       (plist-put org-format-latex-options :scale 2.0)
+       ))
 
 (defun org-indent-paragraph () (interactive)
        (org-backward-paragraph)
@@ -131,6 +131,8 @@
        (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
        (global-set-key (kbd "M-s m") 'counsel-imenu)
        (global-set-key (kbd "M-s b") 'counsel-ibuffer)
+       (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
+       (global-set-key (kbd "C-x 4 b") 'counsel-switch-buffer-other-window)
        (global-set-key (kbd "M-z") 'counsel-linux-app))
 
 (use-package counsel
