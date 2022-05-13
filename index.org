@@ -228,7 +228,7 @@ Decided I didn't mind... probably not worth the effort.
 	    (setq dired-listing-switches "-ahl")
 	    (setq dired-guess-shell-alist-user
 		  '(("\\.bib$" "~/.local/bin/bibly")
-		    ("\\.pdf$" "okular *")))))
+		    ("\\.pdf$" "zathura *")))))
 #+END_SRC
 
 

@@ -124,7 +124,7 @@
 	  (setq dired-listing-switches "-ahl")
 	  (setq dired-guess-shell-alist-user
 		'(("\\.bib$" "~/.local/bin/bibly")
-		  ("\\.pdf$" "okular *")))))
+		  ("\\.pdf$" "zathura *")))))
 
 (defun counsel-keybindings () (interactive)
        (global-set-key (kbd "M-o") 'ace-window)
