@@ -3,6 +3,7 @@
 (defun find-init-file () (interactive) (find-file user-init-file))
 (add-menu-item "i" 'find-init-file)
 (add-menu-item "p" 'proced)
+(setq external-pdf-viewer "zathura")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
@@ -87,7 +88,7 @@
 (setq bibtex-completion-pdf-field "file"
       bibtex-completion-bibliography "~/zoterolib.bib"
       bibtex-completion-pdf-open-function
-      (lambda (fpath) (call-process "zathura" nil 0 nil fpath))
+      (lambda (fpath) (call-process external-pdf-viewer nil 0 nil fpath))
       bibtex-completion-library-path '("~/pdfs"))
 
 (add-menu-item "b" 'ivy-bibtex)
@@ -125,8 +126,8 @@
 :config (progn
 	  (setq dired-listing-switches "-ahl")
 	  (setq dired-guess-shell-alist-user
-		'(("\\.bib$" "~/.local/bin/bibly")
-		  ("\\.pdf$" "zathura *")))))
+		`(("\\.bib$" "~/.local/bin/bibly")
+		  ("\\.pdf$" ,(concat external-pdf-viewer " *"))))))
 
 (defun counsel-keybindings () (interactive)
        (global-set-key (kbd "M-o") 'ace-window)
