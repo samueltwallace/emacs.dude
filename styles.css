@@ -1,11 +1,81 @@
-/* Adapted from https://github.com/alphapapa/solarized-everything-css/blob/master/css/gruvbox/gruvbox-all-sites.css */
 
-body {
-	text-align:justify ;
+#content {
+	text-align:left;
 	text-justify:inter-word;
-	font-family:Latin Modern;
-	margin: 5% 20% ;
+	font-family:Sans-serif;
 	font-size:15pt ;
-	overflow:auto;
+	margin: 0% 10%;
+	max-width:100%;
+	overflow:scroll;
+	display:flex;
+	flex-direction:column;
 }
 
+.todo {
+    border:2px solid red;
+}
+
+.done {
+    border: 2px solid green;
+}
+
+h2, h3, h4, h5, h6 {
+    font-size:15pt;
+}
+
+.outline-text-1, .outline-text-2, .outline-text-3, .outline-text-4, .outline-text-5, .outline-text-6 {
+    overflow:scroll;
+    max-width:20%;
+    max-height:100%;
+    font-size:5pt;
+}
+
+.outline-3, .outline-4, .outline-5, .outline-6 {
+    max-width:100%;
+    overflow:scroll;
+    padding:0% 5%;
+    margin:auto;
+    font-size:5pt;
+}
+
+.outline-text-2:hover .outline-3 {
+    font-size:15pt;
+    max-width:100%;
+    max-height:100%;
+}
+
+.outline-2:hover .outline-text-2 {
+    font-size:15pt;
+    max-width:100%;
+    max-height:100%;
+}
+
+.outline-2:hover h2 {
+    font-size:15pt;
+}
+
+.outline-3:hover .outline-4 {
+    font-size:15pt;
+    max-width:100%;
+    max-height:100%;
+}
+
+.outline-3:hover h3 {
+    font-size:15pt;
+}
+
+.outline-3:hover .outline-text-3 {
+    font-size:15pt;
+    max-width:100%;
+    max-height:100%;
+}
+
+.outline-4:hover .outline-text-4 {
+    font-size:15pt;
+    max-width:100%;
+    max-height:100%;
+}
+
+.outline-4:hover h4 {
+    font-size:15pt;
+}

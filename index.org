@@ -1,5 +1,6 @@
 #+TITLE: Sam's Emacs
 #+AUTHOR: Samuel Wallace
+#+OPTIONS:  num:nil org-html-self-link-headlines:t
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles.css" />
 #+PROPERTY: header-args:emacs-lisp :tangle more-settings.el :comments no :exports code
 
@@ -133,18 +134,18 @@ Decided I didn't mind... probably not worth the effort.
    Let's add some keywords, keybindings, and such:
 
 #+BEGIN_SRC emacs-lisp
-     (defun org-init-settings ()
-       (latex-in-org-settings)
-       (setq org-agenda-start-on-weekday 0)
-       (require 'org-ref-ivy)
-       (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
-	     org-ref-insert-cite-function 'org-ref-cite-insert-ivy
-	     org-ref-insert-label-function 'org-ref-insert-label-link
-	     org-ref-insert-ref-function 'org-ref-insert-ref-link)
-       (require 'org-ref)
-       (require 'org-noter)
-       (setq org-todo-keywords
-	     '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
+  (defun org-init-settings ()
+    (latex-in-org-settings)
+    (setq org-agenda-start-on-weekday 0)
+    (require 'org-ref-ivy)
+    (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+	  org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+	  org-ref-insert-label-function 'org-ref-insert-label-link
+	  org-ref-insert-ref-function 'org-ref-insert-ref-link)
+    (require 'org-ref)
+    (require 'org-noter)
+    (setq org-todo-keywords
+	  '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
 #+END_SRC
 
    Let's write an Org-mode-hook function:
