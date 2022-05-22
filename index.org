@@ -276,7 +276,7 @@ It's back with a vengeance.
 
 Here we goooo....
 
-#+BEGIN_src emacs-lisp
+#+BEGIN_src emacs-lisp :tangle no
 
   (defun lock-screen-with-slock () (interactive) (call-process "slock"))
 
@@ -315,6 +315,11 @@ Here we goooo....
       :config (exwm-settings))
 
 #+END_src
+
+
+<2022-05-21 Sat> Well, it's been fun folks. I'm done with full-time EXWM, and back to Awesomewm. I'll keep the above snippet for any interested parties.
+
+
 
 *** Dynamic Window Layouts                                               :wm:
 
