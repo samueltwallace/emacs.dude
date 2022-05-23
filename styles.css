@@ -33,7 +33,6 @@ h2, h3, h4, h5, h6 {
 .outline-3, .outline-4, .outline-5, .outline-6 {
     max-width:100%;
     overflow:scroll;
-    padding:0% 5%;
     margin:auto;
     font-size:5pt;
 }
