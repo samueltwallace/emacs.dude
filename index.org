@@ -1,6 +1,6 @@
 #+TITLE: Sam's Emacs
 #+AUTHOR: Samuel Wallace
-#+OPTIONS:  num:nil org-html-self-link-headlines:t
+#+OPTIONS:  num:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles.css" />
 #+PROPERTY: header-args:emacs-lisp :tangle more-settings.el :comments no :exports code
 
