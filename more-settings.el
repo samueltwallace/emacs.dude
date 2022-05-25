@@ -70,7 +70,7 @@
   (require 'org-ref)
   (require 'org-noter)
   (setq org-todo-keywords
-	'((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
+	'((sequence "IN" "NEXT ACTIONS" "WAITING FOR" "EVENTUALLY" "|" "DONE" "CANCELLED"))))
 
 (defun org-hook () ()
        (visual-line-mode)

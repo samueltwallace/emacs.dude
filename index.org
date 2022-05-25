@@ -145,7 +145,7 @@ Decided I didn't mind... probably not worth the effort.
     (require 'org-ref)
     (require 'org-noter)
     (setq org-todo-keywords
-	  '((sequence "TODO" "IN PROGRESS" "POSTPONED" "|" "DONE" "CANCELLED"))))
+	  '((sequence "IN" "NEXT ACTIONS" "WAITING FOR" "EVENTUALLY" "|" "DONE" "CANCELLED"))))
 #+END_SRC
 
    Let's write an Org-mode-hook function:
