@@ -320,7 +320,6 @@ Here we goooo....
 <2022-05-21 Sat> Well, it's been fun folks. I'm done with full-time EXWM, and back to Awesomewm. I'll keep the above snippet for any interested parties.
 
 
-
 *** Dynamic Window Layouts                                               :wm:
 
     Here we look to implement two dynamic window layouts, inspired by tiling window managers. This replaces the native window splitting function. 
@@ -463,7 +462,7 @@ Moving around the buffer...
 
 #+END_SRC
 
-** IN PROGRESS Mini Embark-Become
+** PROGRESS Mini Embark-Become
 
 Here's a miniature version of Embark's ~embark-become~:
 
@@ -548,6 +547,23 @@ Switch to a random dark theme, because why not?
 
   (load-random-theme my-dark-themes)
 #+END_SRC
+
+** Work Mode
+
+This mode designates predefined directories as 'work directories:' if you have a file open in a directory, you won't be able to open any other files in other directories without closing all your work directories. This is to incentivize staying on-task.
+
+
+#+BEGIN_src emacs-lisp
+  (setq my-work-dirs  '("~/repos/AppliedAnalysis/"  "~/school/"))
+
+  (defun leave-work () (let ((leaving (y-or-n-p "Leave all your work behind?")))
+			 (if leaving (mapc (lambda (buf)
+					     (if (member t (mapcar (lambda (dir) (if (buffer-file-name buf) (locate-dominating-file (buffer-file-name buf) dir))) my-work-dirs))
+						 (kill-buffer buf)))
+					   (buffer-list)))
+			   leaving))
+
+#+END_src
 
 * External Integrations
 ** CANCELLED Nyxt Integration                                           :web:
