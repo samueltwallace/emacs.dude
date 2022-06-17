@@ -300,6 +300,15 @@
 
 (load-random-theme my-dark-themes)
 
+(setq my-work-dirs  '("~/repos/AppliedAnalysis/"  "~/school/"))
+
+(defun leave-work () (let ((leaving (y-or-n-p "Leave all your work behind?")))
+		       (if leaving (mapc (lambda (buf)
+					   (if (member t (mapcar (lambda (dir) (if (buffer-file-name buf) (locate-dominating-file (buffer-file-name buf) dir))) my-work-dirs))
+					       (kill-buffer buf)))
+					 (buffer-list)))
+			 leaving))
+
 (defun my-elfeed-settings () (interactive)
 (global-set-key (kbd "C-; e") 'elfeed)
 (setq elfeed-feeds
@@ -309,6 +318,7 @@
 	("https://cvgmt.sns.it/papers/rss.xml" preprint)
 	("https://planet.emacslife.com/atom.xml" emacs)
 	("https://kbd.news/rss2.php" keyboard)
+	("https://thealexandrian.net/feed" dnd)
 	("https://sachachua.com/blog/feed/" emacs)
 	)))
 
