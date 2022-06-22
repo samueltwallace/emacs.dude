@@ -319,6 +319,7 @@
 	("https://planet.emacslife.com/atom.xml" emacs)
 	("https://kbd.news/rss2.php" keyboard)
 	("https://thealexandrian.net/feed" dnd)
+	("https://theangrygm.com/feed/" dnd)
 	("https://sachachua.com/blog/feed/" emacs)
 	)))
 
