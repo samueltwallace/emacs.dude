@@ -689,8 +689,8 @@ Let's set up [[https://github.com/skeeto/elfeed][Elfeed]]!
 
 
 #+BEGIN_SRC emacs-lisp
-  (use-package pdf-tools
-    :config (pdf-tools-install))
+;;  (use-package pdf-tools
+;;    :config (pdf-tools-install))
 #+END_SRC
 
 ** Wikipedia Search                                                     :web:

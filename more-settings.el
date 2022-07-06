@@ -326,8 +326,8 @@
 (use-package elfeed
 :config (my-elfeed-settings))
 
-(use-package pdf-tools
-  :config (pdf-tools-install))
+;;  (use-package pdf-tools
+;;    :config (pdf-tools-install))
 
 (defun wiki-search (search-term) (interactive "sSearch Wikipedia: ") (browse-url (concat "https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" search-term)))
 
