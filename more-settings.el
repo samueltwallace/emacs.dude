@@ -312,7 +312,8 @@
 	("https://planet.emacslife.com/atom.xml" emacs)
 	("https://kbd.news/rss2.php" keyboard)
 	("https://thealexandrian.net/feed" dnd)
-	("https://theangrygm.com/feed/" dnd)
+	("http://blog.trilemma.com/feeds/posts/default" dnd)
+	("https://goblinpunch.blogspot.com/feeds/posts/default" dnd)
 	("https://sachachua.com/blog/feed/" emacs)
 	)))
 
